@@ -1,4 +1,4 @@
-MultiSynthCovBalance <- function(MultiSynthPrep_obj, MultiSynth_obj, begin_time, end_time){
+MultiSynthCovBalance <- function(MultiSynthPrep_obj, MultiSynth_obj){
   
   #extract the covariate balance here 
   out <- sapply(MultiSynth_obj, function(synth){ return(synth$loss.w)})
