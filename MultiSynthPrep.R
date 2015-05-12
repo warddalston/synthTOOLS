@@ -83,7 +83,7 @@ MultiSynthPrep <- function(input, type = "placebos"){
     }, simplify = FALSE)
     
     #give objects of this big list helpful names!
-    names(out) <- c("full", paste("Minus",as.character(input$names.and.numbers[-1,1]), sep = "_"))
+    names(out) <- c("Full Donor Pool", paste("Minus",as.character(input$names.and.numbers[-1,1]), sep = " "))
     class(out) <- "Leave-One-Out Units"
     return(out)
     
@@ -126,7 +126,7 @@ MultiSynthPrep <- function(input, type = "placebos"){
     }, simplify = FALSE)
     
     #give objects of this big list helpful names!
-    names(out) <- c("Full", paste("Minus",units[-1], sep = "_"))
+    names(out) <- c("Full Covariate Set", paste("Minus",units[-1], sep = " "))
     class(out) <- "Leave-One-Out Covariates"
     return(out)
   }
