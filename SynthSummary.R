@@ -14,3 +14,5 @@ SynthSummary <- function(dataprep, synth, treatment_time, digits = 3){
   print(RMSPE)
   cat( " ************ Average Treatment Effect: ", round(ATE, digits), sep = "")
 }
+
+
