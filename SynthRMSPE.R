@@ -1,3 +1,5 @@
+#Function to calculate the Root Mean Square Prediction Error of a Synthetic Control Analysis
+
 SynthRMSPE <- function(dataprep, synth, begin_time, end_time){
   time <- row.names(dataprep$Y1plot) %in% as.character(begin_time : end_time)
   gaps <- dataprep$Y1plot - (dataprep$Y0plot %*% synth$solution.w)

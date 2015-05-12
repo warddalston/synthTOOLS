@@ -40,6 +40,7 @@ MultiSynthPrep <- function(input, type = "placebos"){
   
   #give objects of this big list helpful names!
   names(out) <- as.character(input$names.and.numbers[,1])
+  class(out) <- "Placebos"
   return(out)
   
   } else if(type == "units"){
@@ -83,6 +84,7 @@ MultiSynthPrep <- function(input, type = "placebos"){
     
     #give objects of this big list helpful names!
     names(out) <- c("full", paste("Minus",as.character(input$names.and.numbers[-1,1]), sep = "_"))
+    class(out) <- "Leave-One-Out Units"
     return(out)
     
   } else if(type == "covariates"){
@@ -125,6 +127,7 @@ MultiSynthPrep <- function(input, type = "placebos"){
     
     #give objects of this big list helpful names!
     names(out) <- c("Full", paste("Minus",units[-1], sep = "_"))
+    class(out) <- "Leave-One-Out Covariates"
     return(out)
   }
 }
