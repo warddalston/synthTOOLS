@@ -4,40 +4,51 @@ setClass(Class="MultiSynth",
            preps = "list",
            fits = "list",
            treated = "character",
-           treatment_time = "numeric"
+           treatment_time = "numeric",
+           PreRMSPE = "numeric",
+           PostRMSPE = "numeric",
+           RMSPEratio = "numeric",
+           CovBalances = "numeric",
+           ATEs = "numeric"
          ),
          prototype = prototype(
            input = list(),
            preps = list(),
            fits = list(),
            treated = NA_character_,
-           treatment_time = NA_real_
+           treatment_time = NA_real_,
+           PreRMSPE = numeric(),
+           PostRMSPE = numeric(),
+           RMSPEratio = numeric(),
+           CovBalances = numeric(),
+           ATEs = numeric()
          )
 )
 
-setClass("PlaceboMS", contains = "MultiSynth")
+setClass("PlaceboMS", contains = "MultiSynth",
+         representation = list(
+           p_value = "numeric"),
+         prototype = prototype(
+           p_value = numeric()
+           )
+         )
 setClass("LOOunitsMS", contains = "MultiSynth")
 setClass("LOOcovariatesMS", contains = "MultiSynth")
 
 
 setMethod("initialize", "MultiSynth", 
-          function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric()){ 
-            
-            #             #below are three basic checks to make sure that the user is giving us the proper information for a BMA analysis. 
-            #             if(any(is.na(X))){
-            #               stop("The function does not accept covariate matrices with missing values")
-            #             }
-            #             if(any(is.na(y))){
-            #               stop("The function does not accept outcome vectors with missing values")
-            #             }
-            #             if(!length(y)==0 & length(y)!=nrow(X)){ #the first part of this logical makes the default BMA object not trigger this if loop.  
-            #               stop("The length of y and the number of rows of X must be equal")
-            #             }
+          function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric()
+                   ){ 
             .Object@input <- input
             .Object@preps <- preps
             .Object@fits <- fits
             .Object@treated <- treated
             .Object@treatment_time <- treatment_time
+            .Object@PreRMSPE <- PreRMSPE
+            .Object@PostRMSPE <- PostRMSPE
+            .Object@RMSPEratio <- RMSPEratio
+            .Object@CovBalances <- CovBalances
+            .Object@ATEs <- ATEs
             .Object
           }
 )

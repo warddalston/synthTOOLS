@@ -1,14 +1,17 @@
 
-MultiSynthErrorRatios <- function(MultiSynthPrep_obj, MultiSynth_obj, treatment_time){
+MultiSynthErrorRatios <- function(MultiSynthPrep_obj, MultiSynth_obj, treatment_time, input){
   
-  #Calculate the error ratios here
-  out <- mapply(SynthErrorRatio, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(treatment_time = treatment_time), SIMPLIFY = TRUE)
+  pre_period <- input$tag$time.plot[input$tag$time.plot < treatment_time]
+  post_period <- input$tag$time.plot[input$tag$time.plot >= treatment_time] 
   
-  #so that I can print them in a pretty way
-  class(out) = "MultiSynthErrorRatio"
+  #Calculate the Pre- error ratios here
+  PreErrors <- mapply(SynthRMSPE, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(begin_time = pre_period[1], end_time = pre_period[length(pre_period)]), SIMPLIFY = TRUE)
   
-  #so that it will print the type of multi synth analysis!
-  comment(out) = class(MultiSynthPrep_obj)
+  PostErrors <- mapply(SynthRMSPE, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(begin_time = post_period[1], end_time = post_period[length(post_period)]), SIMPLIFY = TRUE)
+  
+  Ratios <- PostErrors/PreErrors
+  
+  out <- list(PreErrors = PreErrors, PostErrors = PostErrors, Ratios = Ratios)
   
   return(out)
 }
