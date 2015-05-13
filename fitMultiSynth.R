@@ -1,11 +1,15 @@
+#create a basic new function, called "fitMultiSynth".  This is the workhorse of my package.  
 setGeneric(name="fitMultiSynth",
-           def=function(input, type = "placebo", treatment_time = NA, fit = TRUE, parallel=FALSE, ...)
+           def=function(input, ...)
            {standardGeneric("fitMultiSynth")}
 )
 
 #this says what to do when fitMultiSynth is called 
 setMethod(f = "fitMultiSynth",
-          definition = function(input, type = "placebo", treatment_time = NA, fit = TRUE, parallel=FALSE, ...){
+          definition = function(input, type = "placebo", treatment_time, fit = TRUE, parallel=FALSE, ...){
+            
+            #so the function doesn't break if fit = FALSE
+            fits <- list()
             
             #if this is a placebo analysis...
             if(type == "placebo"){
@@ -20,6 +24,7 @@ setMethod(f = "fitMultiSynth",
               return(new("PlaceboMS", input = input, preps = out, fits = fits, treated = as.character(input$names.and.numbers[1,]), treatment_time = treatment_time ))
             } #close placebo if loop
             
+            #if this is a leave one out units analysis
             if(type == "units"){
               
               preps <- LOOunitsMSPrep(input)
@@ -31,6 +36,7 @@ setMethod(f = "fitMultiSynth",
               return(new("LOOunitsMS", input = input, preps = out, fits = fits, treated = as.character(input$names.and.numbers[1,]), treatment_time = treatment_time ))  
             } #close units if loop
             
+            #if this is a leave one out covaraites 
             if(type == "covariates"){
               
               preps <- LOOcovariatesMSPrep(input)
@@ -44,9 +50,14 @@ setMethod(f = "fitMultiSynth",
           } #close function
 ) #close setMethod
 
-test1 <- fitMultiSynth(IT_five_year, type = "placebo", treatment_time = 1994, fit = TRUE, parallel = TRUE)
+#say what to do when fitMultiSynth is called on a MultiSynth object
+setMethod(f = "fitMultiSynth",
+          signature = "MultiSynth",
+          definition = function(input, parallel=FALSE, ...){
+            
+              input@fits <- MultiSynth(input@preps, parallel, ... ) 
+              
+              return(input)
+            } #close function
+) #close set method          
 
-str(test1@fits)
-
-is(test1)
-is(test1, "MultiSynth")
