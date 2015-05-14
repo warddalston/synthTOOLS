@@ -35,9 +35,13 @@ setMethod(f = "fitMultiSynth",
               
               if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
+                RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
+                Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
+                post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
+                ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
               }
               
-              return(new("LOOunitsMS", input = input, preps = out, fits = fits, treated = as.character(input$names.and.numbers[1,]), treatment_time = treatment_time ))  
+              return(new("LOOunitsMS", input = input, preps = out, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))  
             } #close units if loop
             
             #if this is a leave one out covaraites 
@@ -47,9 +51,13 @@ setMethod(f = "fitMultiSynth",
               
               if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
+                RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
+                Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
+                post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
+                ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
               }
               
-              return(new("LOOcovariatesMS", input = input, preps = out, fits = fits, treated = as.character(input$names.and.numbers[1,]), treatment_time = treatment_time ))
+              return(new("LOOcovariatesMS", input = input, preps = out, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))
             } #close covariates if loop
           } #close function
 ) #close setMethod
@@ -65,4 +73,5 @@ setMethod(f = "fitMultiSynth",
             } #close function
 ) #close set method          
 
-try1 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
+try1 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
+
