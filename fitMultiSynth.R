@@ -6,7 +6,7 @@ setGeneric(name="fitMultiSynth",
 
 #this says what to do when fitMultiSynth is called 
 setMethod(f = "fitMultiSynth",
-          definition = function(input, type = "placebo", treatment_time, fit = TRUE, parallel=FALSE, ...){
+          definition = function(input, type = "placebo", treatment_time = c(), fit = TRUE, parallel=FALSE, ...){
             
             #so the function doesn't break if fit = FALSE
             fits <- list()
@@ -73,5 +73,6 @@ setMethod(f = "fitMultiSynth",
             } #close function
 ) #close set method          
 
-try1 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
+try1 <- fitMultiSynth(IT_five_year, type = "units", treatment_time = 1994, parallel = TRUE)
+try3 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
 
