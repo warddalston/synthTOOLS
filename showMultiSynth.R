@@ -2,35 +2,24 @@ setMethod(f = "show",
           signature = "PlaceboMS",
           def = function(object){
             
-              Pre_print <- object@PreRMSPE
-              Post_print <- object@PostRMSPE
-              Ratio_print <- object@RMSPEratio
-              Cov_print <- object@CovBalances
-              ATEs_print <- object@ATEs
-            
-            
-            cat("Placebo Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
+            cat("MultiSynth Placebo Analysis for ", ifelse(!is.na(object@input$tag$unit.names.variable), object@treated[1], paste("Unit", object@treated[1]) ), "'s ", object@treatment_time, " treatment \n", sep = "")
+            cat(" ****** ******\n")
+            cat("Donor Pool Units: \n")
+            sapply(as.character(object@input$names.and.numbers[-1,1]), function(unit){
+              if(which(as.character(object@input$names.and.numbers[-1,1]) == unit) %% 3 == 0 & which(as.character(object@input$names.and.numbers[-1,1]) == unit) != length(as.character(object@input$names.and.numbers[-1,1]))){
+                cat(unit, "\n")
+              } else( cat(unit, " "))
             })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
+            cat("\n ****** ******\n")
+            cat("Covariates: \n")
+            sapply(rownames(object@input$X0), function(cov){
+              if(which(rownames(object@input$X0) == cov) %% 3 == 0 & which(rownames(object@input$X0) == cov) != length(rownames(object@input$X0)) ){
+                cat(cov, "\n")
+              } else( cat(cov, " "))
             })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Exact p-value: ", object@p_value, " ****** \n", sep = "")
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
+            cat("\n ****** ****** \n")
+            cat("Optimization Period:",min(object@input$tag$time.optimize.ssr), "to", max(object@input$tag$time.optimize.ssr), "\n" )
+            cat( "Covariates Measurement Period:",min(object@input$tag$time.predictors.prior), "to", max(object@input$tag$time.predictors.prior), "\n" )
             return()
           } #end function
           ) #end setMethod
@@ -39,34 +28,24 @@ setMethod(f = "show",
           signature = "LOOunitsMS",
           def = function(object){
             
-            Pre_print <- object@PreRMSPE
-            Post_print <- object@PostRMSPE
-            Ratio_print <- object@RMSPEratio
-            Cov_print <- object@CovBalances
-            ATEs_print <- object@ATEs
-            
-            
-            cat("Leave-One-Out Units Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
+            cat("MultiSynth Leave-One-Out Units Analysis for ", ifelse(!is.na(object@input$tag$unit.names.variable), object@treated[1], paste("Unit", object@treated[1]) ), "'s ", object@treatment_time, " treatment \n", sep = "")
+            cat(" ****** ******\n")
+            cat("Donor Pool Units: \n")
+            sapply(as.character(object@input$names.and.numbers[-1,1]), function(unit){
+              if(which(as.character(object@input$names.and.numbers[-1,1]) == unit) %% 3 == 0 & which(as.character(object@input$names.and.numbers[-1,1]) == unit) != length(as.character(object@input$names.and.numbers[-1,1]))){
+                cat(unit, "\n")
+              } else( cat(unit, " "))
             })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
+            cat("\n ****** ******\n")
+            cat("Covariates: \n")
+            sapply(rownames(object@input$X0), function(cov){
+              if(which(rownames(object@input$X0) == cov) %% 3 == 0 & which(rownames(object@input$X0) == cov) != length(rownames(object@input$X0)) ){
+                cat(cov, "\n")
+              } else( cat(cov, " "))
             })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
+            cat("\n ****** ****** \n")
+            cat("Optimization Period:",min(object@input$tag$time.optimize.ssr), "to", max(object@input$tag$time.optimize.ssr), "\n" )
+            cat( "Covariates Measurement Period:",min(object@input$tag$time.predictors.prior), "to", max(object@input$tag$time.predictors.prior), "\n" )
             return()
           } #end function
 ) #end setMethod
@@ -75,36 +54,34 @@ setMethod(f = "show",
           signature = "LOOcovariatesMS",
           def = function(object){
             
-            Pre_print <- object@PreRMSPE
-            Post_print <- object@PostRMSPE
-            Ratio_print <- object@RMSPEratio
-            Cov_print <- object@CovBalances
-            ATEs_print <- object@ATEs
-            
-            
-            cat("Leave-One-Out Covariates Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
+            cat("MultiSynth Leave-One-Out Covariatess Analysis for ", ifelse(!is.na(object@input$tag$unit.names.variable), object@treated[1], paste("Unit", object@treated[1]) ), "'s ", object@treatment_time, " treatment \n", sep = "")
+            cat(" ****** ******\n")
+            cat("Donor Pool Units: \n")
+            sapply(as.character(object@input$names.and.numbers[-1,1]), function(unit){
+              if(which(as.character(object@input$names.and.numbers[-1,1]) == unit) %% 3 == 0 & which(as.character(object@input$names.and.numbers[-1,1]) == unit) != length(as.character(object@input$names.and.numbers[-1,1]))){                cat(unit, "\n")
+              } else( cat(unit, " "))
             })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
-            })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
+            cat("\n ****** ******\n")
+            cat("Covariates: \n")
+            sapply(rownames(object@input$X0), function(cov){
+              if(which(rownames(object@input$X0) == cov) %% 3 == 0 & which(rownames(object@input$X0) == cov) != length(rownames(object@input$X0)) ){
+                cat(cov, "\n")
+              } else( cat(cov, " "))
+            })  
+#             if(!is.null(object@input$tag$special.predictors)){
+#               cat("\n Special Covariates: ")
+#               sapply(object@input$tag$special.predictors, function(spec){
+#                 
+#                 if(length(spec[[2]]) != 1){
+#                   specTime <- paste(spec[[2]][1], ":", spec[[2]][length(spec[[2]])], sep = "")
+#                 } else(specTime <- spec[[2]])
+#                 
+#                 cat(spec[[1]], ", ", specTime, ", ", spec[[3]], "\n", sep = "")
+#               })
+#             }
+            cat(" \n****** ****** \n")
+            cat("Optimization Period:",min(object@input$tag$time.optimize.ssr), "to", max(object@input$tag$time.optimize.ssr), "\n" )
+            cat( "Covariates Measurement Period:",min(object@input$tag$time.predictors.prior), "to", max(object@input$tag$time.predictors.prior), "\n" )
             return()
           } #end function
 ) #end setMethod
-
-try1
