@@ -8,30 +8,14 @@ setMethod(f = "summary",
               Cov_print <- object@CovBalances
               ATEs_print <- object@ATEs
             
+              Output <- cbind(Pre_print, Post_print, Ratio_print, Cov_print, ATEs_print)
+              colnames(Output) <- c("Pre RMSPE", "Post RMSPE", "RMSPE Ratio", "Covariate Loss", "A.T.E")
+              rownames(Output) <- names(Pre_print)
             
-            cat("Placebo Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
-            })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Exact p-value: ", object@p_value, " ****** \n", sep = "")
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            return(invisible)
+            cat("Placebo Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
+            cat("Exact p-value for treated case: ", object@p_value, "\n", sep ="")
+            print(round(Output, digits = 3))
+            return(invisible(Output))
           } #end function
           ) #end setMethod
 
@@ -45,29 +29,17 @@ setMethod(f = "summary",
             Cov_print <- object@CovBalances
             ATEs_print <- object@ATEs
             
+            Output <- cbind(Pre_print, Post_print, Ratio_print, Cov_print, ATEs_print)
+            colnames(Output) <- c("Pre RMSPE", "Post RMSPE", "RMSPE Ratio", "Covariate Loss", "A.T.E")
+            rownames(Output) <- names(Pre_print)
             
-            cat("Leave-One-Out Units Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
-            })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            return(invisible())
+#             Z <- apply(Output,2, function(col) (col-mean(col))/sd(col) > 2)
+#             
+#             print_out <- ifelse(Z, paste(round(Output, 3), "*", sep =""), as.character(round(Output, 3)) )
+#             
+            cat("Leave-One-Out Units Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
+            print(round(Output, 3))
+            return(invisible(Output))
           } #end function
 ) #end setMethod
 
@@ -81,30 +53,15 @@ setMethod(f = "summary",
             Cov_print <- object@CovBalances
             ATEs_print <- object@ATEs
             
+            Output <- cbind(Pre_print, Post_print, Ratio_print, Cov_print, ATEs_print)
+            colnames(Output) <- c("Pre RMSPE", "Post RMSPE", "RMSPE Ratio", "Covariate Loss", "A.T.E")
+            rownames(Output) <- names(Pre_print)
             
-            cat("Leave-One-Out Covariates Analysis for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat(" ****** Pre Treatment RMSPEs ****** \n")
-            sapply(Pre_print, function(value){
-              cat( names(Pre_print)[Pre_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Post Treatment RMSPEs ****** \n")
-            sapply(Post_print, function(value){
-              cat( names(Post_print)[Post_print == value], ": ", round(value,3), "\n", sep = "")
-            })
-            cat("\n ****** Post-Pre RMSPE Ratios ****** \n")
-            sapply(Ratio_print, function(value){
-              cat( names(Ratio_print)[Ratio_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Covariate Balance ****** \n")
-            sapply(Cov_print, function(value){
-              cat( names(Cov_print)[Cov_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            cat("\n ****** Average Treatment Effects ****** \n")
-            sapply(ATEs_print, function(value){
-              cat( names(ATEs_print)[ATEs_print == value], ": ", round(value, 3), "\n", sep = "")
-            })
-            return(invisible())
+            cat("Leave-One-Out Covariates Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
+            print(round(Output, digits = 3))
+            return(invisible(Output))
           } #end function
 ) #end setMethod
+
 
 summary(try1)
