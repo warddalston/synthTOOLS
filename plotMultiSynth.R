@@ -284,7 +284,7 @@ setMethod(f = "plot",
                  yaxs = "i", xaxs = "i", #for a closed box
                  ylim = c(0, length(to_plot)+1), #nice amount of space around everything
                  cex = 1.2, yaxt = "n", xaxt = "n", xlab = axLab, ylab = "", 
-                 main = Title #fancy title.
+                 main =  Title #fancy title.
             )
             #segments for aesthetic purposes
             segments(x0 = 0, x1 = to_plot, 
