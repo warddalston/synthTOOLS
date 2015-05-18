@@ -1,9 +1,3 @@
-setGeneric("RMSPEplot",
-           def=function(x, ...){
-             standardGeneric("RMSPEplot")
-           }
-)
-
 setMethod(f = "plot",
           signature = "LOOunitsMS",
           def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){

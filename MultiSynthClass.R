@@ -35,7 +35,6 @@ setClass("PlaceboMS", contains = "MultiSynth",
 setClass("LOOunitsMS", contains = "MultiSynth")
 setClass("LOOcovariatesMS", contains = "MultiSynth")
 
-
 setMethod("initialize", "MultiSynth", 
           function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric()
                    ){ 
@@ -70,3 +69,43 @@ setMethod("initialize", "PlaceboMS",
             .Object
           }
 )
+
+setGeneric(name="getInput",
+           def=function(input, ...)
+           {standardGeneric("getInput")}
+)
+setMethod(f = "getInput",
+          signature = "MultiSynth",
+          def = function(input){
+            return(input@input)
+          })
+
+setGeneric(name="getPreps",
+           def=function(input, ...)
+           {standardGeneric("getPreps")}
+)
+setMethod(f = "getPreps",
+          signature = "MultiSynth",
+          def = function(input){
+            return(input@preps)
+          })
+
+setGeneric(name="getFits",
+           def=function(input, ...)
+           {standardGeneric("getFits")}
+)
+setMethod(f = "getFits",
+          signature = "MultiSynth",
+          def = function(input){
+            return(input@fits)
+          })
+
+setGeneric(name="getTreated",
+           def=function(input, ...)
+           {standardGeneric("getTreated")}
+)
+setMethod(f = "getTreated",
+          signature = "MultiSynth",
+          def = function(input){
+            return(input@treated)
+          })
