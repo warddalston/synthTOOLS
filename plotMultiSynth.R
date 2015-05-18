@@ -279,7 +279,7 @@ setMethod(f = "plot",
             }
             
             plot(x = to_plot, y = 1:length(to_plot), #basics: data by index
-                 pch = 20, col = ifelse(is_treated,"red","black"), #make the case of interest red, others black
+                 pch = 20, col = ifelse(is_treated, "red", "black"), #make the case of interest red, others black
                  xlim = c(ifelse(quantity == "ATE" & any(x@ATEs < 0), min(to_plot) + .05*min(to_plot),0), ifelse(quantity == "ATE" & all(x@ATEs < 0), 0, max(to_plot) + .05*max(to_plot)) ), #axis just longer than the largest ratio
                  yaxs = "i", xaxs = "i", #for a closed box
                  ylim = c(0, length(to_plot)+1), #nice amount of space around everything
@@ -290,7 +290,7 @@ setMethod(f = "plot",
             segments(x0 = 0, x1 = to_plot, 
                      y0 = 1:length(to_plot), y1 = 1:length(to_plot),
                      lwd = 1.5, col = ifelse(is_treated,"red","black"))
-            
+                        
             axis(2, at = 1:length(to_plot), labels = plot_labels, 
                  las = 1, cex.axis = .6, tick = F, lwd = 0, line = -.5)
             

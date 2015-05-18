@@ -1,6 +1,6 @@
 setMethod(f = "summary",
           signature = "PlaceboMS",
-          def = function(object){
+          def = function(object, digits = 3){
             
               Pre_print <- object@PreRMSPE
               Post_print <- object@PostRMSPE
@@ -13,15 +13,15 @@ setMethod(f = "summary",
               rownames(Output) <- names(Pre_print)
             
             cat("Placebo Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            cat("Exact p-value for treated case: ", object@p_value, "\n", sep ="")
-            print(round(Output, digits = 3))
+            cat("Exact p-value for treated case: ", round(object@p_value, digits), "\n", sep ="")
+            print(round(Output, digits))
             return(invisible(Output))
           } #end function
           ) #end setMethod
 
 setMethod(f = "summary",
           signature = "LOOunitsMS",
-          def = function(object){
+          def = function(object, digits = 3){
             
             Pre_print <- object@PreRMSPE
             Post_print <- object@PostRMSPE
@@ -38,14 +38,14 @@ setMethod(f = "summary",
 #             print_out <- ifelse(Z, paste(round(Output, 3), "*", sep =""), as.character(round(Output, 3)) )
 #             
             cat("Leave-One-Out Units Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            print(round(Output, 3))
+            print(round(Output, digits))
             return(invisible(Output))
           } #end function
 ) #end setMethod
 
 setMethod(f = "summary",
           signature = "LOOcovariatesMS",
-          def = function(object){
+          def = function(object, digits = 3){
             
             Pre_print <- object@PreRMSPE
             Post_print <- object@PostRMSPE
@@ -58,7 +58,7 @@ setMethod(f = "summary",
             rownames(Output) <- names(Pre_print)
             
             cat("Leave-One-Out Covariates Analysis Summary for ", object@treated[1], "'s ", object@treatment_time, " treatment \n", sep = "")
-            print(round(Output, digits = 3))
+            print(round(Output, digits))
             return(invisible(Output))
           } #end function
 ) #end setMethod

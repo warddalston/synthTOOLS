@@ -52,3 +52,21 @@ setMethod("initialize", "MultiSynth",
             .Object
           }
 )
+
+setMethod("initialize", "PlaceboMS", 
+          function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric(), p_value = numeric()
+          ){ 
+            .Object@input <- input
+            .Object@preps <- preps
+            .Object@fits <- fits
+            .Object@treated <- treated
+            .Object@treatment_time <- treatment_time
+            .Object@PreRMSPE <- PreRMSPE
+            .Object@PostRMSPE <- PostRMSPE
+            .Object@RMSPEratio <- RMSPEratio
+            .Object@CovBalances <- CovBalances
+            .Object@ATEs <- ATEs
+            .Object@p_value <- p_value
+            .Object
+          }
+)

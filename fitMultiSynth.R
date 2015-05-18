@@ -23,9 +23,10 @@ setMethod(f = "fitMultiSynth",
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
                 ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
+                p_value = sum(RMSPES[[3]] >= RMSPES[[3]][1])/length(RMSPES[[3]])
               } 
               
-              return(new("PlaceboMS", input = input, preps = out, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))
+              return(new("PlaceboMS", input = input, preps = out, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs, p_value = p_value))
             } #close placebo if loop
             
             #if this is a leave one out units analysis
@@ -73,6 +74,6 @@ setMethod(f = "fitMultiSynth",
             } #close function
 ) #close set method          
 
-try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
+#try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
 try3 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
 
