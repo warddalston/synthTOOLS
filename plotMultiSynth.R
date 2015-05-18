@@ -6,7 +6,7 @@ setGeneric("RMSPEplot",
 
 setMethod(f = "plot",
           signature = "LOOunitsMS",
-          def = function(x = input, y = NULL, quantity = "Ratios",...){
+          def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
             
             if(quantity == "Ratios"){
               
@@ -77,6 +77,8 @@ setMethod(f = "plot",
               
             }
             
+            main_title <- ifelse(is.na(main), Title, main)
+            
               plot(x = to_plot, y = 1:length(to_plot), #basics: data by index
                    pch = 20, col = ifelse(is_treated,"red","black"), #make the case of interest red, others black
                    xlim = c(
@@ -85,7 +87,7 @@ setMethod(f = "plot",
                    yaxs = "i", xaxs = "i", #for a closed box
                    ylim = c(0, length(to_plot)+1), #nice amount of space around everything
                    cex = 1.2, yaxt = "n", xaxt = "n", xlab = axLab, ylab = "", 
-                   main = Title #fancy title.
+                   main =  main_title, ... #fancy title.
               )
               #segments for aesthetic purposes
               segments(x0 = 0, x1 = to_plot, 
@@ -107,7 +109,7 @@ setMethod(f = "plot",
 
 setMethod(f = "plot",
           signature = "LOOcovariatesMS",
-          def = function(x = input, y = NULL, quantity = "Ratios",...){
+          def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
             
             if(quantity == "Ratios"){
               
@@ -129,10 +131,6 @@ setMethod(f = "plot",
               
               #to highlight the main case
               is_treated <- names(sort(x@PreRMSPE, decreasing = TRUE)) == "Full Covariate Set"
-              
-              print(names(sort(x@PreRMSPE, decreasing = TRUE)))
-              print(is_treated)
-              
               
               # what to call it?
               Title <- paste("Pre Treatment RMSPEs for Leave-One-Out Covariates Analysis of ", x@treated[1], sep = "" )
@@ -178,13 +176,15 @@ setMethod(f = "plot",
               
             }
             
+            main_title <- ifelse(is.na(main), Title, main)
+            
             plot(x = to_plot, y = 1:length(to_plot), #basics: data by index
                  pch = 20, col = ifelse(is_treated,"red","black"), #make the case of interest red, others black
                  xlim = c(ifelse(quantity == "ATE" & any(x@ATEs < 0), min(to_plot) + .05*min(to_plot),0), ifelse(quantity == "ATE" & all(x@ATEs < 0), 0, max(to_plot) + .05*max(to_plot)) ), #axis just longer than the largest ratio
                  yaxs = "i", xaxs = "i", #for a closed box
                  ylim = c(0, length(to_plot)+1), #nice amount of space around everything
                  cex = 1.2, yaxt = "n", xaxt = "n", xlab = axLab, ylab = "", 
-                 main = Title #fancy title.
+                 main = main_title, ... #fancy title.
             )
             #segments for aesthetic purposes
             segments(x0 = 0, x1 = to_plot, 
@@ -207,7 +207,7 @@ setMethod(f = "plot",
 
 setMethod(f = "plot",
           signature = "PlaceboMS",
-          def = function(x = input, y = NULL, quantity = "Ratios",...){
+          def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
             
             if(quantity == "Ratios"){
               
@@ -278,13 +278,15 @@ setMethod(f = "plot",
               
             }
             
+            main_title <- ifelse(is.na(main), Title, main)
+            
             plot(x = to_plot, y = 1:length(to_plot), #basics: data by index
                  pch = 20, col = ifelse(is_treated, "red", "black"), #make the case of interest red, others black
                  xlim = c(ifelse(quantity == "ATE" & any(x@ATEs < 0), min(to_plot) + .05*min(to_plot),0), ifelse(quantity == "ATE" & all(x@ATEs < 0), 0, max(to_plot) + .05*max(to_plot)) ), #axis just longer than the largest ratio
                  yaxs = "i", xaxs = "i", #for a closed box
                  ylim = c(0, length(to_plot)+1), #nice amount of space around everything
                  cex = 1.2, yaxt = "n", xaxt = "n", xlab = axLab, ylab = "", 
-                 main =  Title #fancy title.
+                 main =  main_title, ... #fancy title.
             )
             #segments for aesthetic purposes
             segments(x0 = 0, x1 = to_plot, 
