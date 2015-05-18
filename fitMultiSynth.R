@@ -6,7 +6,15 @@ setGeneric(name="fitMultiSynth",
 
 #this says what to do when fitMultiSynth is called 
 setMethod(f = "fitMultiSynth",
-          definition = function(input, type = "placebo", treatment_time = c(), fit = TRUE, parallel=FALSE, ...){
+          definition = function(input, type = "placebo", treatment_time = NA, fit = TRUE, parallel=FALSE, ...){
+            
+            if(length(treatment_time) != 1 | !is.numeric(treatment_time) | is.na(treatment_time)){
+              stop("Please enter a single, numeric, treatment time.")
+            } 
+            
+            if(all(input$tag$time.plot < treatment_time) ){
+              stop("Time plot values have no post-treatment periods. \nMultiSynth requires these for plotting and estimating statistics. \nPlease rerun dataprep and enter these!")
+            }
             
             #so the function doesn't break if fit = FALSE
             fits <- list()
@@ -19,6 +27,7 @@ setMethod(f = "fitMultiSynth",
               # then fit the Multi-Synth
               if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
+                names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
@@ -36,6 +45,7 @@ setMethod(f = "fitMultiSynth",
               
               if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
+                names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
@@ -52,6 +62,7 @@ setMethod(f = "fitMultiSynth",
               
               if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
+                names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
@@ -69,12 +80,17 @@ setMethod(f = "fitMultiSynth",
           definition = function(input, parallel=FALSE, ...){
             
               input@fits <- MultiSynth(input@preps, parallel, ... ) 
+              names(fits) <- names(preps)
+              RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
+              input@CovBalances <- sapply(fits, function(synth){ return(synth$loss.w)})
+              post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
+              input@ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
               
               return(input)
             } #close function
 ) #close set method          
-
-try1 <- fitMultiSynth(IT_five_year, type = "units", treatment_time = 1994, parallel = TRUE)
-#try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
-#try3 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
-
+# 
+# try1 <- fitMultiSynth(IT_five_year, type = "units", treatment_time = 1994, parallel = TRUE)
+# try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
+# try3 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
+# 
