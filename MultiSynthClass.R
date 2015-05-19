@@ -14,6 +14,7 @@
 #' \item \code{RMSPEratio} A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for the main analysis and each placebo/leave-one-out analysis
 #' \item \code{CovBalances} A numeric vector giving the covariate loss for the main analysis and each placebo/leave-one-out analysis.
 #' \item \code{ATEs} A numeric vector giving the average treatment effect (ATE) for the main analysis and each placebo/leave-one-out analysis.
+#' \item \code{p_value} A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. Only in \code{PlaceboMS} objects.  
 #' }
 #'
 #'@details MultiSynth objects allow for implementation of various significance and robustness checks for synthetic control analyses, as described in Abadie, Diamond, Hainmueller (2010) and Abadie, Diamond, Hainmueller (2015).  Currently, MultiSynth implements in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  
@@ -26,10 +27,9 @@
 #' @seealso \code{\link{PlaceboMS}}
 #' @seealso \code{\link{LOOunitsMS}}
 #' @seealso \code{\link{LOOcovariatesMS}}
-#' @aliases MultiSynth-class initialize, MultiSynth-method
+#' @aliases MultiSynth-class initialize,MultiSynth-method, PlaceboMS-class initialize,PlaceboMS-method, LOOunitsMS-class LOOcovariatesMS-class
 #' @rdname MultiSynth
 #' @export
-
 setClass(Class="MultiSynth", 
          representation = list(
            input = "list",
@@ -57,7 +57,6 @@ setClass(Class="MultiSynth",
          )
 )
 
-#' @rdname MultiSynth
 #' @export
 setMethod("initialize", "MultiSynth", 
           function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric()
@@ -76,9 +75,7 @@ setMethod("initialize", "MultiSynth",
           }
 )
 
-
-
-
+#' @export
 setClass("PlaceboMS", contains = "MultiSynth",
          representation = list(
            p_value = "numeric"),
@@ -86,9 +83,14 @@ setClass("PlaceboMS", contains = "MultiSynth",
            p_value = numeric()
            )
          )
+
+#' @export
 setClass("LOOunitsMS", contains = "MultiSynth")
+
+#' @export
 setClass("LOOcovariatesMS", contains = "MultiSynth")
 
+#' @export
 setMethod("initialize", "PlaceboMS", 
           function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric(), p_value = numeric()
           ){
@@ -107,79 +109,4 @@ setMethod("initialize", "PlaceboMS",
             .Object
           }
 )
-
-setGeneric(name="getInput",
-           def=function(input, ...)
-           {standardGeneric("getInput")}
-)
-setMethod(f = "getInput",
-          signature = "MultiSynth",
-          def = function(input){
-            return(input@input)
-          })
-
-setGeneric(name="getPreps",
-           def=function(input, ...)
-           {standardGeneric("getPreps")}
-)
-setMethod(f = "getPreps",
-          signature = "MultiSynth",
-          def = function(input){
-            return(input@preps)
-          })
-
-setGeneric(name="getFits",
-           def=function(input, ...)
-           {standardGeneric("getFits")}
-)
-setMethod(f = "getFits",
-          signature = "MultiSynth",
-          def = function(input){
-            return(input@fits)
-          })
-
-setGeneric(name="getTreated",
-           def=function(input, ...)
-           {standardGeneric("getTreated")}
-)
-setMethod(f = "getTreated",
-          signature = "MultiSynth",
-          def = function(input){
-            return(input@treated)
-          })
-
-setGeneric(name="getTreatmentTime",
-           def=function(input, ...)
-           {standardGeneric("getTreatmentTime")}
-)
-setMethod(f = "getTreatmentTime",
-          signature = "MultiSynth",
-          def = function(input){
-            return(input@treatment_time)
-          })
-
-setGeneric(name="getCase",
-           def=function(input, case, ...)
-           {standardGeneric("getCase")}
-)
-setMethod(f = "getCase",
-          signature = "MultiSynth",
-          def = function(input, case){
-            return(list(dataprep = input@preps[case], synth.res = input@fits[case]))
-          })
-
-setGeneric(name = "getStats",
-           def = function(input, ...)
-           {standardGeneric("getStats")}
-)
-
-setMethod(f = "getStats",
-         signature = "MultiSynth",
-         def = function(input){
-           output <- cbind(input@PreRMSPE, input@PostRMSPE, input@RMSPEratio, input@CovBalances, input@ATEs)
-           rownames(output) <- names(input@PreRMSPE)
-           colnames(output) <- c("Pre RMSPE", "PostRMSPE", "RMSPE ratio", "Covariate Balance", "ATE")
-           return(output)
-         }
-           )
 
