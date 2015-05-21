@@ -37,14 +37,14 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 
 #' Extract values necessary for plotting the gap in outcome trajectory for placebo/leave-one-out Synthetic fits
 #' 
-#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\linke{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}} and \code{\link{gaps.plot}}.  
+#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\linke{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{gaps.plot}}.  
 #' 
 #' @usage MultiSynthGapPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 #' 
 #' @param MultiSynthPrep_obj A list the dataprep matrices for each placebo/leave-one-out analysis.
 #' @param MultiSynth_obj A list containing the output from \code{synth} for each placebo/leave-one-out analysis. 
 #' 
-#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}} and \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.    
+#' @details The function is called as part of \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.    
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -54,7 +54,6 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 #' }
 #' 
 #' @seealso \code{\link{MultiSynth}}
-#' @seealso \code{\link{path.plot,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}
 #' @seealso \code{\link{MultiSynthPlotLines}}
 #' @seealso \code{\link{MultiSynthPathPlotPrep}}
@@ -73,7 +72,31 @@ MultiSynthGapPlotPrep <- function(MultiSynthPrep_obj, MultiSynth_obj){ #the inpu
   }, MultiSynthPrep_obj, MultiSynth_obj, SIMPLIFY=FALSE)
 } # close function
 
-
+#' Extract values necessary for plotting the outcome trajectory for placebo/leave-one-out Synthetic fits
+#' 
+#' This function extracts the values necessary for plotting the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\linke{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}}.  
+#' 
+#' @usage MultiSynthPathPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
+#' 
+#' @param MultiSynthPrep_obj A list the dataprep matrices for each placebo/leave-one-out analysis.
+#' @param MultiSynth_obj A list containing the output from \code{synth} for each placebo/leave-one-out analysis. 
+#' 
+#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.    
+#' 
+#' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
+#' 
+#' @references \itemize{
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
+#' }
+#' 
+#' @seealso \code{\link{MultiSynth}}
+#' @seealso \code{\link{path.plot,MultiSynth-method}}
+#' @seealso \code{\link{MultiSynthPlotLines}}
+#' @seealso \code{\link{MultiSynthGapPlotPrep}}
+#' 
+#' @rdname MultiSynthPathPlotPrep
+#' @export
 MultiSynthPathPlotPrep <- function(MultiSynthPrep_obj, MultiSynth_obj){
   
   if(length(MultiSynthPrep_obj) != length(MultiSynth_obj)){
