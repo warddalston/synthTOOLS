@@ -24,7 +24,10 @@
 #' @param Main Optional main title
 #' @param Z.plot Logical.  If TRUE only the pre-treatment period is plotted.
 #' 
-#' @details This method for path.plot is generally designed to work with leave-one-out analayses.  It will work for placebo anlayses, but the interpretation of the plot is less clear. 
+#' @details The user should give an object of class \code{\linke{MultiSynth}} as the argument to synth.res, and leave dataprep.res and tr.intake as NA.  
+#' 
+#' This method for path.plot is generally designed to work with leave-one-out analayses.  It will work for placebo anlayses, but the interpretation of the plot is less clear. 
+#' 
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -39,10 +42,13 @@
 #' @seealso \code{\link{summary,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}
 #' @seealso \code{\link{path.plot}}
+#' 
+#' @example
+#' ## Assume fitMultiSynth.out is an object of class "MultiSynth"
+#' path.plot(fitMultiSynth.out)
 #'
 #' @rdname path.plot.MultiSynth
 #' @export
-
 setMethod(f = "path.plot",
           signature = "MultiSynth",
           def = function(synth.res = input, dataprep.res = NA, tr.intake = NA, Ylab = c("Y Axis"), Xlab = c("Time"), Ylim = NA, Legend = c("Treated", "Synthetic", "Alternative Synthetics"), Legend.position = c("topleft"), Main = NA, Z.plot = FALSE){

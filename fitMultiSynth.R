@@ -39,7 +39,7 @@
 #' \item RMSPEratio A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for the main analysis and each placebo/leave-one-out analysis
 #' \item CovBalances A numeric vector giving the covariate loss for the main analysis and each placebo/leave-one-out analysis.
 #' \item ATEs A numeric vector giving the average treatment effect (ATE) for the main analysis and each placebo/leave-one-out analysis.
-#' \item p_value A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. (Only in placebo analysis.) 
+#' \item p_value A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. (Only in placebo analyses.) 
 #'  }
 #'
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
