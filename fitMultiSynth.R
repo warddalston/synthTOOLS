@@ -23,7 +23,7 @@
 #' 
 #' @param ... Additional arguements to be passed to \code{\link{synth}}
 #' 
-#'@details \code{fitMultiSynth} performs the iterative significance and robustness tests as described by Abadie, Diamond, Hainmueller (2010) by first creating the necessary matrices of predictors and outcomes for each placebo/leave-one-out analysis, and then fitting synthetic controls for each placebo/leave-one-out case. 
+#'@details \code{fitMultiSynth} performs the iterative significance and robustness tests as described by Abadie, Diamond, Hainmueller (2010) by first creating the necessary matrices of predictors and outcomes for each placebo/leave-one-out analysis, and then fitting synthetic controls for each placebo/leave-one-out case. The prep matrices are created by a call to one of three functions: \code{\link{PlaceboMSPrep}}, \code{\link{LOOunitsMSPrep}}, or \code{\link{LOOcovariatesMSPrep}}.  
 #'
 #' The function also returns several statistics useful in summarizing a placebo/leave-one-out analysis.  These are: the Root Mean Square Predictive Error (RMSPE) in the pre-treatment phase, the RMSPE in the post-treatment phase, the ratio of post- to pre-treatment RMSPE, covariate loss, and the average treatment effect in the post-treatment phase.  
 #' 
@@ -122,7 +122,7 @@ setMethod(f = "fitMultiSynth",
               preps <- PlaceboMSPrep(input)
               
               # then fit the Multi-Synth
-                fits <- MultiSynth(preps, parallel, ... ) 
+                fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
                 names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
@@ -139,8 +139,8 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOunitsMSPrep(input)
               
-                fits <- MultiSynth(preps, parallel, ... ) 
-                names(fits) <- names(preps)
+              fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
+              names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
@@ -155,8 +155,8 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOcovariatesMSPrep(input)
               
-                fits <- MultiSynth(preps, parallel, ... ) 
-                names(fits) <- names(preps)
+              fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
+              names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
