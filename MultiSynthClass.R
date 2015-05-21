@@ -17,16 +17,22 @@
 #' \item \code{p_value} A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. Only in \code{PlaceboMS} objects.  
 #' }
 #'
-#'@details MultiSynth objects allow for implementation of various significance and robustness checks for synthetic control analyses, as described in Abadie, Diamond, Hainmueller (2010) and Abadie, Diamond, Hainmueller (2015).  Currently, MultiSynth implements in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  
+#'@details MultiSynth objects allow for implementation of various significance and robustness checks for synthetic control analyses, as described in Abadie, Diamond, Hainmueller (2010) and Abadie, Diamond, Hainmueller (2015).  Currently, MultiSynth implements in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  MultiSynth also refits the "main" analysis, and records this as the first element in the output lists.  This allows for easy comparisons between the main synthetic control and placebo/leave-one-out synthetic controls.
 #'
 #' These anlayses require iterative fitting of synthetic controls, which MultiSynth performs.  Objects of class \code{MultiSynth} contain all of the relevent information for these anlayses.  Methods exist in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot} for objects of class \code{MultiSynth}.    
 #'
 #'\code{MultiSynth} objects are further divided into three subclasses\code{\link{PlaceboMS}}, \code{\link{LOOunitsMS}}, and \code{\link{LOOcovariatesMS}}, depending on the type of analysis being carried out.   
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
+#' @references \itemize{
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
+#' }
+#' 
 #' @seealso \code{\link{fitMultiSynth}}
-#' @seealso \code{\link{PlaceboMS}}
-#' @seealso \code{\link{LOOunitsMS}}
-#' @seealso \code{\link{LOOcovariatesMS}}
+#' @seealso \code{\link{plot,MultiSynth-method}}
+#' @seealso \code{\link{summary,MultiSynth-method}}
+#' @seealso \code{\link{path.plot,MultiSynth-method}}
+#' @seealso \code{\link{gaps.plot,MultiSynth-method}}
 #' @aliases MultiSynth-class initialize,MultiSynth-method, PlaceboMS-class initialize,PlaceboMS-method, LOOunitsMS-class LOOcovariatesMS-class
 #' @rdname MultiSynth
 #' @export

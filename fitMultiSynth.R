@@ -1,12 +1,112 @@
-#create a basic new function, called "fitMultiSynth".  This is the workhorse of my package.  
+#' Perform a MultiSynth Analysis 
+#' 
+#' Implements placebo analyses and leave-one-out analyses for synthetic control studies, as described by Abadie, Diamond, and Hainmueller (2010, 2015).  \code{fitMultSynth} performs these analyses by building off of Hainmueller and Diamond's \code{synth} package.  
+#' 
+#'  Three types of analyses are implemented through \code{fitMultiSynth}: in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  In a placebo analysis, synthetic controls are iteratively fit, with each iteration reassigning the country to be considered as treated.  In a leave-one-out units analysis, synthetic controls are iteratively fit, each time ommitting a single unit from the donor pool.  In a leave-one-out covariates analysis, synthetic controls are iteratively fit, with each iteration omitting a single covariate from set of covariates.       
+#'  
+#'  \code{fitMultiSynth} performs these analyses by creating all of the necessary matricies for these analyses using only the output of the \code{dataprep} function and the user supplied time of treatement.  It first iteratively creates the data objects necessary for the analyses, and then fits all of the necessary synthetic controls.  Finally, it calculates a number of statistics which can be used for making inferences on the quality of a synthetic control analysis.  
+#'  
+#'    \code{fitMultiSynth} requires the user to supply the output of a call to the \code{dataprep} function as its main input and the time treatment is administered as the main inputs.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covaraites".  Finally, the user has the option to run the anlaysis in parallel, to speed computation of potentially many synthetic control fits.  
+#'    
+#'      The output of \code{fitMultiSynth} is an object of class \code{\linke{MultiSynth}}.  This object contains the input data, and the matricies and output for the placebo/leave-one-out anlaysis, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. The functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot} all have methods for \code{MultiSynth} which allow for summarizing the results of a placebo/leave-one-out analysis.  
+#'      
+#' @usage
+#' 
+#' fitMultiSynth(input, type = "placebo", treatment_time = NA, parallel = FALSE, ... )
+#' @param input The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the arguement "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised. 
+#' 
+#' @param type A string describing what type of MultiSynth analysis to perform.  Defaults to "placebo".  Other options include "units" for a leave-one-out units analysis, and "covariates" for a leave-one-out covariates
+#' 
+#' @param treatment_time A numeric of length 1 giving the time of treatment uptake.
+#' 
+#' @param parallel Logical flag.  If TRUE, than fitting is done in parallel to increase speed.  
+#' 
+#' @param ... Additional arguements to be passed to \code{\link{synth}}
+#' 
+#'@details \code{fitMultiSynth} performs the iterative significance and robustness tests as described by Abadie, Diamond, Hainmueller (2010) by first creating the necessary matrices of predictors and outcomes for each placebo/leave-one-out analysis, and then fitting synthetic controls for each placebo/leave-one-out case. 
+#'
+#' The function also returns several statistics useful in summarizing a placebo/leave-one-out analysis.  These are: the Root Mean Square Predictive Error (RMSPE) in the pre-treatment phase, the RMSPE in the post-treatment phase, the ratio of post- to pre-treatment RMSPE, covariate loss, and the average treatment effect in the post-treatment phase.  
+#' 
+#' @return An object of class \code{\link{MultiSynth}} containing 
+#' \itemize{
+#' \item input The dataprep object for synthetic control anlaysis being studied.
+#' \item preps A list containing the matrices necessary for fitting each placebo/leave-one-out analysis.
+#' \item fits A list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out fits.
+#' ' \item treated A character vector of length two giving the name and number of the treated unit (if names are not supplied, the number is repeated)
+#' \item treatment_time A numeric vector of length one giving the time treatment is recieved
+#' \item PreRMSPE A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for the main analysis and each placebo/leave-one-out analysis. 
+#' \item PostRMSPE A numeric vector giving the RMSPE in the post-treatment period for the main analysis and each placebo/leave-one-out analysis. 
+#' \item RMSPEratio A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for the main analysis and each placebo/leave-one-out analysis
+#' \item CovBalances A numeric vector giving the covariate loss for the main analysis and each placebo/leave-one-out analysis.
+#' \item ATEs A numeric vector giving the average treatment effect (ATE) for the main analysis and each placebo/leave-one-out analysis.
+#' \item p_value A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. (Only in placebo analysis.) 
+#'  }
+#'
+#' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
+#' @references \itemize{
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
+#' }
+#' 
+#' @seealso \code{\link{MultiSynth}}
+#' @seealso \code{\link{plot,MultiSynth-method}}
+#' @seealso \code{\link{summary,MultiSynth-method}}
+#' @seealso \code{\link{path.plot,MultiSynth-method}}
+#' @seealso \code{\link{gaps.plot,MultiSynth-method}}
+#' 
+#' @examples
+#' 
+#' ##Example: Hainmueller and Diamond's Toy panel dataset
+#'
+#' load data
+#' data(synth.data)
+#'
+#' ## create matrices from panel data that provide inputs for fitMultiSynth()
+#' dataprep.out<-
+#'  dataprep(
+#'    foo = synth.data,
+#'    predictors = c("X1", "X2", "X3"),
+#'    predictors.op = "mean",
+#'    dependent = "Y",
+#'    unit.variable = "unit.num",
+#'    time.variable = "year",
+#'    special.predictors = list(
+#'      list("Y", 1991, "mean"),
+#'      list("Y", 1985, "mean"),
+#'      list("Y", 1980, "mean")
+#'    ),
+#'    treatment.identifier = 7,
+#'    controls.identifier = c(29, 2, 13, 17, 32, 38),
+#'    time.predictors.prior = c(1984:1989),
+#'    time.optimize.ssr = c(1984:1990),
+#'    unit.names.variable = "name",
+#'    time.plot = 1984:1996
+#'  )
+#'  
+#'  ## The above dataprep call represents the "main case".
+#'  ## Using this as input, call fitMultiSynth().
+#'  ## This will fit a synthetic control to each placebo/leave-one-out case
+#'  
+#'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
+#'  
+#'  ## We can analyze the placebo analyses in several ways. 
+#'  
+#'  summary(fitMultiSynth.out) 
+#'  plot(fitMultiSynth.out)
+#'  gaps.plot(fitMultiSynth.out)
+#'
+#' 
+#' @rdname fitMultiSynth
+#' @aliases fitMultiSynth,ANY-method
+#' @export
 setGeneric(name="fitMultiSynth",
            def=function(input, ...)
            {standardGeneric("fitMultiSynth")}
 )
 
-#this says what to do when fitMultiSynth is called 
+#' @export
 setMethod(f = "fitMultiSynth",
-          definition = function(input, type = "placebo", treatment_time = NA, fit = TRUE, parallel=FALSE, ...){
+          definition = function(input, type = "placebo", treatment_time = NA, parallel=FALSE, ...){
             
             if(length(treatment_time) != 1 | !is.numeric(treatment_time) | is.na(treatment_time)){
               stop("Please enter a single, numeric, treatment time.")
@@ -16,16 +116,12 @@ setMethod(f = "fitMultiSynth",
               stop("Time plot values have no post-treatment periods. \nMultiSynth requires these for plotting and estimating statistics. \nPlease rerun dataprep and enter these!")
             }
             
-            #so the function doesn't break if fit = FALSE
-            fits <- list()
-            
             #if this is a placebo analysis...
             if(type == "placebo"){
               
               preps <- PlaceboMSPrep(input)
               
               # then fit the Multi-Synth
-              if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
                 names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
@@ -33,7 +129,7 @@ setMethod(f = "fitMultiSynth",
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
                 ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
                 p_value = sum(RMSPES[[3]] >= RMSPES[[3]][1])/length(RMSPES[[3]])
-              } 
+              
               
               return(new("PlaceboMS", input = input, preps = preps, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs, p_value = p_value))
             } #close placebo if loop
@@ -43,14 +139,13 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOunitsMSPrep(input)
               
-              if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
                 names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
                 ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
-              }
+              
               
               return(new("LOOunitsMS", input = input, preps = preps, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))  
             } #close units if loop
@@ -60,35 +155,19 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOcovariatesMSPrep(input)
               
-              if(fit){
                 fits <- MultiSynth(preps, parallel, ... ) 
                 names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
                 post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
                 ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
-              }
+              
               
               return(new("LOOcovariatesMS", input = input, preps = preps, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))
             } #close covariates if loop
           } #close function
 ) #close setMethod
 
-#say what to do when fitMultiSynth is called on a MultiSynth object
-setMethod(f = "fitMultiSynth",
-          signature = "MultiSynth",
-          definition = function(input, parallel=FALSE, ...){
-            
-              input@fits <- MultiSynth(input@preps, parallel, ... ) 
-              names(fits) <- names(preps)
-              RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
-              input@CovBalances <- sapply(fits, function(synth){ return(synth$loss.w)})
-              post_period <- input$tag$time.plot[input$tag$time.plot > treatment_time]
-              input@ATEs <- MultiSynthATE(preps, fits, post_period[1], post_period[length(post_period)])
-              
-              return(input)
-            } #close function
-) #close set method          
 # 
 # try1 <- fitMultiSynth(IT_five_year, type = "units", treatment_time = 1994, parallel = TRUE)
 # try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
