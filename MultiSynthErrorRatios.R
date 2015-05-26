@@ -66,7 +66,7 @@
 #'  
 #'  MultiSynthErrorRatios(fitMultiSynth.out@preps, fitMultiSynth.out@fits, 1991, 1996, fitMultiSynth.out@input)
 #' 
-#' @rdname MultiSynthErrorRAtios
+#' @rdname MultiSynthErrorRatios
 #' @export
 MultiSynthErrorRatios <- function(MultiSynthPrep_obj, MultiSynth_obj, treatment_time, input){
   

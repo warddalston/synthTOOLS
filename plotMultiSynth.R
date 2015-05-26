@@ -1,6 +1,70 @@
+#' Plot MultiSynth objects
+#' 
+#' This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.  The function first sorts the quantity of interest, and then plots on the x-axis the values of the quantity for each case in the MultiSynth analysis.  Axis labels correspond to the names of the placebo/leave-one-out cases.  The actual treated unit or the analysis with the full donor pool/covariate set is plotted in red.  
+#' 
+#' @usage plot(x = input, quantity = "Ratios", main = NA, ...)
+#' 
+#' @param x A MultiSynth object
+#' @param quantity The quantity to plot.  Can be "Ratios" for RMSPE ratio, "Pre" for pretreatment RMSPE, "Post" for posttreatment RMSPE, "ATE" for ATEs, or "Cov" for covariate balance.  Defaults to "Ratios".  
+#' @param main Optional main title. Defaults to "<<Quantity to plot>> for <<type of MultiSynth>> Analysis of <<treated unit name>>". 
+#' @param ... further arguments passed on to the default method of plot
+#' 
+#' @details The three different subclasses of MultiSynth objects (PlaceboMS, LOOunitsMS, and LOOcovariatesMS) each have their own method for plot.  The only difference between these three methods, however, is the text printed by default for the main plot title.  When unit names or covariate names are very long, they may not fit in the plotting space.  This can be corrected by adjusting the plotting margins via \code{\link{par}}.  Additionally, the names of the cases can be adjusted manually through a call to \code{names} where the argument is the slot of a MultiSynth object containing the quantity to be plotted.  Adjusting names should be done with caution; if the name for the treated/complete case is changed, it will not be plotted in red.  
+#' 
+#' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
+#' 
+#' @references \itemize{
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
+#' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
+#' }
+#' 
+#' @seealso \code{\link{fitMultiSynth}}
+#' @seealso \code{\link{MultiSynth}}
+#' 
+#' @example
+#' 
+#' ##Example: Hainmueller and Diamond's Toy panel dataset
+#'
+#' load data
+#' data(synth.data)
+#'
+#' ## create matrices from panel data that provide inputs for fitMultiSynth()
+#' dataprep.out<-
+#'  dataprep(
+#'    foo = synth.data,
+#'    predictors = c("X1", "X2", "X3"),
+#'    predictors.op = "mean",
+#'    dependent = "Y",
+#'    unit.variable = "unit.num",
+#'    time.variable = "year",
+#'    special.predictors = list(
+#'      list("Y", 1991, "mean"),
+#'      list("Y", 1985, "mean"),
+#'      list("Y", 1980, "mean")
+#'    ),
+#'    treatment.identifier = 7,
+#'    controls.identifier = c(29, 2, 13, 17, 32, 38),
+#'    time.predictors.prior = c(1984:1989),
+#'    time.optimize.ssr = c(1984:1990),
+#'    unit.names.variable = "name",
+#'    time.plot = 1984:1996
+#'  )
+#'  
+#'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
+#'  
+#'  plot(fitMultiSynth.out)
+#'  
+#'  plot(fitMultiSynth.out, quantity = "ATE")
+#'  
+#'  @rdname plot,MultiSynth-method
+#'  @export
 setMethod(f = "plot",
           signature = "LOOunitsMS",
           def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
+            
+            if(!quantity %in% c("Ratios", "Pre", "Post", "ATE", "Cov")){
+              stop("Please enter a valid argument for quantity!")
+            }
             
             if(quantity == "Ratios"){
               
@@ -22,11 +86,7 @@ setMethod(f = "plot",
               
               #to highlight the main case
               is_treated <- names(sort(x@PreRMSPE, decreasing = TRUE)) == "Full Donor Pool"
-              
-              print(names(sort(x@PreRMSPE, decreasing = TRUE)))
-              print(is_treated)
-              
-              
+                            
               # what to call it?
               Title <- paste("Pre Treatment RMSPEs for Leave-One-Out Units Analysis of ", x@treated[1], sep = "" )
               axLab <- "Pre Treatment RMSPE Ratio"
@@ -101,9 +161,16 @@ setMethod(f = "plot",
           } #close function
           ) #close setMethod
 
+#'  @rdname plot,MultiSynth-method
+#'  @export
 setMethod(f = "plot",
           signature = "LOOcovariatesMS",
           def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
+            
+            if(!quantity %in% c("Ratios", "Pre", "Post", "ATE", "Cov")){
+              stop("Please enter a valid argument for quantity!")
+            }
+            
             
             if(quantity == "Ratios"){
               
@@ -199,9 +266,15 @@ setMethod(f = "plot",
           } #close function
 ) #close setMethod
 
+#'  @rdname plot,MultiSynth-method
+#'  @export
 setMethod(f = "plot",
           signature = "PlaceboMS",
           def = function(x = input, y = NULL, quantity = "Ratios", main = NA, ...){
+            
+            if(!quantity %in% c("Ratios", "Pre", "Post", "ATE", "Cov")){
+              stop("Please enter a valid argument for quantity!")
+            }
             
             if(quantity == "Ratios"){
               
@@ -223,10 +296,6 @@ setMethod(f = "plot",
               
               #to highlight the main case
               is_treated <- names(sort(x@PreRMSPE, decreasing = TRUE)) == x@treated[1]
-              
-              print(names(sort(x@PreRMSPE, decreasing = TRUE)))
-              print(is_treated)
-              
               
               # what to call it?
               Title <- paste("Pre Treatment RMSPEs for Place Analysis of ", x@treated[1], sep = "" )
