@@ -22,6 +22,7 @@
 #' These anlayses require iterative fitting of synthetic controls, which MultiSynth performs.  Objects of class \code{MultiSynth} contain all of the relevent information for these anlayses.  Methods exist in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot} for objects of class \code{MultiSynth}.    
 #'
 #'\code{MultiSynth} objects are further divided into three subclasses\code{\link{PlaceboMS}}, \code{\link{LOOunitsMS}}, and \code{\link{LOOcovariatesMS}}, depending on the type of analysis being carried out.   
+#'
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' @references \itemize{
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
