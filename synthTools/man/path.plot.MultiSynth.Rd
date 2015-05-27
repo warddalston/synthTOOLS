@@ -5,7 +5,7 @@
 \alias{path.plot,MultiSynth-method}
 \title{Path plots for MultiSynth Objects}
 \usage{
-path.plot(synth.res = input,
+path.plot(synth.res = NA,
  dataprep.res = NA,
  tr.intake = NA,
  Ylab = c("Y Axis"),

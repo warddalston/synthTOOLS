@@ -5,7 +5,8 @@
 \alias{fitMultiSynth,ANY-method}
 \title{Perform a MultiSynth Analysis}
 \usage{
-fitMultiSynth(input, type = "placebo", treatment_time = NA, parallel = FALSE, ... )
+fitMultiSynth(input, type = "placebo",
+   treatment_time = NA, parallel = FALSE, ... )
 }
 \arguments{
 \item{input}{The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the arguement "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised.}
@@ -21,17 +22,17 @@ fitMultiSynth(input, type = "placebo", treatment_time = NA, parallel = FALSE, ..
 \value{
 An object of class \code{\link{MultiSynth}} containing
 \itemize{
-\item input The dataprep object for synthetic control anlaysis being studied.
-\item preps A list containing the matrices necessary for fitting each placebo/leave-one-out analysis.
-\item fits A list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out fits.
-' \item treated A character vector of length two giving the name and number of the treated unit (if names are not supplied, the number is repeated)
-\item treatment_time A numeric vector of length one giving the time treatment is recieved
-\item PreRMSPE A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for the main analysis and each placebo/leave-one-out analysis.
-\item PostRMSPE A numeric vector giving the RMSPE in the post-treatment period for the main analysis and each placebo/leave-one-out analysis.
-\item RMSPEratio A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for the main analysis and each placebo/leave-one-out analysis
-\item CovBalances A numeric vector giving the covariate loss for the main analysis and each placebo/leave-one-out analysis.
-\item ATEs A numeric vector giving the average treatment effect (ATE) for the main analysis and each placebo/leave-one-out analysis.
-\item p_value A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. (Only in placebo analyses.)
+\item \code{input} The dataprep object for synthetic control anlaysis being studied.
+\item \code{preps} A list with the X0, X1, Z0, Z1, Y0plot, and Y1plot for each of the placebo/leave-one-out case and the treated/full donor pool/full covariate set case.
+\item \code{fits}  A list with the output of \code{synth} for each of the placebo/leave-one-out cases and the treated/full donor pool/full covariate set case.
+' \item \code{treated} A character vector of length two giving the name and number of the treated unit (if names are not supplied, the number is repeated)
+\item \code{treatment_time} A scalar giving the time treatment is recieved
+\item \code{PreRMSPE} A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for each case.
+\item \code{PostRMSPE} A numeric vector giving the RMSPE in the post-treatment period for each case.
+\item \code{RMSPEratio} A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for each case.
+\item \code{CovBalances} A numeric vector giving the covariate loss for each case.
+\item \code{ATEs} A numeric vector giving the average treatment effect (ATE) for each case.
+\item \code{p_value} A scalar with the exact p-value of getting an RMSPE ratio as high as the treated unit, if choosing a unit to analyze at random. Only in \code{PlaceboMS} objects.
  }
 }
 \description{

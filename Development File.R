@@ -12,3 +12,4 @@ document(current.code)
 build(current.code, path = getwd())
 
 install(current.code, local = TRUE)
+check(current.code)

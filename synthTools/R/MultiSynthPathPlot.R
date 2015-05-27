@@ -2,7 +2,7 @@
 #' 
 #' Plots the outcome trajectory of the outcome variable for the treated unit, the main synthetic control, and the place/leave-one-out synthetic controls created using \code{\link{fitMultiSynth}}.  The treated unit's trajectory is plotted as a solid line, the main synthetic control as a dashed line, and the MultiSynth controls as light gray solid lines.
 #' 
-#' @usage path.plot(synth.res = input,
+#' @usage path.plot(synth.res = NA,
 #'  dataprep.res = NA,
 #'  tr.intake = NA, 
 #'  Ylab = c("Y Axis"),
@@ -82,7 +82,7 @@
 #' @export
 setMethod(f = "path.plot",
           signature = "MultiSynth",
-          def = function(synth.res = input, dataprep.res = NA, tr.intake = NA, Ylab = c("Y Axis"), Xlab = c("Time"), Ylim = NA, Legend = c("Treated", "Synthetic", "Alternative Synthetics"), Legend.position = c("topleft"), Main = NA, Z.plot = FALSE){
+          def = function(synth.res = NA, dataprep.res = NA, tr.intake = NA, Ylab = c("Y Axis"), Xlab = c("Time"), Ylim = NA, Legend = c("Treated", "Synthetic", "Alternative Synthetics"), Legend.position = c("topleft"), Main = NA, Z.plot = FALSE){
             
             #plot the basic thing
             path.plot(synth.res@fits[[1]], synth.res@input, synth.res@treatment_time, Ylab = Ylab, Xlab= Xlab, Ylim = Ylim, Legend = NA, Legend.position = Legend.position, Main = Main, Z.plot = Z.plot)

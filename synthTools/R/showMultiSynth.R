@@ -21,6 +21,7 @@
 #' @seealso \code{\link{fitMultiSynth}}
 #' @seealso \code{\link{MultiSynth}}
 #' 
+#' @aliases show,MultiSynth-method show,PlaceboMS-method show,LOOunitsMS-method show,LOOcovariatesMS-method
 #' @rdname showMultiSynth
 #' @export
 setMethod(f = "show",

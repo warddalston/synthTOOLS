@@ -4,6 +4,7 @@
 \name{plot,LOOunitsMS,ANY-method}
 \alias{plot,LOOcovariatesMS,ANY-method}
 \alias{plot,LOOunitsMS,ANY-method}
+\alias{plot,MultiSynth-method}
 \alias{plot,PlaceboMS,ANY-method}
 \title{Plot MultiSynth objects}
 \usage{

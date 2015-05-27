@@ -21,11 +21,11 @@
 #' }
 #' 
 #' @seealso \code{\link{fitMultiSynth}}
-#' @seealso \code{\link{SynthATE}}
+#' @seealso \code{\link{SynthMeanEffect}}
 #' 
 #' @examples
 #' 
-#' \dontrun{#Example: Hainmueller and Diamond's Toy panel dataset}
+#' #Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #' #load data
 #' data(synth.data)

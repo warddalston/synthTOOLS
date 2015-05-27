@@ -5,7 +5,7 @@
 \alias{gaps.plot,MultiSynth-method}
 \title{Gaps plots for MultiSynth Objects}
 \usage{
-gaps.plot(synth.res = input,
+gaps.plot(synth.res = NA,
  dataprep.res = NA,
  Ylab = c("Title"),
  Xlab = c("Time"),

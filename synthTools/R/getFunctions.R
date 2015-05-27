@@ -21,7 +21,7 @@
 #' @rdname getInput
 #' @export
 setGeneric(name="getInput",
-           def=function(input, ...)
+           def=function(input)
            {standardGeneric("getInput")}
 )
 
@@ -55,7 +55,7 @@ setMethod(f = "getInput",
 #' @rdname getPreps
 #' @export
 setGeneric(name="getPreps",
-           def=function(input, ...)
+           def=function(input)
            {standardGeneric("getPreps")}
 )
 
@@ -89,7 +89,7 @@ setMethod(f = "getPreps",
 #' @rdname getFits
 #' @export
 setGeneric(name="getFits",
-           def=function(input, ...)
+           def=function(input)
            {standardGeneric("getFits")}
 )
 
@@ -123,7 +123,7 @@ setMethod(f = "getFits",
 #' @rdname getTreated
 #' @export
 setGeneric(name="getTreated",
-           def=function(input, ...)
+           def=function(input)
            {standardGeneric("getTreated")}
 )
 
@@ -157,7 +157,7 @@ setMethod(f = "getTreated",
 #' @rdname getTreatmentTime
 #' @export
 setGeneric(name="getTreatmentTime",
-           def=function(input, ...)
+           def=function(input)
            {standardGeneric("getTreatmentTime")}
 )
 
@@ -192,7 +192,7 @@ setMethod(f = "getTreatmentTime",
 #' @rdname getCase
 #' @export
 setGeneric(name="getCase",
-           def=function(input, case, ...)
+           def=function(input, case)
            {standardGeneric("getCase")}
 )
 
@@ -226,7 +226,7 @@ setMethod(f = "getCase",
 #' @rdname getStats
 #' @export
 setGeneric(name = "getStats",
-           def = function(input, ...)
+           def = function(input)
            {standardGeneric("getStats")}
 )
 

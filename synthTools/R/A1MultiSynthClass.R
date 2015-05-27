@@ -30,7 +30,7 @@
 #' }
 #' 
 #' @seealso \code{\link{fitMultiSynth}}
-#' @seealso \code{\link{plotMultiSynth}}
+#' @seealso \code{\link{plot,MultiSynth-method}}
 #' @seealso \code{\link{summary,MultiSynth-method}}
 #' @seealso \code{\link{path.plot,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}

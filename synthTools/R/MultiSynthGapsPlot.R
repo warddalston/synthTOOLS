@@ -2,13 +2,13 @@
 #' 
 #' Plots the gaps in the trajectory of the outcome variable for the treated case and its synthetic control for each fit in a MultiSynth object.  The main analysis is plotted as a solid black line, and each of the placebo or leave-one-out fits is plotted as a light gray solid line.
 #' 
-#' @usage gaps.plot(synth.res = input,
+#' @usage gaps.plot(synth.res = NA,
 #'  dataprep.res = NA,
 #'  Ylab = c("Title"),
 #'  Xlab = c("Time"),
 #'  Main = c("Gaps: Treated - Synthetic"),
 #'  tr.intake = NA,
-#'  Ylim = NA, Z.plot = FALSE))
+#'  Ylim = NA, Z.plot = FALSE)
 #'  
 #' @param synth.res An object of class \code{\link{MultiSynth}}
 #' @param dataprep.res NA.  Not used for MultiSynth gaps plotting, should be left as NA.

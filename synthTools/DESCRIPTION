@@ -9,6 +9,6 @@ Depends:
 	R (>= 3.2.0),
 	plyr,
 	Synth
-Imports: Synth
+Imports: Synth, plyr
 License: GP (>= 2)
 LazyData: true

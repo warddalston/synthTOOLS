@@ -13,7 +13,7 @@
 #' @usage
 #' 
 #' fitMultiSynth(input, type = "placebo", 
-#' treatment_time = NA, parallel = FALSE, ... )
+#'    treatment_time = NA, parallel = FALSE, ... )
 #' @param input The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the arguement "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised. 
 #' 
 #' @param type A string describing what type of MultiSynth analysis to perform.  Defaults to "placebo".  Other options include "units" for a leave-one-out units analysis, and "covariates" for a leave-one-out covariates
