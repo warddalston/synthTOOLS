@@ -1,20 +1,20 @@
 #' A MultiSynth (MS) Object
 #' 
-#' Objects of class \code{MultiSynth} are used in performing robustness and significance tests for Synthetic Control Analyses.  These objects contain the dataprep for a synthetic control analysis, basic information on the synthetic contol, the data for placebo or leave-one-out anlayses, the fits for these analysis, and several statistics used to analyze a synthetic control anlaysis. MultiSynth objects are the output of the the main functions of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.      
+#' Objects of class \code{MultiSynth} are used in performing robustness and significance tests for Synthetic Control Analyses.  These objects contain the dataprep for a synthetic control analysis, basic information on the synthetic contol, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases, the fits for these cases, and several statistics used to analyze a placebo/leave-one-out anlaysis. MultiSynth objects are the output of the the main function of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.      
 #'
 #' An object of the S4 class `MultiSynth' has the following slots:
 #' \itemize{
-#' \item \code{input} The output of the \code{dataprep} function.  
-#' \item \code{preps} A list with the X0, X1, Z0, Z1, Y0plot, and Y1plot for each of the placebo/leave-one-out analyses
-#' \item \code{fits} A list with the output of \code{synth} for each of the placebo/leave-one-out analyses
+#' \item \code{input} The output of a call to \code{\link{dataprep}}.  
+#' \item \code{preps} A list with the X0, X1, Z0, Z1, Y0plot, and Y1plot for each of the placebo/leave-one-out cases and the treated/full donor pool/full covariate set case.
+#' \item \code{fits} A list with the output of \code{synth} for each of the placebo/leave-one-out cases and the treated/full donor pool/full covariate set case.
 #' \item \code{treated} A character vector of length two giving the name and number of the treated unit (if names are not supplied, the number is repeated)
-#' \item \code{treatment_time} A numeric vector of length one giving the time treatment is recieved
-#' \item \code{PreRMSPE} A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for the main analysis and each placebo/leave-one-out analysis. 
-#' \item \code{PostRMSPE} A numeric vector giving the RMSPE in the post-treatment period for the main analysis and each placebo/leave-one-out analysis. 
-#' \item \code{RMSPEratio} A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for the main analysis and each placebo/leave-one-out analysis
-#' \item \code{CovBalances} A numeric vector giving the covariate loss for the main analysis and each placebo/leave-one-out analysis.
-#' \item \code{ATEs} A numeric vector giving the average treatment effect (ATE) for the main analysis and each placebo/leave-one-out analysis.
-#' \item \code{p_value} A numeric given the exact p-value of getting an RMSPE ratio as high as the treated case, if choosing a case to analyze at random. Only in \code{PlaceboMS} objects.  
+#' \item \code{treatment_time} A scalar giving the time treatment is recieved
+#' \item \code{PreRMSPE} A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for each case. 
+#' \item \code{PostRMSPE} A numeric vector giving the RMSPE in the post-treatment period for each case. 
+#' \item \code{RMSPEratio} A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for each case.
+#' \item \code{CovBalances} A numeric vector giving the covariate loss for each case.
+#' \item \code{ATEs} A numeric vector giving the average treatment effect (ATE) for each case.
+#' \item \code{p_value} A scalar with the exact p-value of getting an RMSPE ratio as high as the treated unit, if choosing a unit to analyze at random. Only in \code{PlaceboMS} objects.  
 #' }
 #'
 #'@details MultiSynth objects allow for implementation of various significance and robustness checks for synthetic control analyses, as described in Abadie, Diamond, Hainmueller (2010) and Abadie, Diamond, Hainmueller (2015).  Currently, MultiSynth implements in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  MultiSynth also refits the "main" analysis, and records this as the first element in the output lists.  This allows for easy comparisons between the main synthetic control and placebo/leave-one-out synthetic controls.
