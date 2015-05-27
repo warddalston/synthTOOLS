@@ -2,10 +2,11 @@
 #' 
 #' THis function prints the RMSPE values in a synthetic control analysis, labelling each statistic. 
 #' 
-#' @usage print(obj, digits)
+#' @usage print(x, digits, ...)
 #' 
-#' @param obj An object of class SynthErrorRatios
+#' @param x An object of class SynthErrorRatios
 #' @param digits The number of digits to print, defaults to 3
+#' @param ... Additional arguments passed to other functions
 #' 
 #' @details This function is called silently anytime the user sends an object of class SynthErrorRatios directly to the console.  
 #' 
@@ -21,9 +22,9 @@
 #' 
 #' @rdname print.SynthErrorRatios
 #' @export
-print.SynthErrorRatios <- function(obj, digits = 3){
-  cat("************ Pre-Treatment RMSPE: ", round(obj$pre, digits), "\n", sep = "")
-  cat("************ Post-Treatment RMSPE: ", round(obj$post, digits), "\n", sep = "")
-  cat("************ Pre-Post RMSPE Ratio: ", round(obj$ratio, digits), "\n", sep = "")
+print.SynthErrorRatios <- function(x, digits = 3, ...){
+  cat("************ Pre-Treatment RMSPE: ", round(x$pre, digits), "\n", sep = "")
+  cat("************ Post-Treatment RMSPE: ", round(x$post, digits), "\n", sep = "")
+  cat("************ Pre-Post RMSPE Ratio: ", round(x$ratio, digits), "\n", sep = "")
   return(invisible())
 }

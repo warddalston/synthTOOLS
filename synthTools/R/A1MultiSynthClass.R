@@ -64,6 +64,8 @@ setClass(Class="MultiSynth",
          )
 )
 
+#' @aliases initialize,MultiSynth-method
+#' @rdname MultiSynth 
 #' @export
 setMethod("initialize", "MultiSynth", 
           function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric()
@@ -82,6 +84,8 @@ setMethod("initialize", "MultiSynth",
           }
 )
 
+#' @aliases PlaceboMS-class
+#' @rdname MultiSynth
 #' @export
 setClass("PlaceboMS", contains = "MultiSynth",
          representation = list(
@@ -91,12 +95,18 @@ setClass("PlaceboMS", contains = "MultiSynth",
            )
          )
 
+#' @aliases LOOunitsMS-class
+#' @rdname MultiSynth
 #' @export
 setClass("LOOunitsMS", contains = "MultiSynth")
 
+#' @aliases LOOcovariatesMS-class
+#' @rdname MultiSynth
 #' @export
 setClass("LOOcovariatesMS", contains = "MultiSynth")
 
+#' @aliases initialize,PlaceboMS-method
+#' @rdname MultiSynth
 #' @export
 setMethod("initialize", "PlaceboMS", 
           function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric(), p_value = numeric()

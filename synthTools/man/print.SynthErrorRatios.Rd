@@ -4,12 +4,14 @@
 \alias{print.SynthErrorRatios}
 \title{Print the RMSPE values for a synthetic control analysis}
 \usage{
-print(obj, digits)
+print(x, digits, ...)
 }
 \arguments{
-\item{obj}{An object of class SynthErrorRatios}
+\item{x}{An object of class SynthErrorRatios}
 
 \item{digits}{The number of digits to print, defaults to 3}
+
+\item{...}{Additional arguments passed to other functions}
 }
 \description{
 THis function prints the RMSPE values in a synthetic control analysis, labelling each statistic.

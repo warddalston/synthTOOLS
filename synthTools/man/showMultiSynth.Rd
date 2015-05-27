@@ -4,6 +4,7 @@
 \name{show,PlaceboMS-method}
 \alias{show,LOOcovariatesMS-method}
 \alias{show,LOOunitsMS-method}
+\alias{show,MultiSynth-method}
 \alias{show,PlaceboMS-method}
 \title{Show objects of class "MultiSynth"}
 \usage{

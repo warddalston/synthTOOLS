@@ -11,7 +11,7 @@ gaps.plot(synth.res = NA,
  Xlab = c("Time"),
  Main = c("Gaps: Treated - Synthetic"),
  tr.intake = NA,
- Ylim = NA, Z.plot = FALSE))
+ Ylim = NA, Z.plot = FALSE)
 }
 \arguments{
 \item{synth.res}{An object of class \code{\link{MultiSynth}}}

@@ -25,6 +25,8 @@ setGeneric(name="getInput",
            {standardGeneric("getInput")}
 )
 
+#' @aliases getInput,MultiSynth-method
+#' @rdname getInput
 #' @export
 setMethod(f = "getInput",
           signature = "MultiSynth",
@@ -59,6 +61,8 @@ setGeneric(name="getPreps",
            {standardGeneric("getPreps")}
 )
 
+#' @aliases getPreps,MultiSynth-method
+#' @rdname getPreps
 #' @export
 setMethod(f = "getPreps",
           signature = "MultiSynth",
@@ -93,6 +97,8 @@ setGeneric(name="getFits",
            {standardGeneric("getFits")}
 )
 
+#' @aliases getFits,MultiSynth-method
+#' @rdname getFits
 #' @export
 setMethod(f = "getFits",
           signature = "MultiSynth",
@@ -127,6 +133,8 @@ setGeneric(name="getTreated",
            {standardGeneric("getTreated")}
 )
 
+#' @aliases getTreated,MultiSynth-method
+#' @rdname getTreated
 #' @export
 setMethod(f = "getTreated",
           signature = "MultiSynth",
@@ -161,6 +169,8 @@ setGeneric(name="getTreatmentTime",
            {standardGeneric("getTreatmentTime")}
 )
 
+#' @aliases getTreatmentTime,MultiSynth-method
+#' @rdname getTreatmentTime
 #' @export
 setMethod(f = "getTreatmentTime",
           signature = "MultiSynth",
@@ -196,6 +206,8 @@ setGeneric(name="getCase",
            {standardGeneric("getCase")}
 )
 
+#' @aliases getCase,MultiSynth-method
+#' @rdname getCase
 #' @export
 setMethod(f = "getCase",
           signature = "MultiSynth",
@@ -223,6 +235,7 @@ setMethod(f = "getCase",
 #' @seealso \code{\link{getTreatmentTime}}
 #' @seealso \code{\link{getCase}}
 #' 
+#' @aliases getStats,MultiSynth-method
 #' @rdname getStats
 #' @export
 setGeneric(name = "getStats",
@@ -230,6 +243,7 @@ setGeneric(name = "getStats",
            {standardGeneric("getStats")}
 )
 
+#' @rdname getStats
 #' @export
 setMethod(f = "getStats",
           signature = "MultiSynth",
