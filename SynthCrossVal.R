@@ -46,6 +46,9 @@
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
 #' }
 #' 
+#' @seealso \code{\link{dataprep}}
+#' @seealso \code{\link{synth}}
+#' 
 #' @example 
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset

@@ -12,10 +12,14 @@
 #' @return A matrix containing all of the statistics printed to the console.  
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
+#' 
 #' @references \itemize{
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
 #' }
+#' 
+#' @seealso \code{\link{MultiSynth}
+#' @seealso \code{\link{fitMultiSynth}}
 #' 
 #' @example 
 #' 
