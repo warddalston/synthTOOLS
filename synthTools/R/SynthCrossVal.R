@@ -33,10 +33,10 @@
 #' 
 #' @return A list containing four elements:
 #' \itemize{
-#' \item{dataprep.training}{The output of the call to dataprep for the training control}
-#' \item{synth.training}{The output of the call to synth for the training control}
-#' \item{dataprep.final}{The output of the call to dataprep for the final control}
-#' \item{synth.final}{The output of the call to synth for the final control}
+#' \item{dataprep.training} {The output of the call to dataprep for the training control}
+#' \item{synth.training} {The output of the call to synth for the training control}
+#' \item{dataprep.final} {The output of the call to dataprep for the final control}
+#' \item{synth.final} {The output of the call to synth for the final control}
 #' }
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}

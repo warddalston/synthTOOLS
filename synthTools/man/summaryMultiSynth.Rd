@@ -4,6 +4,7 @@
 \name{summary,PlaceboMS-method}
 \alias{summary,LOOcovariatesMS-method}
 \alias{summary,LOOunitsMS-method}
+\alias{summary,MultiSynth-method}
 \alias{summary,PlaceboMS-method}
 \title{Summary of a MultiSynth Analysis}
 \usage{

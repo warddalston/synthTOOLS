@@ -8,3 +8,7 @@ setwd("/Users/clockbob1/Documents/WashU 2nd Year/Causal Inference/Research Proje
 current.code <- as.package("synthTools")
 load_all(current.code)
 document(current.code)
+
+build(current.code, path = getwd())
+
+install(current.code, local = TRUE)

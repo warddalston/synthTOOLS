@@ -53,7 +53,7 @@
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
 #'  summary(fitMultiSynth.out) 
-#'
+#' @aliases summary,MultiSynth-method
 #' @rdname summaryMultiSynth
 #' @export
 setMethod(f = "summary",
