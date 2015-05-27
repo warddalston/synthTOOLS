@@ -8,7 +8,7 @@
 #'  
 #'    \code{fitMultiSynth} requires the user to supply the output of a call to the \code{dataprep} function as its main input and the time treatment is administered as the main inputs.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covaraites".  Finally, the user has the option to run the anlaysis in parallel, to speed computation of potentially many synthetic control fits.  
 #'    
-#'      The output of \code{fitMultiSynth} is an object of class \code{\linke{MultiSynth}}.  This object contains the input data, and the matricies and output for the placebo/leave-one-out anlaysis, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. The functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot} all have methods for \code{MultiSynth} which allow for summarizing the results of a placebo/leave-one-out analysis.  
+#'      The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the input data, and the matricies and output for the placebo/leave-one-out anlaysis, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. The functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot} all have methods for \code{MultiSynth} which allow for summarizing the results of a placebo/leave-one-out analysis.  
 #'      
 #' @usage
 #' 
@@ -58,7 +58,7 @@
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#'  #load data
 #' data(synth.data)
 #'
 #' ## create matrices from panel data that provide inputs for fitMultiSynth()

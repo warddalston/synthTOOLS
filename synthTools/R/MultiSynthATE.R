@@ -1,6 +1,6 @@
 #' Calculate the Average Treatment Effect for multiple synthetic control fits at once
 #' 
-#' This function calculates the average treatment effect (ATE) for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep} outputs and \code{\link{synth}} outputs, as well as to provide the beggining and end time periods over which to calculate the ATE.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
+#' This function calculates the average treatment effect (ATE) for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep}} outputs and \code{\link{synth}} outputs, as well as to provide the beggining and end time periods over which to calculate the ATE.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
 #' 
 #' @usage MultiSynthATE(MultiSynthPrep_obj, MultiSynth_obj,
 #'  begin_time, end_time)
@@ -10,7 +10,7 @@
 #'  @param begin_time A numeric containing the beggining of the period over which to calculate the ATE
 #'  @param end_time A numeric containing the end of the period over which to calculate the ATE
 #'  
-#'  @details This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give object@preps as the first arguement, and object@fits as the second arguement. 
+#'  @details This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give the "preps" slot as the first arguement, and "fits" slot as the second arguement. 
 #'  
 #'  @return A named vector containing the estimated ATEs
 #'  
@@ -25,12 +25,12 @@
 #' 
 #' @examples
 #' 
-#' ##Example: Hainmueller and Diamond's Toy panel dataset
+#' \dontrun{#Example: Hainmueller and Diamond's Toy panel dataset}
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
-#' ## create matrices from panel data that provide inputs for fitMultiSynth()
+#' # create matrices from panel data that provide inputs for fitMultiSynth()
 #' dataprep.out<-
 #'  dataprep(
 #'    foo = synth.data,
@@ -54,14 +54,15 @@
 #'  
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
-#'  MultiSynthATE(fitMultiSynth.out@preps, fitMultiSynth.out@fits, 1991, 1996)
+#' MultiSynthATE(fitMultiSynth.out@@preps, 
+#' fitMultiSynth.out@@fits, 1991, 1996)
 #' 
 #' @rdname MultiSynthATE
 #' @export
 MultiSynthATE <- function(MultiSynthPrep_obj, MultiSynth_obj, begin_time, end_time){
   
   #Calculate the pre treatment error ratios here
-  out <- mapply(SynthATE, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(begin_time = begin_time, end_time = end_time), SIMPLIFY = TRUE)
+  out <- mapply(SynthMeanEffect, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(begin_time = begin_time, end_time = end_time), SIMPLIFY = TRUE)
 
   return(out)
 }

@@ -21,7 +21,7 @@
 #' @seealso \code{\link{fitMultiSynth}}
 #' @seealso \code{\link{MultiSynth}}
 #' 
-#' @rdname show,MultiSynth-method
+#' @rdname showMultiSynth
 #' @export
 setMethod(f = "show",
           signature = "PlaceboMS",
@@ -49,7 +49,7 @@ setMethod(f = "show",
           } #end function
           ) #end setMethod
 
-#' @rdname show,MultiSynth-method
+#' @rdname showMultiSynth
 #' @export
 setMethod(f = "show",
           signature = "LOOunitsMS",
@@ -77,7 +77,7 @@ setMethod(f = "show",
           } #end function
 ) #end setMethod
 
-#' @rdname show,MultiSynth-method
+#' @rdname showMultiSynth
 #' @export
 setMethod(f = "show",
           signature = "LOOcovariatesMS",

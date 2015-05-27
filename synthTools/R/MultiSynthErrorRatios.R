@@ -37,7 +37,7 @@
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
 #' ## create matrices from panel data that provide inputs for fitMultiSynth()
@@ -64,7 +64,7 @@
 #'  
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
-#'  MultiSynthErrorRatios(fitMultiSynth.out@preps, fitMultiSynth.out@fits, 1991, 1996, fitMultiSynth.out@input)
+#'  MultiSynthErrorRatios(fitMultiSynth.out@@preps, fitMultiSynth.out@@fits, fitMultiSynth.out@@treatment_time, fitMultiSynth.out@@input)
 #' 
 #' @rdname MultiSynthErrorRatios
 #' @export

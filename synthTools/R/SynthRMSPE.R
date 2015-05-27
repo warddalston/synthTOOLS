@@ -51,7 +51,7 @@
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
 #' ## create matrices from panel data that provide inputs for fitMultiSynth()

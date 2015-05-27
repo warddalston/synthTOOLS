@@ -35,12 +35,42 @@
 #' @seealso \code{\link{path.plot,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot}}
 #'
-#'@example 
+#' @examples 
+#' 
+#' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#'  ## assume fitMultiSynth.out is an object of class "MultiSynth"
+#'  #load data
+#' data(synth.data)
+#'
+#' ## create matrices from panel data that provide inputs for fitMultiSynth()
+#' dataprep.out<-
+#'  dataprep(
+#'    foo = synth.data,
+#'    predictors = c("X1", "X2", "X3"),
+#'    predictors.op = "mean",
+#'    dependent = "Y",
+#'    unit.variable = "unit.num",
+#'    time.variable = "year",
+#'    special.predictors = list(
+#'      list("Y", 1991, "mean"),
+#'      list("Y", 1985, "mean"),
+#'      list("Y", 1980, "mean")
+#'    ),
+#'    treatment.identifier = 7,
+#'    controls.identifier = c(29, 2, 13, 17, 32, 38),
+#'    time.predictors.prior = c(1984:1989),
+#'    time.optimize.ssr = c(1984:1990),
+#'    unit.names.variable = "name",
+#'    time.plot = 1984:1996
+#'  )
+#'  
+#'  ## Fit a multisynth object
+#'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
+#'  
 #'  gaps.plot(fitMultiSynth.out)
-#'
-#' @rdname gaps.plot,MultiSynth-method
+#'  
+#' @importFrom Synth gaps.plot 
+#' @rdname gaps.plot.MultiSynth
 #' @export
 setMethod(f = "gaps.plot",
           signature = "MultiSynth",

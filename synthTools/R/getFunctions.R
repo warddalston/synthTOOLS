@@ -74,7 +74,7 @@ setMethod(f = "getPreps",
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A list containing the output from \code{\linke{synth}} for each of the placebo/leave-one-out cases
+#' @return A list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out cases
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -220,7 +220,7 @@ setMethod(f = "getCase",
 #' @seealso \code{\link{getPreps}}
 #' @seealso \code{\link{getFits}}
 #' @seealso \code{\link{getTreated}}
-#' @seealso \code{\link{getTreatmentTime}
+#' @seealso \code{\link{getTreatmentTime}}
 #' @seealso \code{\link{getCase}}
 #' 
 #' @rdname getStats

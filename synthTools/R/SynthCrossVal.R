@@ -49,15 +49,15 @@
 #' @seealso \code{\link{dataprep}}
 #' @seealso \code{\link{synth}}
 #' 
-#' @example 
+#' @examples 
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
-#' ## create matrices from panel data that provide inputs for fitMultiSynth()
-#  synthCV.out <- SynthCrossVal(
+#'  synthCV.out <- 
+#'  SynthCrossVal(
 #'    foo = synth.data,
 #'    predictors = c("X1", "X2", "X3"),
 #'    predictors.op = "mean",
@@ -73,7 +73,7 @@
 #'    time.plot = 1984:1996
 #'  )
 #'  
-#'  synth.tab(synthCV$synth.final, synthCV$dataprep.final)
+#'  synth.tab(synthCV.out$synth.final, synthCV.out$dataprep.final)
 #'  
 #'  @rdname SynthCrossVal
 #'  @export

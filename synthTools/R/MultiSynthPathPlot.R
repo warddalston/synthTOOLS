@@ -24,7 +24,7 @@
 #' @param Main Optional main title
 #' @param Z.plot Logical.  If TRUE only the pre-treatment period is plotted.
 #' 
-#' @details The user should give an object of class \code{\linke{MultiSynth}} as the argument to synth.res, and leave dataprep.res and tr.intake as NA.  
+#' @details The user should give an object of class \code{\link{MultiSynth}} as the argument to synth.res, and leave dataprep.res and tr.intake as NA.  
 #' 
 #' This method for path.plot is generally designed to work with leave-one-out analayses.  It will work for placebo anlayses, but the interpretation of the plot is less clear. 
 #' 
@@ -43,10 +43,41 @@
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}
 #' @seealso \code{\link{path.plot}}
 #' 
-#' @example
-#' ## Assume fitMultiSynth.out is an object of class "MultiSynth"
+#' @examples
+#' 
+#' ##Example: Hainmueller and Diamond's Toy panel dataset
+#'
+#'  #load data
+#' data(synth.data)
+#'
+#' ## create matrices from panel data that provide inputs for fitMultiSynth()
+#' dataprep.out<-
+#'  dataprep(
+#'    foo = synth.data,
+#'    predictors = c("X1", "X2", "X3"),
+#'    predictors.op = "mean",
+#'    dependent = "Y",
+#'    unit.variable = "unit.num",
+#'    time.variable = "year",
+#'    special.predictors = list(
+#'      list("Y", 1991, "mean"),
+#'      list("Y", 1985, "mean"),
+#'      list("Y", 1980, "mean")
+#'    ),
+#'    treatment.identifier = 7,
+#'    controls.identifier = c(29, 2, 13, 17, 32, 38),
+#'    time.predictors.prior = c(1984:1989),
+#'    time.optimize.ssr = c(1984:1990),
+#'    unit.names.variable = "name",
+#'    time.plot = 1984:1996
+#'  )
+#'  
+#'  ##Fit a MultiSynth
+#'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, type = "units", treatment_time = 1991)
+#'  
 #' path.plot(fitMultiSynth.out)
 #'
+#' @importFrom Synth path.plot
 #' @rdname path.plot.MultiSynth
 #' @export
 setMethod(f = "path.plot",

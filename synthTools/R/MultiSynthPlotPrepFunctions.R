@@ -37,7 +37,7 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 
 #' Extract values necessary for plotting the gap in outcome trajectory for placebo/leave-one-out Synthetic fits
 #' 
-#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\linke{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{gaps.plot}}.  
+#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{gaps.plot}}.  
 #' 
 #' @usage MultiSynthGapPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 #' 
@@ -54,7 +54,7 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 #' }
 #' 
 #' @seealso \code{\link{MultiSynth}}
-#' @seealso \code{\link{gaps.plot,MultiSynth-method}}
+#' @seealso \code{\link{gaps.plot.MultiSynth}}
 #' @seealso \code{\link{MultiSynthPlotLines}}
 #' @seealso \code{\link{MultiSynthPathPlotPrep}}
 #' 
@@ -74,7 +74,7 @@ MultiSynthGapPlotPrep <- function(MultiSynthPrep_obj, MultiSynth_obj){ #the inpu
 
 #' Extract values necessary for plotting the outcome trajectory for placebo/leave-one-out Synthetic fits
 #' 
-#' This function extracts the values necessary for plotting the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\linke{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}}.  
+#' This function extracts the values necessary for plotting the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}}.  
 #' 
 #' @usage MultiSynthPathPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 #' 

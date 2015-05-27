@@ -21,11 +21,11 @@
 #' @seealso \code{\link{fitMultiSynth}}
 #' @seealso \code{\link{MultiSynth}}
 #' 
-#' @example
+#' @examples
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
 #' ## create matrices from panel data that provide inputs for fitMultiSynth()
@@ -56,7 +56,7 @@
 #'  
 #'  plot(fitMultiSynth.out, quantity = "ATE")
 #'  
-#'  @rdname plot,MultiSynth-method
+#'  @rdname plotMultiSynth
 #'  @export
 setMethod(f = "plot",
           signature = "LOOunitsMS",
@@ -161,7 +161,7 @@ setMethod(f = "plot",
           } #close function
           ) #close setMethod
 
-#'  @rdname plot,MultiSynth-method
+#'  @rdname plotMultiSynth
 #'  @export
 setMethod(f = "plot",
           signature = "LOOcovariatesMS",
@@ -266,7 +266,7 @@ setMethod(f = "plot",
           } #close function
 ) #close setMethod
 
-#'  @rdname plot,MultiSynth-method
+#'  @rdname plotMultiSynth
 #'  @export
 setMethod(f = "plot",
           signature = "PlaceboMS",

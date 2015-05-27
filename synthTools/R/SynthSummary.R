@@ -37,9 +37,9 @@
 #' @seealso \code{\link{SynthMeanEffect}}
 #' @seealso \code{\link{SynthErrorRatios}}
 #' 
-#' @example
+#' @examples
 #' 
-#' load data
+#' #load data
 #' data(synth.data)
 #'
 #' dataprep.out<-

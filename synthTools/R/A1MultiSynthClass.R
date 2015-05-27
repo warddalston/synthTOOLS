@@ -21,7 +21,7 @@
 #'
 #' These anlayses require iterative fitting of synthetic controls, which MultiSynth performs.  Objects of class \code{MultiSynth} contain all of the relevent information for these anlayses.  Methods exist in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot} for objects of class \code{MultiSynth}.    
 #'
-#'\code{MultiSynth} objects are further divided into three subclasses\code{\link{PlaceboMS}}, \code{\link{LOOunitsMS}}, and \code{\link{LOOcovariatesMS}}, depending on the type of analysis being carried out.   
+#'\code{MultiSynth} objects are further divided into three subclasses\code{PlaceboMS}, \code{LOOunitsMS}, and \code{LOOcovariatesMS}, depending on the type of analysis being carried out.  There is very little difference between these three subclasses; they primarily impact printing and plot titles.  One important difference is the existence of the \code{p_value} slot in \code{PlaceboMS} objects.  This slot records the exact p-value of getting an RMSPE ratio as large as the treated cases' RMSPE ratio, if treatment is randomly assigned to any unit in the dataset.  
 #'
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' @references \itemize{

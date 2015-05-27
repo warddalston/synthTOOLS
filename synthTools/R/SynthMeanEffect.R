@@ -18,11 +18,11 @@
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2015). Comparative Politics and the Synthetic Control Method.  \emph{American Journal of Political Science} 59 (2) 495-510
 #' }
 #' 
-#' @example 
+#' @examples 
 #' 
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
-#' load data
+#' #load data
 #' data(synth.data)
 #'
 #' ## create matrices from panel data that provide inputs for fitMultiSynth()
