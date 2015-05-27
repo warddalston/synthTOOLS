@@ -1,0 +1,3 @@
+exportPattern("^[^\\.]")
+importFrom(Synth, gaps.plot)
+importFrom(Synth, path.plot)

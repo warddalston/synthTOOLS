@@ -40,11 +40,11 @@
 #'  ## assume fitMultiSynth.out is an object of class "MultiSynth"
 #'  gaps.plot(fitMultiSynth.out)
 #'
-#' @rdname gaps.plot.MultiSynth
+#' @rdname gaps.plot,MultiSynth-method
 #' @export
 setMethod(f = "gaps.plot",
           signature = "MultiSynth",
-          def = function(synth.res = input, dataprep.res = NA, Ylab = c("Title"),Xlab = c("Time"), Main = c("Gaps: Treated - Synthetic"), tr.intake = NA, Ylim = NA, Z.plot = FALSE){
+          def = function(synth.res = NA, dataprep.res = NA, Ylab = c("Title"), Xlab = c("Time"), Main = c("Gaps: Treated - Synthetic"), tr.intake = NA, Ylim = NA, Z.plot = FALSE){
             
             #prep additional lines 
             plot_prep <- MultiSynthGapPlotPrep(synth.res@preps[2:length(synth.res@preps)], synth.res@fits[2:length(synth.res@fits)] )
@@ -62,4 +62,5 @@ setMethod(f = "gaps.plot",
             MultiSynthPlotLines(plot_prep)  
             
             return(invisible())
-          })
+          }
+          )
