@@ -95,8 +95,8 @@
 #'  gaps.plot(fitMultiSynth.out)
 #' }
 #' 
-#' @import Synth
 #' @import methods
+#' @import Synth
 #' @rdname fitMultiSynth
 #' @export
 fitMultiSynth <- function(input, type = "placebo", treatment_time = NA, parallel=FALSE, ...){

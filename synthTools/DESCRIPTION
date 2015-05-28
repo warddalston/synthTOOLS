@@ -6,9 +6,8 @@ Maintainer: Dalston G. Ward <ward.dalston@wustl.edu>
 Date: 2015-05-27
 Description: The synthetic control method allows for the estimation of more accurate control units in case studies.  Testing the significance and robustness of results from this method require the iterative fitting of several synthetic control units.  This package implements this iterative fitting of synthetic control units for placebo analyses and leave-one-out robustness checks.  It also implements functions to calculate some statistics of interest for synthetic control studies and implements a new cross-validation method of estimating a synthetic control, as suggested by the designers of the method.  
 Depends: 
-	R (>= 3.2.0),
-	methods,
+	R (>= 3.0.0),
 	Synth
-Imports: plyr
+Imports: plyr, methods
 License: GPL (>= 2)
 LazyData: true

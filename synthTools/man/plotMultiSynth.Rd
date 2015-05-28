@@ -10,11 +10,10 @@
 \usage{
 \S4method{plot}{LOOunitsMS,ANY}(x, y, quantity = "Ratios", main = NA, ...)
 
-\S4method{plot}{LOOcovariatesMS,ANY}(x = input, y, quantity = "Ratios",
-  main = NA, ...)
+\S4method{plot}{LOOcovariatesMS,ANY}(x, y, quantity = "Ratios", main = NA,
+  ...)
 
-\S4method{plot}{PlaceboMS,ANY}(x = input, y, quantity = "Ratios",
-  main = NA, ...)
+\S4method{plot}{PlaceboMS,ANY}(x, y, quantity = "Ratios", main = NA, ...)
 }
 \arguments{
 \item{x}{A MultiSynth object}

@@ -166,7 +166,7 @@ setMethod(f = "plot",
 #'  @export
 setMethod(f = "plot",
           signature = "LOOcovariatesMS",
-          def = function(x = input, y, quantity = "Ratios", main = NA, ...){
+          def = function(x, y, quantity = "Ratios", main = NA, ...){
             
             if(!quantity %in% c("Ratios", "Pre", "Post", "ATE", "Cov")){
               stop("Please enter a valid argument for quantity!")
@@ -271,7 +271,7 @@ setMethod(f = "plot",
 #'  @export
 setMethod(f = "plot",
           signature = "PlaceboMS",
-          def = function(x = input, y, quantity = "Ratios", main = NA, ...){
+          def = function(x, y, quantity = "Ratios", main = NA, ...){
             
             if(!quantity %in% c("Ratios", "Pre", "Post", "ATE", "Cov")){
               stop("Please enter a valid argument for quantity!")
