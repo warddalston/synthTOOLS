@@ -29,7 +29,7 @@ Dalston G. Ward: \email{ward.dalston@wustl.edu}
 \seealso{
 \code{\link{MultiSynth}}
 
-\code{\link{gaps.plot.MultiSynth}}
+\code{\link{gaps.plot,MultiSynth-method}}
 
 \code{\link{MultiSynthPlotLines}}
 

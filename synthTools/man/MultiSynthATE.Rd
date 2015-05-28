@@ -26,6 +26,7 @@ This function calculates the average treatment effect (ATE) for multiple synthet
 This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give the "preps" slot as the first arguement, and "fits" slot as the second arguement.
 }
 \examples{
+\dontrun{
 #Example: Hainmueller and Diamond's Toy panel dataset
 
 #load data
@@ -57,6 +58,7 @@ dataprep.out<-
 
 MultiSynthATE(fitMultiSynth.out@preps,
 fitMultiSynth.out@fits, 1991, 1996)
+}
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

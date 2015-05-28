@@ -35,6 +35,7 @@
 #' 
 #' @examples
 #' 
+#' \dontrun{
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #' #load data
@@ -64,7 +65,10 @@
 #'  
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
-#'  MultiSynthErrorRatios(fitMultiSynth.out@@preps, fitMultiSynth.out@@fits, fitMultiSynth.out@@treatment_time, fitMultiSynth.out@@input)
+#'  MultiSynthErrorRatios(fitMultiSynth.out@@preps, 
+#'  fitMultiSynth.out@@fits, fitMultiSynth.out@@treatment_time, 
+#'  fitMultiSynth.out@@input)
+#' }
 #' 
 #' @rdname MultiSynthErrorRatios
 #' @export

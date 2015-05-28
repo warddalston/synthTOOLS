@@ -35,6 +35,7 @@ Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typical
 The ratios can then be used in combination with placebo analyses, as implmemented by \code{\link{fitMultiSynth}}, to determine the signifiance of a synthetic control analysis.  The logic is that placebo synthetic controls should not have large RMSPE ratios, because no treatment is administered to these units.  As such, if the treated case has a large RMSPE ratio relative to placebo cases, this serves as evidence that the treatment has had an impact on the outcome.
 }
 \examples{
+\dontrun{
 ##Example: Hainmueller and Diamond's Toy panel dataset
 
 #load data
@@ -64,7 +65,10 @@ dataprep.out<-
 
  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 
- MultiSynthErrorRatios(fitMultiSynth.out@preps, fitMultiSynth.out@fits, fitMultiSynth.out@treatment_time, fitMultiSynth.out@input)
+ MultiSynthErrorRatios(fitMultiSynth.out@preps,
+ fitMultiSynth.out@fits, fitMultiSynth.out@treatment_time,
+ fitMultiSynth.out@input)
+}
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

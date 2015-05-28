@@ -2,8 +2,6 @@
 #' 
 #' THis function prints the RMSPE values in a synthetic control analysis, labelling each statistic. 
 #' 
-#' @usage print(x, digits, ...)
-#' 
 #' @param x An object of class SynthErrorRatios
 #' @param digits The number of digits to print, defaults to 3
 #' @param ... Additional arguments passed to other functions

@@ -1,17 +1,6 @@
 #' Path plots for MultiSynth Objects
 #' 
 #' Plots the outcome trajectory of the outcome variable for the treated unit, the main synthetic control, and the place/leave-one-out synthetic controls created using \code{\link{fitMultiSynth}}.  The treated unit's trajectory is plotted as a solid line, the main synthetic control as a dashed line, and the MultiSynth controls as light gray solid lines.
-#' 
-#' @usage path.plot(synth.res = NA,
-#'  dataprep.res = NA,
-#'  tr.intake = NA, 
-#'  Ylab = c("Y Axis"),
-#'  Xlab = c("Time"), 
-#'  Ylim = NA, 
-#'  Legend = c("Treated", "Synthetic", "Alternative Synthetics"),
-#'  Legend.position = c("topleft"),
-#'  Main = NA, 
-#'  Z.plot = FALSE)
 #'  
 #' @param synth.res An object of class \code{\link{MultiSynth}}
 #' @param dataprep.res NA.  Not used for MultiSynth path plotting, should be left as NA.
@@ -45,6 +34,7 @@
 #' 
 #' @examples
 #' 
+#' \dontrun{
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #'  #load data
@@ -77,6 +67,9 @@
 #'  
 #' path.plot(fitMultiSynth.out)
 #'
+#'}
+#'
+#'@aliases path.plot,MultiSynth-Method
 #' @importFrom Synth path.plot
 #' @rdname path.plot.MultiSynth
 #' @export

@@ -4,7 +4,7 @@
 \alias{print.SynthErrorRatios}
 \title{Print the RMSPE values for a synthetic control analysis}
 \usage{
-print(x, digits, ...)
+\method{print}{SynthErrorRatios}(x, digits = 3, ...)
 }
 \arguments{
 \item{x}{An object of class SynthErrorRatios}

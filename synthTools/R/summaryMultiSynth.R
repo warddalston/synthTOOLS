@@ -2,8 +2,6 @@
 #' 
 #' This method provides a summary of the results of a MultiSynth analysis.  It prints to the console the values of pre and post treatment RMSPEs, their ratio, ATEs, and covariate loss statistics for each case fitted in a MultiSynth analysis. Together, these quantities allow the user to determine the quality of fit, robustness, and significance of a synthetic control analysis.  For details, see Abadie, Diamond, Hainmueller (2010, 2015).  Furthermore, for placebo analysis, the summary method for MultiSynth prints the p-value of obtaining an RMSPE ratio as large as the treated unit when treatment is randomly assigned to any unit in the donor pool. A matrix containing all of these statistics is also returned by the function.  
 #' 
-#' @usage summary(object, digits = 3)
-#' 
 #' @param object An object of class MultiSynth
 #' @param digits The number of digits to print.  Defaults to 3.
 #' 
@@ -23,6 +21,7 @@
 #' 
 #' @examples 
 #' 
+#' \dontrun{
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #' #load data
@@ -53,6 +52,8 @@
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
 #'  summary(fitMultiSynth.out) 
+#'  }
+#'  
 #' @aliases summary,MultiSynth-method
 #' @rdname summaryMultiSynth
 #' @export
@@ -77,6 +78,7 @@ setMethod(f = "summary",
           } #end function
           ) #end setMethod
 
+#' @aliases summary,LOOunitsMS-method
 #' @rdname summaryMultiSynth
 #' @export
 setMethod(f = "summary",
@@ -99,6 +101,7 @@ setMethod(f = "summary",
           } #end function
 ) #end setMethod
 
+#' @aliases summary,LOOcovariatesMS-method
 #' @rdname summaryMultiSynth
 #' @export
 setMethod(f = "summary",

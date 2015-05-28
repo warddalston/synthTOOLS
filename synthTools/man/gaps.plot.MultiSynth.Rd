@@ -5,13 +5,10 @@
 \alias{gaps.plot,MultiSynth-method}
 \title{Gaps plots for MultiSynth Objects}
 \usage{
-gaps.plot(synth.res = NA,
- dataprep.res = NA,
- Ylab = c("Title"),
- Xlab = c("Time"),
- Main = c("Gaps: Treated - Synthetic"),
- tr.intake = NA,
- Ylim = NA, Z.plot = FALSE)
+\S4method{gaps.plot}{MultiSynth}(synth.res = NA, dataprep.res = NA,
+  Ylab = c("Title"), Xlab = c("Time"),
+  Main = c("Gaps: Treated - Synthetic"), tr.intake = NA, Ylim = NA,
+  Z.plot = FALSE)
 }
 \arguments{
 \item{synth.res}{An object of class \code{\link{MultiSynth}}}
@@ -37,6 +34,7 @@ Plots the gaps in the trajectory of the outcome variable for the treated case an
 The user need only prvide an object of class \code{MultiSynth} as the arguement to synth.res for the function to work. Two other arguments, dataprep.res and tr.intake should be left as NA.  Other arguments are optional.
 }
 \examples{
+\dontrun{
 ##Example: Hainmueller and Diamond's Toy panel dataset
 
  #load data
@@ -68,6 +66,7 @@ dataprep.out<-
  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 
  gaps.plot(fitMultiSynth.out)
+ }
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

@@ -34,7 +34,7 @@
 #' @seealso \code{\link{summary,MultiSynth-method}}
 #' @seealso \code{\link{path.plot,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}
-#' @aliases MultiSynth-class initialize,MultiSynth-method, PlaceboMS-class initialize,PlaceboMS-method, LOOunitsMS-class LOOcovariatesMS-class MultiSynth
+#' @aliases MultiSynth-class MultiSynth
 #' @rdname MultiSynth
 #' @export
 setClass(Class="MultiSynth", 

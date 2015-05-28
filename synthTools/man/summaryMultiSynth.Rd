@@ -8,7 +8,7 @@
 \alias{summary,PlaceboMS-method}
 \title{Summary of a MultiSynth Analysis}
 \usage{
-summary(object, digits = 3)
+\S4method{summary}{PlaceboMS}(object, digits = 3)
 
 \S4method{summary}{LOOunitsMS}(object, digits = 3)
 
@@ -29,6 +29,7 @@ This method provides a summary of the results of a MultiSynth analysis.  It prin
 Methods for summary are defined for each of the three MultiSynth subclasses.  However, there are only very minor differences between the three methods.  First, the title of the output printed varies depending on the type of MultiSynth analysis.  Second, for placebo anlayses, the p-value for the RMSPE ratio is printed to the console.  Otherwise, the three methods are exactly the same.
 }
 \examples{
+\dontrun{
 ##Example: Hainmueller and Diamond's Toy panel dataset
 
 #load data
@@ -59,6 +60,7 @@ dataprep.out<-
  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 
  summary(fitMultiSynth.out)
+ }
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

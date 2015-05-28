@@ -54,7 +54,7 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 #' }
 #' 
 #' @seealso \code{\link{MultiSynth}}
-#' @seealso \code{\link{gaps.plot.MultiSynth}}
+#' @seealso \code{\link{gaps.plot,MultiSynth-method}}
 #' @seealso \code{\link{MultiSynthPlotLines}}
 #' @seealso \code{\link{MultiSynthPathPlotPrep}}
 #' 

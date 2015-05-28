@@ -4,7 +4,7 @@
 \alias{LOOcovariatesMSPrep}
 \title{Prepare data matrices for a Leave-One-Out Covariates MultiSynth Analysis}
 \usage{
-LOOunitsMSPrep(input)
+LOOcovariatesMSPrep(input)
 }
 \arguments{
 \item{input}{The output from a call to \code{\link{dataprep}}}

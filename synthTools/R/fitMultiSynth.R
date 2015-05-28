@@ -10,10 +10,7 @@
 #'    
 #'      The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the input data, and the matricies and output for the placebo/leave-one-out anlaysis, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. The functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot} all have methods for \code{MultiSynth} which allow for summarizing the results of a placebo/leave-one-out analysis.  
 #'      
-#' @usage
-#' 
-#' fitMultiSynth(input, type = "placebo", 
-#'    treatment_time = NA, parallel = FALSE, ... )
+#'    
 #' @param input The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the arguement "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised. 
 #' 
 #' @param type A string describing what type of MultiSynth analysis to perform.  Defaults to "placebo".  Other options include "units" for a leave-one-out units analysis, and "covariates" for a leave-one-out covariates
@@ -57,6 +54,7 @@
 #' 
 #' @examples
 #' 
+#' \dontrun{
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #'  #load data
@@ -95,16 +93,16 @@
 #'  summary(fitMultiSynth.out) 
 #'  plot(fitMultiSynth.out)
 #'  gaps.plot(fitMultiSynth.out)
-#'
+#' }
 #' 
 #' @rdname fitMultiSynth
-#' @aliases fitMultiSynth,ANY-method
 #' @export
 setGeneric(name="fitMultiSynth",
            def=function(input, ...)
            {standardGeneric("fitMultiSynth")}
 )
 
+#' @rdname fitMultiSynth
 #' @export
 setMethod(f = "fitMultiSynth",
           definition = function(input, type = "placebo", treatment_time = NA, parallel=FALSE, ...){
@@ -168,9 +166,3 @@ setMethod(f = "fitMultiSynth",
             } #close covariates if loop
           } #close function
 ) #close setMethod
-
-# 
-# try1 <- fitMultiSynth(IT_five_year, type = "units", treatment_time = 1994, parallel = TRUE)
-# try2 <- fitMultiSynth(IT_five_year, type = "covariates", treatment_time = 1994, parallel = TRUE)
-# try3 <- fitMultiSynth(IT_five_year, treatment_time = 1994, parallel = TRUE)
-# 

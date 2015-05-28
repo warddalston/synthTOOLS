@@ -8,7 +8,7 @@
 \alias{show,PlaceboMS-method}
 \title{Show objects of class "MultiSynth"}
 \usage{
-show(object)
+\S4method{show}{PlaceboMS}(object)
 
 \S4method{show}{LOOunitsMS}(object)
 

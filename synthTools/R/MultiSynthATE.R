@@ -25,6 +25,7 @@
 #' 
 #' @examples
 #' 
+#' \dontrun{
 #' #Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #' #load data
@@ -56,6 +57,7 @@
 #'  
 #' MultiSynthATE(fitMultiSynth.out@@preps, 
 #' fitMultiSynth.out@@fits, 1991, 1996)
+#' }
 #' 
 #' @rdname MultiSynthATE
 #' @export

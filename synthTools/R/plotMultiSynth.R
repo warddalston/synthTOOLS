@@ -2,8 +2,6 @@
 #' 
 #' This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.  The function first sorts the quantity of interest, and then plots on the x-axis the values of the quantity for each case in the MultiSynth analysis.  Axis labels correspond to the names of the placebo/leave-one-out cases.  The actual treated unit or the analysis with the full donor pool/covariate set is plotted in red.  
 #' 
-#' @usage plot(x, y = NULL, quantity = "Ratios", main = NA, ...)
-#' 
 #' @param x A MultiSynth object
 #' @param y NULL (Not used in this method)
 #' @param quantity The quantity to plot.  Can be "Ratios" for RMSPE ratio, "Pre" for pretreatment RMSPE, "Post" for posttreatment RMSPE, "ATE" for ATEs, or "Cov" for covariate balance.  Defaults to "Ratios".  
@@ -23,7 +21,7 @@
 #' @seealso \code{\link{MultiSynth}}
 #' 
 #' @examples
-#' 
+#' \dontrun{
 #' ##Example: Hainmueller and Diamond's Toy panel dataset
 #'
 #' #load data
@@ -56,6 +54,7 @@
 #'  plot(fitMultiSynth.out)
 #'  
 #'  plot(fitMultiSynth.out, quantity = "ATE")
+#'  }
 #'  
 #'  @aliases plot,MultiSynth-method
 #'  @rdname plotMultiSynth

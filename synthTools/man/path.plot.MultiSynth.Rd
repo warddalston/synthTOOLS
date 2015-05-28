@@ -2,19 +2,14 @@
 % Please edit documentation in R/MultiSynthPathPlot.R
 \docType{methods}
 \name{path.plot,MultiSynth-method}
+\alias{path.plot,MultiSynth-Method}
 \alias{path.plot,MultiSynth-method}
 \title{Path plots for MultiSynth Objects}
 \usage{
-path.plot(synth.res = NA,
- dataprep.res = NA,
- tr.intake = NA,
- Ylab = c("Y Axis"),
- Xlab = c("Time"),
- Ylim = NA,
- Legend = c("Treated", "Synthetic", "Alternative Synthetics"),
- Legend.position = c("topleft"),
- Main = NA,
- Z.plot = FALSE)
+\S4method{path.plot}{MultiSynth}(synth.res = NA, dataprep.res = NA,
+  tr.intake = NA, Ylab = c("Y Axis"), Xlab = c("Time"), Ylim = NA,
+  Legend = c("Treated", "Synthetic", "Alternative Synthetics"),
+  Legend.position = c("topleft"), Main = NA, Z.plot = FALSE)
 }
 \arguments{
 \item{synth.res}{An object of class \code{\link{MultiSynth}}}
@@ -46,6 +41,7 @@ The user should give an object of class \code{\link{MultiSynth}} as the argument
 This method for path.plot is generally designed to work with leave-one-out analayses.  It will work for placebo anlayses, but the interpretation of the plot is less clear.
 }
 \examples{
+\dontrun{
 ##Example: Hainmueller and Diamond's Toy panel dataset
 
  #load data
@@ -77,6 +73,8 @@ dataprep.out<-
  fitMultiSynth.out <- fitMultiSynth(dataprep.out, type = "units", treatment_time = 1991)
 
 path.plot(fitMultiSynth.out)
+
+}
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

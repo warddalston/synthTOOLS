@@ -2,8 +2,6 @@
 #' 
 #' Display the basic information about an object of class "MultiSynth".  This prints to the console the type of MultiSynth analysis, information about the treated unit, the donor pool, and covariate set, and the time periods used in fitting the analysis.  The function is invoked by automatic printing (when an object of class "MultiSynth" is sent to the console, or not assigned after a call to \code{\link{fitMultiSynth}}).
 #' 
-#' @usage show(object)
-#' 
 #' @param object An object of class MultiSynth.  Can be a placebo analysis or either type of leave-one-out analysis.  
 #' 
 #' @details There are methods of show defined for each of the three subclasses of MultiSynth.  The only differences between the show methods for these classes is the title of the output printed to the console.  

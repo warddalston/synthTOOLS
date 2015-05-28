@@ -8,7 +8,8 @@
 \alias{plot,PlaceboMS,ANY-method}
 \title{Plot MultiSynth objects}
 \usage{
-plot(x, y = NULL, quantity = "Ratios", main = NA, ...)
+\S4method{plot}{LOOunitsMS,ANY}(x, y = NULL, quantity = "Ratios",
+  main = NA, ...)
 
 \S4method{plot}{LOOcovariatesMS,ANY}(x = input, y = NULL,
   quantity = "Ratios", main = NA, ...)
@@ -38,6 +39,7 @@ This function plots the distribution of values for the statistics calculated in 
 The three different subclasses of MultiSynth objects (PlaceboMS, LOOunitsMS, and LOOcovariatesMS) each have their own method for plot.  The only difference between these three methods, however, is the text printed by default for the main plot title.  When unit names or covariate names are very long, they may not fit in the plotting space.  This can be corrected by adjusting the plotting margins via \code{\link{par}}.  Additionally, the names of the cases can be adjusted manually through a call to \code{names} where the argument is the slot of a MultiSynth object containing the quantity to be plotted.  Adjusting names should be done with caution; if the name for the treated/complete case is changed, it will not be plotted in red.
 }
 \examples{
+\dontrun{
 ##Example: Hainmueller and Diamond's Toy panel dataset
 
 #load data
@@ -70,6 +72,7 @@ dataprep.out<-
  plot(fitMultiSynth.out)
 
  plot(fitMultiSynth.out, quantity = "ATE")
+ }
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

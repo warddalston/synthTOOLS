@@ -8,8 +8,8 @@ Description: The synthetic control method allows for the estimation of more accu
 Depends: 
 	R (>= 3.2.0),
 	plyr,
-	Synth,
-	methods
+	methods,
+	Synth
 Imports: Synth
-License: GP (>= 2)
+License: GPL (>= 2)
 LazyData: true
