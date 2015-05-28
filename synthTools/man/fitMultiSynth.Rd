@@ -12,7 +12,7 @@ fitMultiSynth(input, type = "placebo", treatment_time = NA,
 
 \item{type}{A string describing what type of MultiSynth analysis to perform.  Defaults to "placebo".  Other options include "units" for a leave-one-out units analysis, and "covariates" for a leave-one-out covariates}
 
-\item{treatment_time}{A numeric of length 1 giving the time of treatment uptake.}
+\item{treatment_time}{A scalar of the time of treatment uptake.}
 
 \item{parallel}{Logical flag.  If TRUE, than fitting is done in parallel to increase speed.}
 
@@ -35,20 +35,20 @@ An object of class \code{\link{MultiSynth}} containing
  }
 }
 \description{
-Implements placebo analyses and leave-one-out analyses for synthetic control studies, as described by Abadie, Diamond, and Hainmueller (2010, 2015).  \code{fitMultSynth} performs these analyses by building off of Hainmueller and Diamond's \code{synth} package.
+Implements placebo and leave-one-out analyses for synthetic control studies, as described by Abadie, Diamond, and Hainmueller (2010, 2015).  These analyses are known as "MultiSynth" analyses becuase they require the iterative fitting of multiple synthetic controls.  \code{fitMultSynth} performs these analyses by building off of Hainmueller and Diamond's \code{synth} package.
 }
 \details{
-Three types of analyses are implemented through \code{fitMultiSynth}: in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  In a placebo analysis, synthetic controls are iteratively fit, with each iteration reassigning the country to be considered as treated.  In a leave-one-out units analysis, synthetic controls are iteratively fit, each time ommitting a single unit from the donor pool.  In a leave-one-out covariates analysis, synthetic controls are iteratively fit, with each iteration omitting a single covariate from set of covariates.
+Three types of analyses are implemented through \code{fitMultiSynth}: in-space placebo, leave-one-out units, and leave-one-out covariates.  In a placebo analysis, synthetic controls are iteratively fit, each iteration assigning a different unit in the donor pool as the treated unit and placing the original treated unit into the donor pool.  In a leave-one-out units analysis, synthetic controls are iteratively fit, each iteration ommitting a single unit from the donor pool.  In a leave-one-out covariates analysis, synthetic controls are iteratively fit, each iteration omitting a single covariate from set of covariates.
 
-\code{fitMultiSynth} performs these analyses by creating all of the necessary matricies for these placebo/leave-one-out cases using only the output of the \code{dataprep} function and the user supplied time of treatement.  It first iteratively creates the data objects necessary for the analyses, and then fits all of the necessary synthetic controls.  Finally, it calculates a number of statistics which can be used for making inferences on the quality of a synthetic control analysis.
+ Refer to the synthetic control study being analyzed in the placebo or leave-one-out analysis as the "main case".  \code{fitMultiSynth} performs a placebo or leave-one-out analysis on the main case in three steps.  First, it creates  all of the necessary matricies for these placebo/leave-one-out cases using only the output from \code{\link{dataprep}} from the main case. Second, it fits synthetic controls to the main case and all of the placbeo/leave-one-out cases.
 
-\code{fitMultiSynth} requires the user to supply the output of a call to the \code{dataprep} function as its main input and the time treatment is administered as the main inputs.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covaraites".  Finally, the user has the option to run the anlaysis in parallel, to speed computation of potentially many synthetic control fits.
+   Finally, it calculates statistics useful for making inferences on the robustness and significance of results from the main case. These statistics are: the Root Mean Square Predictive Error (RMSPE) in the pre-treatment phase, the RMSPE in the post-treatment phase, the ratio of post to pretreatment RMSPE, covariate loss, and the average treatment effect in the post-treatment phase.
 
-The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the input data, and the matricies and output for the placebo/leave-one-out anlaysis, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. The functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot} all have methods for \code{MultiSynth} which allow for summarizing the results of a placebo/leave-one-out analysis.
+ The main user supplied arguments to \code{fitMultiSynth} are the output of a call to \code{dataprep} for the main case and the time treatment is administered.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covariates".  Finally, the user has the option to run the anlaysis in parallel, to speed computation of potentially many synthetic control fits.
 
-\code{fitMultiSynth} performs the iterative significance and robustness tests as described by Abadie, Diamond, Hainmueller (2010) by first creating the necessary matrices of predictors and outcomes for each placebo/leave-one-out analysis, and then fitting synthetic controls for each placebo/leave-one-out case. The prep matrices are created by a call to one of three functions: \code{\link{PlaceboMSPrep}}, \code{\link{LOOunitsMSPrep}}, or \code{\link{LOOcovariatesMSPrep}}.
+ The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the main case input, the prep matricies and  \code{synth} output for the main case and placebo/leave-one-out cases, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. Further analysis can be carried out using the functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot}, all of which have methods for \code{MultiSynth} objects.
 
-The function also returns several statistics useful in summarizing a placebo/leave-one-out analysis.  These are: the Root Mean Square Predictive Error (RMSPE) in the pre-treatment phase, the RMSPE in the post-treatment phase, the ratio of post- to pre-treatment RMSPE, covariate loss, and the average treatment effect in the post-treatment phase.
+The typical work flow for a \code{MultiSynth} analysis is as follows.  First, the user needs to create a \code{\link{dataprep}} object for the synthetic control study to be analyzed.  Second, the user runs \code{fitMultiSynth} using this \code{dataprep} output as the main argument.  Third, the user can investigate the quality of placebo controls or leave-one-out controls by calling \code{summary} on a \code{MultiSynth} object.  Fourth, the fits can be inspected visually using either \code{gaps.plot} or \code{path.plot} with a \code{MultiSynth} object as input.
 }
 \examples{
 \dontrun{
@@ -102,6 +102,10 @@ Dalston G. Ward: \email{ward.dalston@wustl.edu}
 }
 }
 \seealso{
+\code{\link{synth}}
+
+\code{\link{dataprep}}
+
 \code{\link{MultiSynth}}
 
 \code{\link{plot,MultiSynth-method}}
