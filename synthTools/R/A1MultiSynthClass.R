@@ -1,8 +1,6 @@
 #' A MultiSynth (MS) Object
 #' 
-#' Objects of class \code{MultiSynth} are used in performing robustness and significance tests for Synthetic Control Analyses.  These objects contain the dataprep for a synthetic control analysis, basic information on the synthetic contol, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases, the fits for these cases, and several statistics used to analyze a placebo/leave-one-out anlaysis. MultiSynth objects are the output of the the main function of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.      
-#' 
-#' 
+#' Objects of class \code{MultiSynth} are used in performing placebo and leave-one-out analyses for synthetic control studies, as described in Abadie, Diamond, Hainmueller (2010, 2015). MultiSynth objects are the output of the the main function of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.      
 #'
 #' An object of the S4 class `MultiSynth' has the following slots:
 #' \itemize{
@@ -19,9 +17,11 @@
 #' \item \code{p_value} A scalar with the exact p-value of getting an RMSPE ratio as high as the treated unit, if choosing a unit to analyze at random. Only in \code{PlaceboMS} objects.  
 #' }
 #'
-#'@details MultiSynth objects allow for implementation of various significance and robustness checks for synthetic control analyses, as described in Abadie, Diamond, Hainmueller (2010) and Abadie, Diamond, Hainmueller (2015).  Currently, MultiSynth implements in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses.  MultiSynth also refits the "main" analysis, and records this as the first element in the output lists.  This allows for easy comparisons between the main synthetic control and placebo/leave-one-out synthetic controls.
+#'@details  
 #'
-#' These anlayses require iterative fitting of synthetic controls, which MultiSynth performs.  Objects of class \code{MultiSynth} contain all of the relevent information for these anlayses.  Methods exist in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot} for objects of class \code{MultiSynth}.    
+#' MultiSynth objects can be used for in-space placebo analyses, leave-one-out units analyses, and leave-one-out covariates analyses. Though primarily created as the output of \code{\link{fitMultiSynth}}, they can also be created directly using \code{initialize}.
+#'
+#' These objects contain the dataprep for a synthetic control being analyzed, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases and the original/full case, the synthetic control fit for all cases, basic information on the synthetic contol study, and statistics used to analyze a placebo/leave-one-out anlaysis. Note, MultiSynth refits the "main" analysis, and records this as the first element in the output lists.  This allows for easy comparisons between the main synthetic control and placebo/leave-one-out synthetic controls.  Methods exist for objects of class \code{MultiSynth} in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot}.     
 #'
 #'\code{MultiSynth} objects are further divided into three subclasses\code{PlaceboMS}, \code{LOOunitsMS}, and \code{LOOcovariatesMS}, depending on the type of analysis being carried out.  There is very little difference between these three subclasses; they primarily impact printing and plot titles.  One important difference is the existence of the \code{p_value} slot in \code{PlaceboMS} objects.  This slot records the exact p-value of getting an RMSPE ratio as large as the treated cases' RMSPE ratio, if treatment is randomly assigned to any unit in the dataset.  
 #'
