@@ -63,10 +63,10 @@
 #'  gaps.plot(fitMultiSynth.out)
 #'  }
 #'  
+#'  @import Synth
 #'  @aliases gaps.plot,MultiSynth-method
-#' @importFrom Synth gaps.plot 
-#' @rdname gaps.plot.MultiSynth
-#' @export
+#'  @rdname gaps.plot.MultiSynth
+#'  @export
 setMethod(f = "gaps.plot",
           signature = "MultiSynth",
           def = function(synth.res = NA, dataprep.res = NA, Ylab = c("Title"), Xlab = c("Time"), Main = c("Gaps: Treated - Synthetic"), tr.intake = NA, Ylim = NA, Z.plot = FALSE){

@@ -34,7 +34,7 @@ PlaceboMSPrep <- function(input){
     units <- c(input$tag$treatment.identifier,input$tag$controls.identifier)
     
     #create the prep objects
-    out <-   alply(.data = units, .margins = 1, .fun = function(x){
+    out <-   plyr::alply(.data = units, .margins = 1, .fun = function(x){
       
       #for the original, just return that
       if( x == input$tag$treatment.identifier){
@@ -98,7 +98,7 @@ LOOunitsMSPrep  <- function(input){
     #create list of units  
     units <- c(input$tag$treatment.identifier,input$tag$controls.identifier)
     
-    out <-   alply(.data = units, .margins = 1, .fun = function(x){
+    out <-   plyr::alply(.data = units, .margins = 1, .fun = function(x){
       
       #for the original, just return that
       if( x == input$tag$treatment.identifier){
@@ -158,7 +158,7 @@ LOOunitsMSPrep  <- function(input){
 LOOcovariatesMSPrep <- function(input){
     units <- c("FULL_SET", rownames(input$X0))
     
-    out <-   alply(.data = units, .margins = 1, .fun = function(x){
+    out <-  plyr::alply(.data = units, .margins = 1, .fun = function(x){
       
       #for the original, just return that
       if( x == "FULL_SET"){

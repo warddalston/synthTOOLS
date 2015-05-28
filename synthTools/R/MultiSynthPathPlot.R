@@ -68,9 +68,9 @@
 #' path.plot(fitMultiSynth.out)
 #'
 #'}
-#'
-#'@aliases path.plot,MultiSynth-Method
-#' @importFrom Synth path.plot
+#' 
+#' @import Synth
+#' @aliases path.plot,MultiSynth-Method
 #' @rdname path.plot.MultiSynth
 #' @export
 setMethod(f = "path.plot",

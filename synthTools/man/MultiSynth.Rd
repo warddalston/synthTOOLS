@@ -7,26 +7,13 @@
 \alias{MultiSynth}
 \alias{MultiSynth-class}
 \alias{PlaceboMS-class}
-\alias{initialize,MultiSynth-method}
-\alias{initialize,MultiSynth-method,}
-\alias{initialize,PlaceboMS-method}
-\alias{initialize,PlaceboMS-method,}
 \title{A MultiSynth (MS) Object}
-\usage{
-\S4method{initialize}{MultiSynth}(.Object, input = list(), preps = list(),
-  fits = list(), treated = character(), treatment_time = numeric(),
-  PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(),
-  CovBalances = numeric(), ATEs = numeric())
-
-\S4method{initialize}{PlaceboMS}(.Object, input = list(), preps = list(),
-  fits = list(), treated = character(), treatment_time = numeric(),
-  PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(),
-  CovBalances = numeric(), ATEs = numeric(), p_value = numeric())
-}
 \description{
 Objects of class \code{MultiSynth} are used in performing robustness and significance tests for Synthetic Control Analyses.  These objects contain the dataprep for a synthetic control analysis, basic information on the synthetic contol, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases, the fits for these cases, and several statistics used to analyze a placebo/leave-one-out anlaysis. MultiSynth objects are the output of the the main function of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.
 }
 \details{
+
+
 An object of the S4 class `MultiSynth' has the following slots:
 \itemize{
 \item \code{input} The output of a call to \code{\link{dataprep}}.

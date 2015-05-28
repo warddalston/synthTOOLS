@@ -95,17 +95,11 @@
 #'  gaps.plot(fitMultiSynth.out)
 #' }
 #' 
+#' @import Synth
+#' @import methods
 #' @rdname fitMultiSynth
 #' @export
-setGeneric(name="fitMultiSynth",
-           def=function(input, ...)
-           {standardGeneric("fitMultiSynth")}
-)
-
-#' @rdname fitMultiSynth
-#' @export
-setMethod(f = "fitMultiSynth",
-          definition = function(input, type = "placebo", treatment_time = NA, parallel=FALSE, ...){
+fitMultiSynth <- function(input, type = "placebo", treatment_time = NA, parallel=FALSE, ...){
             
             if(length(treatment_time) != 1 | !is.numeric(treatment_time) | is.na(treatment_time)){
               stop("Please enter a single, numeric, treatment time.")
@@ -121,7 +115,7 @@ setMethod(f = "fitMultiSynth",
               preps <- PlaceboMSPrep(input)
               
               # then fit the Multi-Synth
-                fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
+                fits <- plyr::llply(.data = preps, .fun = synth, ... , .parallel = parallel)
                 names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
@@ -138,7 +132,7 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOunitsMSPrep(input)
               
-              fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
+              fits <- plyr::llply(.data = preps, .fun = synth, ... , .parallel = parallel)
               names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
@@ -154,7 +148,7 @@ setMethod(f = "fitMultiSynth",
               
               preps <- LOOcovariatesMSPrep(input)
               
-              fits <- llply(.data = preps, .fun = synth, ... , .parallel = parallel)
+              fits <- plyr::llply(.data = preps, .fun = synth, ... , .parallel = parallel)
               names(fits) <- names(preps)
                 RMSPES <- MultiSynthErrorRatios(preps, fits, treatment_time, input)
                 Cov <- sapply(fits, function(synth){ return(synth$loss.w)})
@@ -165,4 +159,3 @@ setMethod(f = "fitMultiSynth",
               return(new("LOOcovariatesMS", input = input, preps = preps, fits = fits, treated = c(as.character(input$names.and.numbers[1,1]), as.character(input$names.and.numbers[1,2]) ), treatment_time = treatment_time, PreRMSPE = RMSPES[[1]], PostRMSPE = RMSPES[[2]], RMSPEratio = RMSPES[[3]], CovBalances = Cov, ATEs = ATEs))
             } #close covariates if loop
           } #close function
-) #close setMethod

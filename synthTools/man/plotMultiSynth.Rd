@@ -8,19 +8,18 @@
 \alias{plot,PlaceboMS,ANY-method}
 \title{Plot MultiSynth objects}
 \usage{
-\S4method{plot}{LOOunitsMS,ANY}(x, y = NULL, quantity = "Ratios",
+\S4method{plot}{LOOunitsMS,ANY}(x, y, quantity = "Ratios", main = NA, ...)
+
+\S4method{plot}{LOOcovariatesMS,ANY}(x = input, y, quantity = "Ratios",
   main = NA, ...)
 
-\S4method{plot}{LOOcovariatesMS,ANY}(x = input, y = NULL,
-  quantity = "Ratios", main = NA, ...)
-
-\S4method{plot}{PlaceboMS,ANY}(x = input, y = NULL, quantity = "Ratios",
+\S4method{plot}{PlaceboMS,ANY}(x = input, y, quantity = "Ratios",
   main = NA, ...)
 }
 \arguments{
 \item{x}{A MultiSynth object}
 
-\item{y}{NULL (Not used in this method)}
+\item{y}{Should be left blank; not used in this method}
 
 \item{quantity}{The quantity to plot.  Can be "Ratios" for RMSPE ratio, "Pre" for pretreatment RMSPE, "Post" for posttreatment RMSPE, "ATE" for ATEs, or "Cov" for covariate balance.  Defaults to "Ratios".}
 

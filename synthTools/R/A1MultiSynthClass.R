@@ -1,6 +1,8 @@
 #' A MultiSynth (MS) Object
 #' 
 #' Objects of class \code{MultiSynth} are used in performing robustness and significance tests for Synthetic Control Analyses.  These objects contain the dataprep for a synthetic control analysis, basic information on the synthetic contol, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases, the fits for these cases, and several statistics used to analyze a placebo/leave-one-out anlaysis. MultiSynth objects are the output of the the main function of the \code{synthTOOLS} package, \code{\link{fitMultiSynth}}. They are created using the \code{initialize} function.      
+#' 
+#' 
 #'
 #' An object of the S4 class `MultiSynth' has the following slots:
 #' \itemize{
@@ -64,26 +66,6 @@ setClass(Class="MultiSynth",
          )
 )
 
-#' @aliases initialize,MultiSynth-method
-#' @rdname MultiSynth 
-#' @export
-setMethod("initialize", "MultiSynth", 
-          function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric()
-          ){ 
-            .Object@input <- input
-            .Object@preps <- preps
-            .Object@fits <- fits
-            .Object@treated <- treated
-            .Object@treatment_time <- treatment_time
-            .Object@PreRMSPE <- PreRMSPE
-            .Object@PostRMSPE <- PostRMSPE
-            .Object@RMSPEratio <- RMSPEratio
-            .Object@CovBalances <- CovBalances
-            .Object@ATEs <- ATEs
-            .Object
-          }
-)
-
 #' @aliases PlaceboMS-class
 #' @rdname MultiSynth
 #' @export
@@ -104,26 +86,3 @@ setClass("LOOunitsMS", contains = "MultiSynth")
 #' @rdname MultiSynth
 #' @export
 setClass("LOOcovariatesMS", contains = "MultiSynth")
-
-#' @aliases initialize,PlaceboMS-method
-#' @rdname MultiSynth
-#' @export
-setMethod("initialize", "PlaceboMS", 
-          function(.Object, input = list(), preps = list(), fits = list(), treated = character(), treatment_time = numeric(), PreRMSPE = numeric(), PostRMSPE = numeric(), RMSPEratio = numeric(), CovBalances = numeric(), ATEs = numeric(), p_value = numeric()
-          ){
-            
-            .Object@input <- input
-            .Object@preps <- preps
-            .Object@fits <- fits
-            .Object@treated <- treated
-            .Object@treatment_time <- treatment_time
-            .Object@PreRMSPE <- PreRMSPE
-            .Object@PostRMSPE <- PostRMSPE
-            .Object@RMSPEratio <- RMSPEratio
-            .Object@CovBalances <- CovBalances
-            .Object@ATEs <- ATEs
-            .Object@p_value <- p_value
-            .Object
-          }
-)
-
