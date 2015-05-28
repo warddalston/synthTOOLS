@@ -24,6 +24,7 @@
 #'    
 #'  The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the main case input, the prep matricies and  \code{synth} output for the main case and placebo/leave-one-out cases, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. Further analysis can be carried out using the functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot}, all of which have methods for \code{MultiSynth} objects.  
 #'       
+#' The typical work flow for a \code{MultiSynth} analysis is as follows.  First, the user needs to create a \code{\link{dataprep}} object for the synthetic control study to be analyzed.  Second, the user runs \code{fitMultiSynth} using this \code{dataprep} output as the main argument.  Third, the user can investigate the quality of placebo controls or leave-one-out controls by calling \code{summary} on a \code{MultiSynth} object.  Fourth, the fits can be inspected visually using either \code{gaps.plot} or \code{path.plot} with a \code{MultiSynth} object as input.
 #' 
 #' @return An object of class \code{\link{MultiSynth}} containing 
 #' \itemize{
