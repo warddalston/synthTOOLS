@@ -1,12 +1,10 @@
-#' Extract the dataprep output used as the base of a MultiSynth Analysis
+#' Extract the Dataprep Output Esed as the Base of a MultiSynth Analysis
 #' 
-#' Returns the output of a call to dataprep that forms the basis of a MultiSynth analysis.  This allows the user to investigate the X0, X1, Z0, Z1, Y0plot, and Y1plot of this main case. 
-#' 
-#' @usage getInput(input)
+#' Returns the output of a call to dataprep that forms the basis of a MultiSynth analysis.  This allows the user to investigate the X0, X1, Z0, Z1, Y0plot, and Y1plot of the actual treated/full donor pool/full covariate set case. 
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A list containing the output of the call to \code{\link{dataprep}} that forms the base of the MultiSynth object
+#' @return The output of the call to \code{\link{dataprep}} that forms the base of the MultiSynth object
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -25,7 +23,6 @@ setGeneric(name="getInput",
            {standardGeneric("getInput")}
 )
 
-#' @aliases getInput,MultiSynth-method
 #' @rdname getInput
 #' @export
 setMethod(f = "getInput",
@@ -34,15 +31,13 @@ setMethod(f = "getInput",
             return(input@input)
           })
 
-#' Extract the data matrices for the placebo/leave-one-out cases
+#' Extract the Data Matrices for All Cases in a MultiSynth Analysis
 #' 
-#' Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each of the placebo/leave-one-out cases. Each element of this list is a list containing the six relevent matrices for each placebo/leave-one-out case.    
-#' 
-#' @usage getPreps(input)
+#' Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each case. Each element of this list is a list containing the six relevent matrices for each placebo/leave-one-out case.    
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A list of lists containing the six matrices for each placebo/leave-one-out case.
+#' @return A list of lists. Each list contains the six dataprep matrices for a single case.
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -61,7 +56,6 @@ setGeneric(name="getPreps",
            {standardGeneric("getPreps")}
 )
 
-#' @aliases getPreps,MultiSynth-method
 #' @rdname getPreps
 #' @export
 setMethod(f = "getPreps",
@@ -70,11 +64,9 @@ setMethod(f = "getPreps",
             return(input@preps)
           })
 
-#' Extract the synthetic control fits from a MultiSynth object
+#' Extract the Synthetic Control Fits from a MultiSynth Object
 #' 
-#' Returns a list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out cases.
-#' 
-#' @usage getFits(input)
+#' Returns a list containing the \code{\link{synth}} output for each case in a MultiSynth analysis.
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
@@ -97,7 +89,6 @@ setGeneric(name="getFits",
            {standardGeneric("getFits")}
 )
 
-#' @aliases getFits,MultiSynth-method
 #' @rdname getFits
 #' @export
 setMethod(f = "getFits",
@@ -106,15 +97,15 @@ setMethod(f = "getFits",
             return(input@fits)
           })
 
-#' Extract information about which unit is the treatment unit in a MultiSynth analysis
+#' Extract Name and Number of Treated Unit in MultiSynth Analysis
 #' 
-#' Returns a vector containing the name and unit number of the treated unit in a MultiSynth object. 
-#' 
-#' @usage getTreated(input)
+#' Returns a vector containing the name and unit number of the treated unit in a MultiSynth object.
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A character vector containing the name and number of hte treated unit
+#' @details If the user does not supply an arguement to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.  
+#' 
+#' @return A character vector containing the name and number of the treated unit
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -133,7 +124,6 @@ setGeneric(name="getTreated",
            {standardGeneric("getTreated")}
 )
 
-#' @aliases getTreated,MultiSynth-method
 #' @rdname getTreated
 #' @export
 setMethod(f = "getTreated",
@@ -142,15 +132,13 @@ setMethod(f = "getTreated",
             return(input@treated)
           })
 
-#' Extract information about when treatment occurs MultiSynth analysis
+#' Extract the Time Treatment is Administered in a MultiSynth Analysis
 #' 
-#' Returns the user-given treatement time point in a MultiSynth object
-#' 
-#' @usage getTreatmentTime(input)
+#' Returns the treatement is administered in a MultiSynth analysis.
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A numeric vector of length one containing the time treatment is administered
+#' @return A scalar containing the time treatment is administered
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -169,7 +157,6 @@ setGeneric(name="getTreatmentTime",
            {standardGeneric("getTreatmentTime")}
 )
 
-#' @aliases getTreatmentTime,MultiSynth-method
 #' @rdname getTreatmentTime
 #' @export
 setMethod(f = "getTreatmentTime",
