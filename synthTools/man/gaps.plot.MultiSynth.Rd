@@ -13,7 +13,7 @@
 \arguments{
 \item{synth.res}{An object of class \code{\link{MultiSynth}}}
 
-\item{dataprep.res}{NA.  Not used for MultiSynth gaps plotting, should be left as NA.}
+\item{dataprep.res}{NA.  Not used for MultiSynth gaps plotting.}
 
 \item{Ylab}{Optional label for Y axis}
 
@@ -21,17 +21,19 @@
 
 \item{Main}{Optional main title}
 
-\item{tr.intake}{NA. Not used for MultiSynth gaps plotting, should be left as NA.}
+\item{tr.intake}{NA. Not used for MultiSynth gaps plotting.}
 
 \item{Ylim}{Optional Y axis limits}
 
 \item{Z.plot}{Logical. If TRUE only the pre-treatment period is plotted.}
 }
 \description{
-Plots the gaps in the trajectory of the outcome variable for the treated case and its synthetic control for each fit in a MultiSynth object.  The main analysis is plotted as a solid black line, and each of the placebo or leave-one-out fits is plotted as a light gray solid line.
+Plots the gaps in the trajectory of the outcome variable for the treated unit and its synthetic control for each case fit in a MultiSynth object.  The main case is plotted as a solid black line, and each of the placebo or leave-one-out cases is plotted as a light gray solid line.
 }
 \details{
 The user need only prvide an object of class \code{MultiSynth} as the arguement to synth.res for the function to work. Two other arguments, dataprep.res and tr.intake should be left as NA.  Other arguments are optional.
+
+For each synthetic control fit, the synthetic control's outcome trajectory can be calculated as fitMultiSynth.out@preps$"control name"$Y0plot %*% fitMultiSynth.out@fits$"control name"$solution.w, where "control name" is the name of the case of interest.
 }
 \examples{
 \dontrun{

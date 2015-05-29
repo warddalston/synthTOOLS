@@ -27,14 +27,16 @@
 \item{...}{further arguments passed on to the default method of plot}
 }
 \description{
-This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.  The function first sorts the quantity of interest, and then plots on the x-axis the values of the quantity for each case in the MultiSynth analysis.  Axis labels correspond to the names of the placebo/leave-one-out cases.  The actual treated unit or the analysis with the full donor pool/covariate set is plotted in red.
+This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.
 
 
 
 
 }
 \details{
-The three different subclasses of MultiSynth objects (PlaceboMS, LOOunitsMS, and LOOcovariatesMS) each have their own method for plot.  The only difference between these three methods, however, is the text printed by default for the main plot title.  When unit names or covariate names are very long, they may not fit in the plotting space.  This can be corrected by adjusting the plotting margins via \code{\link{par}}.  Additionally, the names of the cases can be adjusted manually through a call to \code{names} where the argument is the slot of a MultiSynth object containing the quantity to be plotted.  Adjusting names should be done with caution; if the name for the treated/complete case is changed, it will not be plotted in red.
+The function first sorts the quantity of interest, and then plots on the x-axis the values of the quantity for each case in the MultiSynth analysis.  Axis labels correspond to the names of the placebo/leave-one-out cases.  When unit or covariate names are very long, they may not fit in the plotting space.  This can be corrected by adjusting the plotting margins via \code{\link{par}}. The actual treated unit or the analysis with the full donor pool/covariate set is plotted in red.
+
+The three different subclasses of MultiSynth objects (PlaceboMS, LOOunitsMS, and LOOcovariatesMS) each have their own method for plot.  The only difference between these three methods, however, is the text printed by default for the main plot title.
 }
 \examples{
 \dontrun{
