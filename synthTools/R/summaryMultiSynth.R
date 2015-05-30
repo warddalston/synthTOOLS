@@ -1,11 +1,15 @@
 #' Summary of a MultiSynth Analysis
 #' 
-#' This method provides a summary of the results of a MultiSynth analysis.  It prints to the console the values of pre and post treatment RMSPEs, their ratio, ATEs, and covariate loss statistics for each case fitted in a MultiSynth analysis. Together, these quantities allow the user to determine the quality of fit, robustness, and significance of a synthetic control analysis.  For details, see Abadie, Diamond, Hainmueller (2010, 2015).  Furthermore, for placebo analysis, the summary method for MultiSynth prints the p-value of obtaining an RMSPE ratio as large as the treated unit when treatment is randomly assigned to any unit in the donor pool. A matrix containing all of these statistics is also returned by the function.  
+#' This method provides a summary of the results of a MultiSynth analysis.  It prints to the console the values of pre and posttreatment RMSPEs, their ratios, ATEs, and covariate loss statistics for each case fitted in a MultiSynth analysis.  For placebo analyses, it also prints the p-value of obtaining an RMSPE ratio as large as the treated unit when treatment is randomly assigned to any unit in the donor pool. A matrix containing all of these statistics is silently returned.  
 #' 
 #' @param object An object of class MultiSynth
 #' @param digits The number of digits to print.  Defaults to 3.
 #' 
-#' @details Methods for summary are defined for each of the three MultiSynth subclasses.  However, there are only very minor differences between the three methods.  First, the title of the output printed varies depending on the type of MultiSynth analysis.  Second, for placebo anlayses, the p-value for the RMSPE ratio is printed to the console.  Otherwise, the three methods are exactly the same.
+#' @details 
+#' 
+#' Together, the quantities reported by this method allow the user to determine the quality of fit, robustness, and significance of a synthetic control analysis.  For details, see Abadie, Diamond, Hainmueller (2010, 2015)
+#' 
+#' Methods for summary are defined for each of the three MultiSynth subclasses.  However, there are only very minor differences between the three methods.  First, the title of the output printed varies depending on the type of MultiSynth analysis.  Second, for placebo anlayses, the p-value for the RMSPE ratio is printed to the console.  Otherwise, the three methods are exactly the same.
 #' 
 #' @return A matrix containing all of the statistics printed to the console.  
 #' 

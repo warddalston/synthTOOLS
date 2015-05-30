@@ -1,18 +1,17 @@
-#' Calculate the Average Treatment Effect for multiple synthetic control fits at once
+#' Calculate the Mean Gap in Outcome for Multiple Synthetic Control Fits
 #' 
-#' This function calculates the average treatment effect (ATE) for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep}} outputs and \code{\link{synth}} outputs, as well as to provide the beggining and end time periods over which to calculate the ATE.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
-#' 
-#' @usage MultiSynthATE(MultiSynthPrep_obj, MultiSynth_obj,
-#'  begin_time, end_time)
+#' This function calculates the mean gap in outcome between the treated unit and the synthetic control unit over a user specified period for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep}} outputs and \code{\link{synth}} outputs, as well as to provide the beggining and end time periods over which to calculate the mean gap.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
 #'  
 #'  @param MultiSynthPrep_obj A list of outputs from the dataprep function
 #'  @param MultiSynth_obj A list of outputs from the synth function
-#'  @param begin_time A numeric containing the beggining of the period over which to calculate the ATE
-#'  @param end_time A numeric containing the end of the period over which to calculate the ATE
+#'  @param begin_time A numeric containing the beggining of the period over which to calculate the average gap
+#'  @param end_time A numeric containing the end of the period over which to calculate the average gap
 #'  
 #'  @details This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give the "preps" slot as the first arguement, and "fits" slot as the second arguement. 
 #'  
-#'  @return A named vector containing the estimated ATEs
+#'  Note that when the user provided time period corresponds to the entire post-treatment period, the quantity calculated by this function is the average treatment effect (ATE).
+#'  
+#'  @return A named vector containing the estimated mean gaps
 #'  
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' @references \itemize{
@@ -55,13 +54,13 @@
 #'  
 #'  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
 #'  
-#' MultiSynthATE(fitMultiSynth.out@@preps, 
+#' MultiSynthMeanEffect(fitMultiSynth.out@@preps, 
 #' fitMultiSynth.out@@fits, 1991, 1996)
 #' }
 #' 
-#' @rdname MultiSynthATE
+#' @rdname MultiSynthMeanEffect
 #' @export
-MultiSynthATE <- function(MultiSynthPrep_obj, MultiSynth_obj, begin_time, end_time){
+MultiSynthMeanEffect <- function(MultiSynthPrep_obj, MultiSynth_obj, begin_time, end_time){
   
   #Calculate the pre treatment error ratios here
   out <- mapply(SynthMeanEffect, MultiSynthPrep_obj, MultiSynth_obj, MoreArgs = list(begin_time = begin_time, end_time = end_time), SIMPLIFY = TRUE)

@@ -1,24 +1,19 @@
 #' Calculate Root Mean Square Predictive Errors for a Synthetic Control Analysis
 #' 
-#' This function calculates three statistics important for assessing the goodness of fit and significance of a synthetic controls analysis.  These are the pretreatment root mean square predictive error (RMSPE), posttreatment RMSPE, and post/pre treatment RMSPE ratio, as described in Abadie, Diamond, and Hainmueller (2015).  Note that "predictive error" in this setting means the gap between the observed outcomes and the synthetic control's estimated outcome.    
-#' 
-#' @usage SynthErrorRatios(dataprep, synth,
-#' treatment_time)
-#' 
+#' This function calculates three statistics important for assessing the goodness of fit and significance of a synthetic controls analysis.  These are the pretreatment root mean square predictive error (RMSPE), posttreatment RMSPE, and post/pre treatment RMSPE ratio, as described in Abadie, Diamond, and Hainmueller (2015).    
+#'  
 #'  @param dataprep Ouput from a call to \code{dataprep}
 #'  @param synth Output from a call to \code{synth}
 #'  @param treatment_time A numeric giving the time treatment is administered.
 #'  
-#'  @details The three statistics implemented by this function are the pretreatment Root Mean Square Predictive Error (RMSPE), the posttreatment RMSPE, and the ratio of post- to pretreatment RMSPE.  As described in Abadie, Diamond, Hainmueller (2010, 2014), these statistics allow the reasercher to investigate both the goodness of fit and significance of synthetic control analyses. 
-#'  
-#' Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Posttreatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.  
+#'  @details  As described in Abadie, Diamond, Hainmueller (2010, 2014), these statistics allow the reasercher to investigate both the goodness of fit and significance of synthetic control analyses. Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Posttreatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.  
 #'    
 #' 
 #' @return A list with the elements
 #' \itemize{
-#' \item{PreErrors}{A numeric containing the pre-treatment RMSPE value}
-#' \item{PostErrors}{A numeric containing the post-treatment RMSPE value}
-#' \item{Ratios}{A numeric containing the post-to-pretreatment RMSPE ratio value}
+#' \item \code{PreErrors} {A numeric containing the pre-treatment RMSPE value}
+#' \item \code{PostErrors} {A numeric containing the post-treatment RMSPE value}
+#' \item \code{Ratios} {A numeric containing the post-to-pretreatment RMSPE ratio value}
 #' }
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}

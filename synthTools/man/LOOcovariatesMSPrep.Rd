@@ -2,7 +2,7 @@
 % Please edit documentation in R/MultiSynthPrepFunctions.R
 \name{LOOcovariatesMSPrep}
 \alias{LOOcovariatesMSPrep}
-\title{Prepare data matrices for a Leave-One-Out Covariates MultiSynth Analysis}
+\title{Prepare Data for a Leave-One-Out Covariates MultiSynth Analysis}
 \usage{
 LOOcovariatesMSPrep(input)
 }
@@ -21,7 +21,7 @@ A list of lists, with each list containing the elements
   }
 }
 \description{
-This function creates the necessary sets of data matrices for running a leave-one-out covariates MultiSynth analysis.  For each covariate used in the main analysis, it creates an X0 and X1 matrix excluding a given covariate, copies the original Z0, Z1, Y0plot, Y1plot matrices, and creates a list containing these six matrices. It also returns the original set of matrices, with the full covariate set. This function takes as input the list returned by \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
+This function creates the necessary sets of matrices for running a leave-one-out covariates MultiSynth analysis.  For each covariate used in the main analysis, it creates an X0 and X1 matrix excluding a given covariate, copies the original Z0, Z1, Y0plot, Y1plot matrices, and creates a list containing these six matrices. It also returns the original set of matrices, with the full covariate set. This function takes as input the output of \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
 }
 \details{
 The output of this function is a named list, with each element being a list of the 6 matrices necessary for running \code{\link{synth}} and plotting its output. The names of this list are "Full Covariate set" for the full set, and "Minus <<covariate name>>" for the leave-one-out cases.

@@ -4,7 +4,7 @@
 \name{path.plot,MultiSynth-method}
 \alias{path.plot,MultiSynth-Method}
 \alias{path.plot,MultiSynth-method}
-\title{Path plots for MultiSynth Objects}
+\title{Path Plots for MultiSynth Objects}
 \usage{
 \S4method{path.plot}{MultiSynth}(synth.res = NA, dataprep.res = NA,
   tr.intake = NA, Ylab = c("Y Axis"), Xlab = c("Time"), Ylim = NA,
@@ -14,9 +14,9 @@
 \arguments{
 \item{synth.res}{An object of class \code{\link{MultiSynth}}}
 
-\item{dataprep.res}{NA.  Not used for MultiSynth path plotting, should be left as NA.}
+\item{dataprep.res}{NA.  Not used for MultiSynth path plotting.}
 
-\item{tr.intake}{NA. Not used for MultiSynth path plotting, should be left as NA.}
+\item{tr.intake}{NA. Not used for MultiSynth path plotting.}
 
 \item{Ylab}{Optional label for Y axis}
 

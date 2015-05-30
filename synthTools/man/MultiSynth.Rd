@@ -32,6 +32,8 @@ MultiSynth objects can be used for in-space placebo analyses, leave-one-out unit
 These objects contain the dataprep for a synthetic control being analyzed, the dataprep matrices (X0, X1, Z0, Z1, Y0plot, Y1plot) for placebo or leave-one-out cases and the original/full case, the synthetic control fit for all cases, basic information on the synthetic contol study, and statistics used to analyze a placebo/leave-one-out anlaysis. Note, MultiSynth refits the "main" analysis, and records this as the first element in the output lists.  This allows for easy comparisons between the main synthetic control and placebo/leave-one-out synthetic controls.  Methods exist for objects of class \code{MultiSynth} in \code{plot}, \code{summary}, \code{path.plot}, and \code{gaps.plot}.
 
 \code{MultiSynth} objects are further divided into three subclasses\code{PlaceboMS}, \code{LOOunitsMS}, and \code{LOOcovariatesMS}, depending on the type of analysis being carried out.  There is very little difference between these three subclasses; they primarily impact printing and plot titles.  One important difference is the existence of the \code{p_value} slot in \code{PlaceboMS} objects.  This slot records the exact p-value of getting an RMSPE ratio as large as the treated cases' RMSPE ratio, if treatment is randomly assigned to any unit in the dataset.
+
+Several functions exist for accessing the objects containined in a \code{MultiSynth} object.  \code{\link{getInput}} returns the output from dataprep used as the base of the analysis.  \code{\link{getPreps}} and \code{\link{getFits}} return the list of dataprep matrices and synth outputs, respectively.  \code{\link{getTreated}} and \code{\link{getTreatmentTime}} returns the name of hte treated unit, and the time of treatment uptake.  For indepth analysis on a single case in a MultiSynth analysis, \code{\link{getCase}} returns the dataprep matrices and synth output for a single user specified case. Finally, \code{\link{getStats}} rerurns the matrix of RMSPE, ATE, and covariate balance statistics for the MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}
@@ -52,5 +54,7 @@ Dalston G. Ward: \email{ward.dalston@wustl.edu}
 \code{\link{path.plot,MultiSynth-method}}
 
 \code{\link{gaps.plot,MultiSynth-method}}
+
+\code{\link{getInput}}, \code{\link{getPreps}}, \code{\link{getFits}}, \code{\link{getTreated}}, \code{\link{getTreatmentTime}}, \code{\link{getStats}}, \code{\link{getCase}}
 }
 

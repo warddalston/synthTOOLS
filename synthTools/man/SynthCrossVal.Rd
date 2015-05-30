@@ -2,15 +2,21 @@
 % Please edit documentation in R/SynthCrossVal.R
 \name{SynthCrossVal}
 \alias{SynthCrossVal}
-\title{Construct a synthetic control unit with covariate weights chosen by cross validation}
+\title{Fit a Synthetic Control with Covariate Weights Chosen by Cross Validation}
 \usage{
 SynthCrossVal(foo = NULL,
-predictors = NULL, predictors.op = "mean",
-special.predictors = NULL, dependent = NULL,
-unit.variable = NULL, time.variable = NULL,
-treatment.identifier = NULL, controls.identifier = NULL,
-time.training = NULL, time.validation = NULL,
-time.optimize.final = NULL, time.plot = time.optimize.final,
+predictors = NULL,
+ predictors.op = "mean",
+special.predictors = NULL,
+dependent = NULL,
+unit.variable = NULL,
+time.variable = NULL,
+treatment.identifier = NULL,
+ controls.identifier = NULL,
+time.training = NULL,
+ time.validation = NULL,
+time.optimize.final = NULL,
+ time.plot = time.optimize.final,
 unit.names.variable = NA, ...)
 }
 \arguments{
@@ -47,19 +53,25 @@ unit.names.variable = NA, ...)
 \value{
 A list containing four elements:
 \itemize{
-\item{dataprep.training} {The output of the call to dataprep for the training control}
-\item{synth.training} {The output of the call to synth for the training control}
-\item{dataprep.final} {The output of the call to dataprep for the final control}
-\item{synth.final} {The output of the call to synth for the final control}
+\item \code{dataprep.training} {The output of the call to dataprep for the training control}
+\item \code{synth.training} {The output of the call to synth for the training control}
+\item \code{dataprep.final} {The output of the call to dataprep for the final control}
+\item \code{synth.final} {The output of the call to synth for the final control}
 }
 }
 \description{
-Implements a cross validation method for choosing weights on covariates when fitting a synthetic control, as described by Abadie, Diamond, Hainmueller (2015).  In this cross validation method, the pretreatment period is divided into a training period and a validation period. Then, covariate data from the pretreatment period is used to optimize the fit of a synthetic control over the validation period.  This produces a set of weights on covariates.  These weights are then used with covariate data from the validation period to optimize the fit of the synthetic control over the entire pretreatment period.  According to Abadie, Diamond, and Hainmueller (2015), this procedure minimizes out of sample prediction errors.
+Implements a cross validation method for choosing weights on covariates when fitting a synthetic control, as described by Abadie, Diamond, Hainmueller (2015).  In this cross validation method, the pretreatment period is divided into a training period and a validation period. Then, covariate data from the pretreatment period is used to optimize the fit of a synthetic control over the validation period.  This produces a set of weights on covariates.  These weights are then used with covariate data from the validation period to optimize the fit of the synthetic control over the entire pretreatment period.
 }
 \details{
-This function implements this cross validation method by iteratively creating dataprep objects and fitting synthetic controls.  It fits two synthetic controls: the training synthetic control and the final synthetic control.  The use of the function is similar to \code{\link{dataprep}} except that the user must now specifiy which time periods comprising the training and validation periods, and the optimization period for the final synthetic control.  The output of the function is a list containing the output of the two calls to dataprep and synth.
+According to Abadie, Diamond, and Hainmueller (2015), this procedure minimizes out of sample prediction errors.  However, they also note that it tends to produce results similar to the standard fitting procedure, as implemented in \code{\link{synth}}
 
-For more on the input required for predictors.op and special.predictors, see \code{\link{dataprep}}.  The code does not currently allow for cross-validation of special predictors; the same values are used in both the training synthetic control and final synthetic control for these predictors. The third (final dataprep output) and fourth (final synth output) elements of the list returned by \code{SynthCrossVal} can be used to summarize the results of a synthetic control fit by cross validation in other functions (e.g. \code{\link{gaps.plot}}, \code{\link{path.plot}}).
+ This function implements this cross validation method by iteratively creating dataprep objects and fitting synthetic controls.  It fits two synthetic controls: the training synthetic control and the final synthetic control.
+
+  The use of the function is similar to \code{\link{dataprep}} except that the user must now specifiy which time periods comprising the training and validation periods, and the optimization period for the final synthetic control.
+
+For more on the input required for predictors.op and special.predictors, see \code{\link{dataprep}}.  The code does not currently allow for cross-validation of special predictors; the same values are used in both the training synthetic control and final synthetic control for these predictors.
+
+  The output of the function is a list containing the output of the two calls to dataprep and synth.  The third (final dataprep output) and fourth (final synth output) elements of the list returned by \code{SynthCrossVal} can be used to summarize the results of a synthetic control fit by cross validation in other functions (e.g. \code{\link{gaps.plot}}, \code{\link{path.plot}}, \code{\link{synth.tab}}).
 }
 \examples{
 ##Example: Hainmueller and Diamond's Toy panel dataset

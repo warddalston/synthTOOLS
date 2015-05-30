@@ -1,15 +1,13 @@
-#' Calculate the Average Outcome Gap in Synthetic Control Analysis
+#' Calculate the Meane Outcome Gap in a Synthetic Control Analysis
 #' 
-#' This function calculates the average gap between the observed outcome and a synthetic control's outcome over a user specified time period.  When the user specified time period corresponds to the post-treatment period, this quantity is the average treatment effect (ATE). 
-#' 
-#' @usage SynthMeanEffect(dataprep, synth, begin_time, end_time)
+#' This function calculates the mean gap between the observed outcome and a synthetic control's outcome over a user specified time period.  When the user specified time period corresponds to the post-treatment period, this quantity is the average treatment effect (ATE). 
 #' 
 #' @param dataprep The output of a call to \code{dataprep}
 #' @param synth The output of a call to \code{synth}
-#' @param begin_time A numeric of length one. The beginning of the period to calculate the average gap.
-#' @param end_time A numeric of length one. The end of the period to calculate the average gap.
+#' @param begin_time A numeric of length one. The beginning of the period to calculate the mean gap.
+#' @param end_time A numeric of length one. The end of the period to calculate the mean gap.
 #' 
-#' @return A numeric of length one, containing the average difference in outcomes.
+#' @return A scalar containing the mean difference in outcomes.
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 

@@ -25,6 +25,8 @@
 #'
 #'\code{MultiSynth} objects are further divided into three subclasses\code{PlaceboMS}, \code{LOOunitsMS}, and \code{LOOcovariatesMS}, depending on the type of analysis being carried out.  There is very little difference between these three subclasses; they primarily impact printing and plot titles.  One important difference is the existence of the \code{p_value} slot in \code{PlaceboMS} objects.  This slot records the exact p-value of getting an RMSPE ratio as large as the treated cases' RMSPE ratio, if treatment is randomly assigned to any unit in the dataset.  
 #'
+#' Several functions exist for accessing the objects containined in a \code{MultiSynth} object.  \code{\link{getInput}} returns the output from dataprep used as the base of the analysis.  \code{\link{getPreps}} and \code{\link{getFits}} return the list of dataprep matrices and synth outputs, respectively.  \code{\link{getTreated}} and \code{\link{getTreatmentTime}} returns the name of hte treated unit, and the time of treatment uptake.  For indepth analysis on a single case in a MultiSynth analysis, \code{\link{getCase}} returns the dataprep matrices and synth output for a single user specified case. Finally, \code{\link{getStats}} rerurns the matrix of RMSPE, ATE, and covariate balance statistics for the MultiSynth analysis.    
+#'
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' @references \itemize{
 #' \item Abadie, A., Diamond, A., Hainmueller, J. (2010). Synthetic Control Methods for Comparative Case Studies: Estimating the Effect of California's Tobacco Control Program. \emph{Journal of the American Statistical Association} 105 (490) 493-505.
@@ -36,6 +38,7 @@
 #' @seealso \code{\link{summary,MultiSynth-method}}
 #' @seealso \code{\link{path.plot,MultiSynth-method}}
 #' @seealso \code{\link{gaps.plot,MultiSynth-method}}
+#' @seealso \code{\link{getInput}}, \code{\link{getPreps}}, \code{\link{getFits}}, \code{\link{getTreated}}, \code{\link{getTreatmentTime}}, \code{\link{getStats}}, \code{\link{getCase}}
 #' @aliases MultiSynth-class MultiSynth
 #' @rdname MultiSynth
 #' @export

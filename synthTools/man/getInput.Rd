@@ -4,7 +4,7 @@
 \name{getInput}
 \alias{getInput}
 \alias{getInput,MultiSynth-method}
-\title{Extract the dataprep output used as the base of a MultiSynth Analysis}
+\title{Extract the Dataprep Output Esed as the Base of a MultiSynth Analysis}
 \usage{
 getInput(input)
 
@@ -14,10 +14,10 @@ getInput(input)
 \item{input}{An object of class "MultiSynth"}
 }
 \value{
-A list containing the output of the call to \code{\link{dataprep}} that forms the base of the MultiSynth object
+The output of the call to \code{\link{dataprep}} that forms the base of the MultiSynth object
 }
 \description{
-Returns the output of a call to dataprep that forms the basis of a MultiSynth analysis.  This allows the user to investigate the X0, X1, Z0, Z1, Y0plot, and Y1plot of this main case.
+Returns the output of a call to dataprep that forms the basis of a MultiSynth analysis.  This allows the user to investigate the X0, X1, Z0, Z1, Y0plot, and Y1plot of the actual treated/full donor pool/full covariate set case.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

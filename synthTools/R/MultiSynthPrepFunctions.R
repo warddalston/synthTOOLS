@@ -1,6 +1,6 @@
-#' Prepare data matrices for a Placebo MultiSynth Analysis
+#' Prepare Data for a Placebo MultiSynth Analysis
 #' 
-#' This function creates the necessary sets of data matrices for running a placebo MultiSynth analysis.  For each unit in the donor pool, it creates the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices with a given unit assigned as the treated unit and the treated unit assigned to the donor pool.  It also returns these six matrices for the original treated unit.  This function takes as input the list returned by \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
+#' This function creates the necessary sets of matrices for running a placebo MultiSynth analysis.  For each unit in the donor pool, it creates the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices with the given unit assigned as the treated unit and the original treated unit assigned to the donor pool.  It also returns these six matrices for the original treated unit.  This function takes as input the output of \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
 #' 
 #' @param input The output from a call to \code{\link{dataprep}}
 #' 
@@ -63,9 +63,9 @@ PlaceboMSPrep <- function(input){
     return(out)
   } #close function
  
-#' Prepare data matrices for a Leave-One-Out Units MultiSynth Analysis
+#' Prepare Data for a Leave-One-Out Units MultiSynth Analysis
 #' 
-#' This function creates the necessary sets of data matrices for running a leave-one-out units MultiSynth analysis.  For each unit in the donor pool, it creates the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices with a given unit removed from the donor pool.  It also returns these six matrices for original case, with the full donor pool.  This function takes as input the list returned by \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
+#' This function creates the necessary sets of matrices for running a leave-one-out units MultiSynth analysis.  For each unit in the donor pool, it creates the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices with the given unit removed from the donor pool.  It also returns these six matrices for original case, with the full donor pool.  This function takes as input the output of \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
 #' 
 #' @param input The output from a call to \code{\link{dataprep}}
 #' 
@@ -124,9 +124,9 @@ LOOunitsMSPrep  <- function(input){
     return(out)
   } #end prep function 
 
-#' Prepare data matrices for a Leave-One-Out Covariates MultiSynth Analysis
+#' Prepare Data for a Leave-One-Out Covariates MultiSynth Analysis
 #' 
-#' This function creates the necessary sets of data matrices for running a leave-one-out covariates MultiSynth analysis.  For each covariate used in the main analysis, it creates an X0 and X1 matrix excluding a given covariate, copies the original Z0, Z1, Y0plot, Y1plot matrices, and creates a list containing these six matrices. It also returns the original set of matrices, with the full covariate set. This function takes as input the list returned by \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
+#' This function creates the necessary sets of matrices for running a leave-one-out covariates MultiSynth analysis.  For each covariate used in the main analysis, it creates an X0 and X1 matrix excluding a given covariate, copies the original Z0, Z1, Y0plot, Y1plot matrices, and creates a list containing these six matrices. It also returns the original set of matrices, with the full covariate set. This function takes as input the output of \code{\link{dataprep}}.  This function is not intended to be called directly by the user, but rather is called indirectly by \code{\link{fitMultiSynth}}.
 #' 
 #' @param input The output from a call to \code{\link{dataprep}}
 #' 

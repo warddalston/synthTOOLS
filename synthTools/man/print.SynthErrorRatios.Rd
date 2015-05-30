@@ -2,7 +2,7 @@
 % Please edit documentation in R/printSynthErrorRatio.R
 \name{print.SynthErrorRatios}
 \alias{print.SynthErrorRatios}
-\title{Print the RMSPE values for a synthetic control analysis}
+\title{Print the RMSPE values for a Synthetic Control Analysis}
 \usage{
 \method{print}{SynthErrorRatios}(x, digits = 3, ...)
 }
@@ -14,7 +14,7 @@
 \item{...}{Additional arguments passed to other functions}
 }
 \description{
-THis function prints the RMSPE values in a synthetic control analysis, labelling each statistic.
+This function prints the pretreatment root mean square predictive error RMSPE values, posttreatment RMSPE, and the ratio of these two values in a synthetic control analysis, labelling each statistic.
 }
 \details{
 This function is called silently anytime the user sends an object of class SynthErrorRatios directly to the console.

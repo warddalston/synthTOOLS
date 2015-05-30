@@ -4,7 +4,7 @@
 \name{getCase}
 \alias{getCase}
 \alias{getCase,MultiSynth-method}
-\title{Extract prep matrices and fit on one of the cases in a MultiSynth analysis}
+\title{Extract Prep Matrices and Fit for One Cases in a MultiSynth Analysis}
 \usage{
 getCase(input, case)
 

@@ -6,7 +6,7 @@
 \alias{show,LOOunitsMS-method}
 \alias{show,MultiSynth-method}
 \alias{show,PlaceboMS-method}
-\title{Show objects of class "MultiSynth"}
+\title{Show Objects of class "MultiSynth"}
 \usage{
 \S4method{show}{PlaceboMS}(object)
 
@@ -18,7 +18,7 @@
 \item{object}{An object of class MultiSynth.  Can be a placebo analysis or either type of leave-one-out analysis.}
 }
 \description{
-Display the basic information about an object of class "MultiSynth".  This prints to the console the type of MultiSynth analysis, information about the treated unit, the donor pool, and covariate set, and the time periods used in fitting the analysis.  The function is invoked by automatic printing (when an object of class "MultiSynth" is sent to the console, or not assigned after a call to \code{\link{fitMultiSynth}}).
+Displays the basic information about an object of class "MultiSynth".  This prints to the console the type of analysis, name and number the treated unit, units comprising the donor pool, covariate set, and the time periods used in fitting the analysis.  The function is invoked by automatic printing (when an object of class "MultiSynth" is sent to the console, or not assigned after a call to \code{\link{fitMultiSynth}}).
 }
 \details{
 There are methods of show defined for each of the three subclasses of MultiSynth.  The only differences between the show methods for these classes is the title of the output printed to the console.

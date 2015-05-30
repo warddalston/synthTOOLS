@@ -1,6 +1,6 @@
-#' Plot MultiSynth objects
+#' Plot MultiSynth Objects
 #' 
-#' This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.
+#' This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post to pretreatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement "quantity".
 #' 
 #' @param x A MultiSynth object
 #' @param y Should be left blank; not used in this method

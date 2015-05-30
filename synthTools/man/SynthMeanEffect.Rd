@@ -2,7 +2,7 @@
 % Please edit documentation in R/SynthMeanEffect.R
 \name{SynthMeanEffect}
 \alias{SynthMeanEffect}
-\title{Calculate the Average Outcome Gap in Synthetic Control Analysis}
+\title{Calculate the Meane Outcome Gap in a Synthetic Control Analysis}
 \usage{
 SynthMeanEffect(dataprep, synth, begin_time, end_time)
 }
@@ -11,15 +11,15 @@ SynthMeanEffect(dataprep, synth, begin_time, end_time)
 
 \item{synth}{The output of a call to \code{synth}}
 
-\item{begin_time}{A numeric of length one. The beginning of the period to calculate the average gap.}
+\item{begin_time}{A numeric of length one. The beginning of the period to calculate the mean gap.}
 
-\item{end_time}{A numeric of length one. The end of the period to calculate the average gap.}
+\item{end_time}{A numeric of length one. The end of the period to calculate the mean gap.}
 }
 \value{
-A numeric of length one, containing the average difference in outcomes.
+A scalar containing the mean difference in outcomes.
 }
 \description{
-This function calculates the average gap between the observed outcome and a synthetic control's outcome over a user specified time period.  When the user specified time period corresponds to the post-treatment period, this quantity is the average treatment effect (ATE).
+This function calculates the mean gap between the observed outcome and a synthetic control's outcome over a user specified time period.  When the user specified time period corresponds to the post-treatment period, this quantity is the average treatment effect (ATE).
 }
 \examples{
 ##Example: Hainmueller and Diamond's Toy panel dataset

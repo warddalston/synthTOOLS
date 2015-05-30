@@ -16,7 +16,7 @@ SynthRMSPE(dataprep, synth, begin_time, end_time)
 \item{end_time}{A numeric giving the end of the period over which to calculate the RMSPE}
 }
 \value{
-A numeric of lengthing one containing the RMSPE over the given period
+A scalar containing the RMSPE over the given period
 }
 \description{
 This function calculates the root mean square predictive error (RMSPE) of a synthetic control analysis over a user specified time period.  Predictive error refers to the gap between the treated unit's observed outcome and the synthetic control's predicted outcome.  See Abadie, Diamond, Hainmueller (2010, 2015) for the role of this statistic in the synthetic control method.

@@ -4,7 +4,7 @@
 \name{getTreated}
 \alias{getTreated}
 \alias{getTreated,MultiSynth-method}
-\title{Extract information about which unit is the treatment unit in a MultiSynth analysis}
+\title{Extract Name and Number of Treated Unit in MultiSynth Analysis}
 \usage{
 getTreated(input)
 
@@ -14,10 +14,13 @@ getTreated(input)
 \item{input}{An object of class "MultiSynth"}
 }
 \value{
-A character vector containing the name and number of hte treated unit
+A character vector containing the name and number of the treated unit
 }
 \description{
 Returns a vector containing the name and unit number of the treated unit in a MultiSynth object.
+}
+\details{
+If the user does not supply an arguement to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

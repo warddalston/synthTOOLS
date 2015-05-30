@@ -4,7 +4,7 @@
 \name{getFits}
 \alias{getFits}
 \alias{getFits,MultiSynth-method}
-\title{Extract the synthetic control fits from a MultiSynth object}
+\title{Extract the Synthetic Control Fits from a MultiSynth Object}
 \usage{
 getFits(input)
 
@@ -17,7 +17,7 @@ getFits(input)
 A list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out cases
 }
 \description{
-Returns a list containing the output from \code{\link{synth}} for each of the placebo/leave-one-out cases.
+Returns a list containing the \code{\link{synth}} output for each case in a MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

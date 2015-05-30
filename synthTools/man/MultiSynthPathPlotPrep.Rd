@@ -2,7 +2,7 @@
 % Please edit documentation in R/MultiSynthPlotPrepFunctions.R
 \name{MultiSynthPathPlotPrep}
 \alias{MultiSynthPathPlotPrep}
-\title{Extract values necessary for plotting the outcome trajectory for placebo/leave-one-out Synthetic fits}
+\title{Extract Values for Plotting the Outcome Trajectories for a MultiSynth Analysis}
 \usage{
 MultiSynthPathPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 }
@@ -15,7 +15,7 @@ MultiSynthPathPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 This function extracts the values necessary for plotting the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}}.
 }
 \details{
-The function is called as part of \code{\link{path.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.
+The function is called as part of \code{\link{path.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing outputs from \code{\link{dataprep}} and \code{\link{synth}}.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

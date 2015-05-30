@@ -1,8 +1,7 @@
-#' Add lines representing placebo/leave-one-out anlayses to a path plot or gaps plot
+#' Add Lines Representing Placebo/Leave-One-Out Anlayses to a Path or Gaps plot
 #' 
 #' This function plots the lines for the placebo/leave-one-out synthetic controls when \code{\link{path.plot}} or \code{\link{gaps.plot}} is called on a \code{\link{MultiSynth}} object.  It is not intended to be called directly by the user.  
 #' 
-#' @usage MultiSynthPlotLines(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/4, cex = 1, t = "l")
 #' 
 #' @param MultiSynthPlotPrep_obj A list containing the x and y values fore each of the lines to be plotted
 #' @param col Color to plot lines.  Defaults to gray.
@@ -10,7 +9,7 @@
 #' @param cex Expansion parameter for plotting. Defaults to 1.
 #' @param t Plotting type.  Defaults to "l" 
 #' 
-#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}} and \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the output of \code{\link{MultiSynthPathPlotPrep}} or \code{\link{MultiSynthGapPlotPrep}} as its main input. If one wants to use a custom input object, the input should contain two elements.  The element containing x values should be called "x.info", and the element containing y values should be called y.info.  
+#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}} and \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the output of \code{\link{MultiSynthPathPlotPrep}} or \code{\link{MultiSynthGapPlotPrep}} as its main input. If one wants to use a custom input object, the input should be a list with each element being a matrix with two columns. One of the columns, contianing x values, should be called "x.info", the other, with y values, called "y.info".    
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -35,16 +34,14 @@ MultiSynthPlotLines <- function(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/
 
 
 
-#' Extract values necessary for plotting the gap in outcome trajectory for placebo/leave-one-out Synthetic fits
+#' Extract Values for Plotting the Gaps in Outcome for a MultiSynth Analysis
 #' 
-#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{gaps.plot}}.  
-#' 
-#' @usage MultiSynthGapPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
+#' This function extracts the values necessary for plotting gaps in the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} method for \code{\link{gaps.plot}}.  
 #' 
 #' @param MultiSynthPrep_obj A list the dataprep matrices for each placebo/leave-one-out analysis.
 #' @param MultiSynth_obj A list containing the output from \code{synth} for each placebo/leave-one-out analysis. 
 #' 
-#' @details The function is called as part of \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.    
+#' @details The function is called as part of \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main inputs. If one wants to use a custom input, these should be lists containing outputs from \code{\link{dataprep}} and \code{\link{synth}}.    
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -72,16 +69,14 @@ MultiSynthGapPlotPrep <- function(MultiSynthPrep_obj, MultiSynth_obj){ #the inpu
   }, MultiSynthPrep_obj, MultiSynth_obj, SIMPLIFY=FALSE)
 } # close function
 
-#' Extract values necessary for plotting the outcome trajectory for placebo/leave-one-out Synthetic fits
+#' Extract Values for Plotting the Outcome Trajectories for a MultiSynth Analysis
 #' 
 #' This function extracts the values necessary for plotting the outcome trajectory for placebo/leave-one-out synthetic controls from a list of dataprep matrices and a list of outputs from \code{\link{synth}}, such as are found in \code{\link{MultiSynth}} objects.  It is not intended to be called directly by the user, but is rather called as part of the the \code{\link{MultiSynth}} methods for \code{\link{path.plot}}.  
-#' 
-#' @usage MultiSynthPathPlotPrep(MultiSynthPrep_obj, MultiSynth_obj)
 #' 
 #' @param MultiSynthPrep_obj A list the dataprep matrices for each placebo/leave-one-out analysis.
 #' @param MultiSynth_obj A list containing the output from \code{synth} for each placebo/leave-one-out analysis. 
 #' 
-#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing dataprep objects and the output of synth.    
+#' @details The function is called as part of \code{\link{path.plot,MultiSynth-method}}.  It is designed to take the the lists in the preps and fits slot of a \code{\link{MultiSynth}} object as its main input. If one wants to use a custom input, these should be lists containing outputs from \code{\link{dataprep}} and \code{\link{synth}}.    
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 

@@ -6,7 +6,7 @@
 \alias{plot,LOOunitsMS,ANY-method}
 \alias{plot,MultiSynth-method}
 \alias{plot,PlaceboMS,ANY-method}
-\title{Plot MultiSynth objects}
+\title{Plot MultiSynth Objects}
 \usage{
 \S4method{plot}{LOOunitsMS,ANY}(x, y, quantity = "Ratios", main = NA, ...)
 
@@ -27,7 +27,7 @@
 \item{...}{further arguments passed on to the default method of plot}
 }
 \description{
-This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post-to-pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement quantity.
+This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post to pretreatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement "quantity".
 
 
 

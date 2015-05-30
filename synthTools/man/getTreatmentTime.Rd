@@ -4,7 +4,7 @@
 \name{getTreatmentTime}
 \alias{getTreatmentTime}
 \alias{getTreatmentTime,MultiSynth-method}
-\title{Extract information about when treatment occurs MultiSynth analysis}
+\title{Extract the Time Treatment is Administered in a MultiSynth Analysis}
 \usage{
 getTreatmentTime(input)
 
@@ -14,10 +14,10 @@ getTreatmentTime(input)
 \item{input}{An object of class "MultiSynth"}
 }
 \value{
-A numeric vector of length one containing the time treatment is administered
+A scalar containing the time treatment is administered
 }
 \description{
-Returns the user-given treatement time point in a MultiSynth object
+Returns the treatement is administered in a MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

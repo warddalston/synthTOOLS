@@ -165,7 +165,7 @@ setMethod(f = "getTreatmentTime",
             return(input@treatment_time)
           })
 
-#' Extract prep matrices and fit on one of the cases in a MultiSynth analysis
+#' Extract Prep Matrices and Fit for One Cases in a MultiSynth Analysis
 #' 
 #' This function allows the user to extract the objects necessary to investigate any single case in a MultiSynth anlaysis.  It returns both the dataprep matrices and the output of the call to \code{\link{synth}}.  Together these can be used by various other functions, such as \code{\link{synth.tab}}, \code{\link{path.plot}}, \code{\link{SynthErrorRatios}}, \code{\link{SynthMeanEffect}}, and \code{\link{gaps.plot}}. 
 #' 
@@ -199,15 +199,13 @@ setMethod(f = "getCase",
             return(list(dataprep = input@preps[case], synth.res = input@fits[case]))
           })
 
-#' Extract the statistics for estimated synthetic control fits in a MultiSynth object
+#' Extract the Statistics for Estimated Synthetic Control Fits in a MultiSynth Analysis
 #' 
-#' Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each of the placebo/leave-one-out cases and the main case in a MultiSynth analysis.  
-#' 
-#' @usage getStats(input)
+#' Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.  
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @return A matrix containing the statistics for the MultiSynth cases and main case.
+#' @return A matrix containing the estimated statistics for each case
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -219,7 +217,6 @@ setMethod(f = "getCase",
 #' @seealso \code{\link{getTreatmentTime}}
 #' @seealso \code{\link{getCase}}
 #' 
-#' @aliases getStats,MultiSynth-method
 #' @rdname getStats
 #' @export
 setGeneric(name = "getStats",

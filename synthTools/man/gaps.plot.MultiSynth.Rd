@@ -3,7 +3,7 @@
 \docType{methods}
 \name{gaps.plot,MultiSynth-method}
 \alias{gaps.plot,MultiSynth-method}
-\title{Gaps plots for MultiSynth Objects}
+\title{Gaps Plots for MultiSynth Objects}
 \usage{
 \S4method{gaps.plot}{MultiSynth}(synth.res = NA, dataprep.res = NA,
   Ylab = c("Title"), Xlab = c("Time"),
@@ -33,7 +33,7 @@ Plots the gaps in the trajectory of the outcome variable for the treated unit an
 \details{
 The user need only prvide an object of class \code{MultiSynth} as the arguement to synth.res for the function to work. Two other arguments, dataprep.res and tr.intake should be left as NA.  Other arguments are optional.
 
-For each synthetic control fit, the synthetic control's outcome trajectory can be calculated as fitMultiSynth.out@preps$"control name"$Y0plot %%**%% fitMultiSynth.out@fits$"control name"$solution.w, where "control name" is the name of the case of interest.
+For each synthetic control fit, the synthetic control's outcome trajectory can be calculated as fitMultiSynth.out@preps$"control name"$Y0plot %*% fitMultiSynth.out@fits$"control name"$solution.w, where "control name" is the name of the case of interest.
 }
 \examples{
 \dontrun{

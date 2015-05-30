@@ -4,7 +4,7 @@
 \name{getStats}
 \alias{getStats}
 \alias{getStats,MultiSynth-method}
-\title{Extract the statistics for estimated synthetic control fits in a MultiSynth object}
+\title{Extract the Statistics for Estimated Synthetic Control Fits in a MultiSynth Analysis}
 \usage{
 getStats(input)
 
@@ -14,10 +14,10 @@ getStats(input)
 \item{input}{An object of class "MultiSynth"}
 }
 \value{
-A matrix containing the statistics for the MultiSynth cases and main case.
+A matrix containing the estimated statistics for each case
 }
 \description{
-Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each of the placebo/leave-one-out cases and the main case in a MultiSynth analysis.
+Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}
