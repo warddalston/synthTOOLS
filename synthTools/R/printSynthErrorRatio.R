@@ -1,6 +1,6 @@
 #' Print the RMSPE values for a Synthetic Control Analysis
 #' 
-#' This function prints the pretreatment root mean square predictive error RMSPE values, posttreatment RMSPE, and the ratio of these two values in a synthetic control analysis, labelling each statistic. 
+#' This function prints the pre-treatment root mean square predictive error RMSPE values, post-treatment RMSPE, and the ratio of these two values in a synthetic control analysis, labelling each statistic. 
 #' 
 #' @param x An object of class SynthErrorRatios
 #' @param digits The number of digits to print, defaults to 3

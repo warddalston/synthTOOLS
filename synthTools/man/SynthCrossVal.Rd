@@ -26,11 +26,11 @@ unit.names.variable = NA, ...)
 
 \item{predictors.op}{A character string identifying the method (operator) to be used on the predictors.  Default is "mean".}
 
-\item{special.predictors}{A list object identifying additional numeric predictors and their assocaited pre-treatment years and operators.}
+\item{special.predictors}{A list object identifying additional numeric predictors and their associated pre-treatment years and operators.}
 
-\item{dependent}{A scalar identifying the column number or a string identifying the column name correspoding to the numeric dependent (outcome) variable.}
+\item{dependent}{A scalar identifying the column number or a string identifying the column name corresponding to the numeric dependent (outcome) variable.}
 
-\item{unit.variable}{A scalar identifying the column number or a string identifying the column name correspoding to the column containing unit numbers.  Must be numeric.}
+\item{unit.variable}{A scalar identifying the column number or a string identifying the column name corresponding to the column containing unit numbers.  Must be numeric.}
 
 \item{time.variable}{A scalar identifying the column number or a string identifying the column name corresponding to the period (time) data.  This must be numeric.}
 
@@ -48,7 +48,7 @@ unit.names.variable = NA, ...)
 
 \item{unit.names.variable}{An optional scalar or column-name character string identifying the column with the names of the units.  This must be a character vector.}
 
-\item{...}{futher arguments to be passed to \code{synth}}
+\item{...}{further arguments to be passed to \code{synth}}
 }
 \value{
 A list containing four elements:
@@ -67,7 +67,7 @@ According to Abadie, Diamond, and Hainmueller (2015), this procedure minimizes o
 
  This function implements this cross validation method by iteratively creating dataprep objects and fitting synthetic controls.  It fits two synthetic controls: the training synthetic control and the final synthetic control.
 
-  The use of the function is similar to \code{\link{dataprep}} except that the user must now specifiy which time periods comprising the training and validation periods, and the optimization period for the final synthetic control.
+  The use of the function is similar to \code{\link{dataprep}} except that the user must now specify which time periods comprise the training and validation periods, and the optimization period for the final synthetic control.
 
 For more on the input required for predictors.op and special.predictors, see \code{\link{dataprep}}.  The code does not currently allow for cross-validation of special predictors; the same values are used in both the training synthetic control and final synthetic control for these predictors.
 

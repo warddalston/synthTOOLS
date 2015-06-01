@@ -1,13 +1,13 @@
 #' Calculate the Mean Gap in Outcome for Multiple Synthetic Control Fits
 #' 
-#' This function calculates the mean gap in outcome between the treated unit and the synthetic control unit over a user specified period for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep}} outputs and \code{\link{synth}} outputs, as well as to provide the beggining and end time periods over which to calculate the mean gap.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
+#' This function calculates the mean gap in outcome between the treated unit and the synthetic control unit over a user specified period for multiple synthetic control fits.  It requires the user to provide a list of \code{\link{dataprep}} outputs and \code{\link{synth}} outputs, as well as to provide the beginning and end time periods over which to calculate the mean gap.  It is not designed to be used directly by the user, by rather, is called as part of \code{\link{fitMultiSynth}}.  
 #'  
 #'  @param MultiSynthPrep_obj A list of outputs from the dataprep function
 #'  @param MultiSynth_obj A list of outputs from the synth function
-#'  @param begin_time A numeric containing the beggining of the period over which to calculate the average gap
+#'  @param begin_time A numeric containing the beginning of the period over which to calculate the average gap
 #'  @param end_time A numeric containing the end of the period over which to calculate the average gap
 #'  
-#'  @details This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give the "preps" slot as the first arguement, and "fits" slot as the second arguement. 
+#'  @details This function is called automatically by \code{\link{fitMultiSynth}}.  However, it can also be called independently.  To do this with a \code{\link{MultiSynth}} object, the user should give the "preps" slot as the first arguement, and "fits" slot as the second argument. 
 #'  
 #'  Note that when the user provided time period corresponds to the entire post-treatment period, the quantity calculated by this function is the average treatment effect (ATE).
 #'  

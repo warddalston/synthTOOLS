@@ -27,12 +27,13 @@
  # fit a placebo analysis
  fitMultiSynth.out <- fitMultiSynth(dataprep.out, treatment_time = 1991)
  
- readline("press any key to continue").
  # There is an show method defined for MultiSynth objects
+ readline("press any key to continue")
  fitMultiSynth.out
 
- readline("press any key to continue"). 
+ 
  # There is also a summary method, which gives values for RMSPE statistics, the ATE, and covariate loss
+ readline("press any key to continue")
  summary(fitMultiSynth.out)
 
  # plot can be used to view the distributions of these statistics one at a time
@@ -49,42 +50,42 @@
 
  # Several functions exist to extract data from a MultiSynth object:
 
- readline("press any key to continue").
+
  #the original dataprep object
+ readline("press any key to continue")
  getInput(fitMultiSynth.out)
 
- readline("press any key to continue").
  # dataprep matrices for placebo cases
+ readline("press any key to continue")
  getPreps(fitMultiSynth.out)
 
- readline("press any key to continue").
  # output from Synth for all fits
+ readline("press any key to continue")
  getFits(fitMultiSynth.out)
 
- readline("press any key to continue").
  # Which case is treated?
+ readline("press any key to continue")
  getTreated(fitMultiSynth.out)
 
- readline("press any key to continue").
  # When is treatment?
+ readline("press any key to continue")
  getTreatmentTime(fitMultiSynth.out)
  
- readline("press any key to continue").
  # Pull out just the estimated fit statistics
+ readline("press any key to continue")
  getStats(fitMultiSynth.out)
  
- readline("press any key to continue").
  # Extract everything necessary to analyze one case in dept:
+ readline("press any key to continue")
  getCase(fitMultiSynth.out, "treated.region")
 
- readline("press any key to continue").
  # Leave-one-out analyses can be fitted as well
+ readline("press any key to continue")
  MultiSynthLOO.out <- fitMultiSynth(dataprep.out, type = "units", treatment_time = 1991)
  
- readline("press any key to continue").
  #view this analysis
+ readline("press any key to continue")
  MultiSynthLOO.out
  
- readline("press any key to continue").
  # Another option for plotting a MultiSynth analysis is path.plot
  path.plot(MultiSynthLOO.out)

@@ -13,13 +13,13 @@ getCase(input, case)
 \arguments{
 \item{input}{An object of class "MultiSynth"}
 
-\item{case}{The name of one of the cases.  For a placebo analysis, this is the unit name of interest.  For leave-one-out analyses, this is "minus <<excluded unit/covaraite>>".  To see the full list of names in a MultiSynth analaysis, one can call \code{names(fitMultiSynth.out@preps)}.}
+\item{case}{The name of one of the cases.  For a placebo analysis, this is the unit name of interest.  For leave-one-out analyses, this is "minus <<excluded unit/covariate>>".  To see the full list of names in a MultiSynth analysis, one can call \code{names(fitMultiSynth.out@preps)}.}
 }
 \value{
-A list containing the datapre matrices and synth output for this case
+A list containing the dataprep matrices and synth output for this case
 }
 \description{
-This function allows the user to extract the objects necessary to investigate any single case in a MultiSynth anlaysis.  It returns both the dataprep matrices and the output of the call to \code{\link{synth}}.  Together these can be used by various other functions, such as \code{\link{synth.tab}}, \code{\link{path.plot}}, \code{\link{SynthErrorRatios}}, \code{\link{SynthMeanEffect}}, and \code{\link{gaps.plot}}.
+This function allows the user to extract the objects necessary to investigate any single case in a MultiSynth analysis.  It returns both the dataprep matrices and the output of the call to \code{\link{synth}}.  Together these can be used by various other functions, such as \code{\link{synth.tab}}, \code{\link{path.plot}}, \code{\link{SynthErrorRatios}}, \code{\link{SynthMeanEffect}}, and \code{\link{gaps.plot}}.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

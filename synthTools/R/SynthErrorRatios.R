@@ -1,12 +1,12 @@
 #' Calculate Root Mean Square Predictive Errors for a Synthetic Control Analysis
 #' 
-#' This function calculates three statistics important for assessing the goodness of fit and significance of a synthetic controls analysis.  These are the pretreatment root mean square predictive error (RMSPE), posttreatment RMSPE, and post/pre treatment RMSPE ratio, as described in Abadie, Diamond, and Hainmueller (2015).    
+#' This function calculates three statistics important for assessing the goodness of fit and significance of a synthetic controls analysis.  These are the pre-treatment root mean square predictive error (RMSPE), post-treatment RMSPE, and post/pre treatment RMSPE ratio, as described in Abadie, Diamond, and Hainmueller (2015).    
 #'  
-#'  @param dataprep Ouput from a call to \code{dataprep}
+#'  @param dataprep Output from a call to \code{dataprep}
 #'  @param synth Output from a call to \code{synth}
 #'  @param treatment_time A numeric giving the time treatment is administered.
 #'  
-#'  @details  As described in Abadie, Diamond, Hainmueller (2010, 2014), these statistics allow the reasercher to investigate both the goodness of fit and significance of synthetic control analyses. Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Posttreatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.  
+#'  @details  As described in Abadie, Diamond, Hainmueller (2010, 2014), these statistics allow the researcher to investigate both the goodness of fit and significance of synthetic control analyses. Pre-treatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Post-treatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.  
 #'    
 #' 
 #' @return A list with the elements

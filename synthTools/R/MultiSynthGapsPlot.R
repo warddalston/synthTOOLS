@@ -11,7 +11,7 @@
 #' @param Main Optional main title
 #' @param Z.plot Logical. If TRUE only the pre-treatment period is plotted.
 #' 
-#' @details The user need only prvide an object of class \code{MultiSynth} as the arguement to synth.res for the function to work. Two other arguments, dataprep.res and tr.intake should be left as NA.  Other arguments are optional. 
+#' @details The user need only provide an object of class \code{MultiSynth} as the argument to synth.res for the function to work. Two other arguments, dataprep.res and tr.intake should be left as NA.  Other arguments are optional. 
 #' 
 #' For each synthetic control fit, the synthetic control's outcome trajectory can be calculated as fitMultiSynth.out@@preps$"control name"$Y0plot %*% fitMultiSynth.out@@fits$"control name"$solution.w, where "control name" is the name of the case of interest.  
 #' 

@@ -4,7 +4,7 @@
 \name{getInput}
 \alias{getInput}
 \alias{getInput,MultiSynth-method}
-\title{Extract the Dataprep Output Esed as the Base of a MultiSynth Analysis}
+\title{Extract the Dataprep Output Used as the Base of a MultiSynth Analysis}
 \usage{
 getInput(input)
 

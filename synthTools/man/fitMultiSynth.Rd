@@ -8,7 +8,7 @@ fitMultiSynth(input, type = "placebo", treatment_time = NA,
   parallel = FALSE, ...)
 }
 \arguments{
-\item{input}{The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the arguement "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised.}
+\item{input}{The output of a call to \code{dataprep}.  Note, that the call to dataprep must include values for the argument "time.plot" that include the post-treatment period as well as the pre-treatment period.  Also, including character unit names is highly advised.}
 
 \item{type}{A string describing what type of MultiSynth analysis to perform.  Defaults to "placebo".  Other options include "units" for a leave-one-out units analysis, and "covariates" for a leave-one-out covariates}
 
@@ -16,16 +16,16 @@ fitMultiSynth(input, type = "placebo", treatment_time = NA,
 
 \item{parallel}{Logical flag.  If TRUE, than fitting is done in parallel to increase speed.}
 
-\item{...}{Additional arguements to be passed to \code{\link{synth}}}
+\item{...}{Additional arguments to be passed to \code{\link{synth}}}
 }
 \value{
 An object of class \code{\link{MultiSynth}} containing
 \itemize{
-\item \code{input} The dataprep object for synthetic control anlaysis being studied.
+\item \code{input} The dataprep object for synthetic control analysis being studied.
 \item \code{preps} A list with the X0, X1, Z0, Z1, Y0plot, and Y1plot for each of the placebo/leave-one-out case and the treated/full donor pool/full covariate set case.
 \item \code{fits}  A list with the output of \code{synth} for each of the placebo/leave-one-out cases and the treated/full donor pool/full covariate set case.
 ' \item \code{treated} A character vector of length two giving the name and number of the treated unit (if names are not supplied, the number is repeated)
-\item \code{treatment_time} A scalar giving the time treatment is recieved
+\item \code{treatment_time} A scalar giving the time treatment is received
 \item \code{PreRMSPE} A numeric vector giving the root mean square predictive error (RMSPE) in the pre-treatment period for each case.
 \item \code{PostRMSPE} A numeric vector giving the RMSPE in the post-treatment period for each case.
 \item \code{RMSPEratio} A numeric vector giving the ratio of post-treatment RMSPE to pre-treatment RMSPE for each case.
@@ -35,18 +35,18 @@ An object of class \code{\link{MultiSynth}} containing
  }
 }
 \description{
-Implements placebo and leave-one-out analyses for synthetic control studies, as described by Abadie, Diamond, and Hainmueller (2010, 2015).  These analyses are known as "MultiSynth" analyses becuase they require the iterative fitting of multiple synthetic controls.  \code{fitMultSynth} performs these analyses by building off of Hainmueller and Diamond's \code{synth} package.
+Implements placebo and leave-one-out analyses for synthetic control studies, as described by Abadie, Diamond, and Hainmueller (2010, 2015).  These analyses are known as "MultiSynth" analyses because they require the iterative fitting of multiple synthetic controls.  \code{fitMultiSynth} performs these analyses by building off of Hainmueller and Diamond's \code{synth} package.
 }
 \details{
-Three types of analyses are implemented through \code{fitMultiSynth}: in-space placebo, leave-one-out units, and leave-one-out covariates.  In a placebo analysis, synthetic controls are iteratively fit, each iteration assigning a different unit in the donor pool as the treated unit and placing the original treated unit into the donor pool.  In a leave-one-out units analysis, synthetic controls are iteratively fit, each iteration ommitting a single unit from the donor pool.  In a leave-one-out covariates analysis, synthetic controls are iteratively fit, each iteration omitting a single covariate from set of covariates.
+Three types of analyses are implemented through \code{fitMultiSynth}: in-space placebo, leave-one-out units, and leave-one-out covariates.  In a placebo analysis, synthetic controls are iteratively fit, each iteration assigning a different unit in the donor pool as the treated unit and placing the original treated unit into the donor pool.  In a leave-one-out units analysis, synthetic controls are iteratively fit, each iteration omitting a single unit from the donor pool.  In a leave-one-out covariates analysis, synthetic controls are iteratively fit, each iteration omitting a single covariate from set of covariates.
 
- Refer to the synthetic control study being analyzed in the placebo or leave-one-out analysis as the "main case".  \code{fitMultiSynth} performs a placebo or leave-one-out analysis on the main case in three steps.  First, it creates  all of the necessary matricies for these placebo/leave-one-out cases using only the output from \code{\link{dataprep}} from the main case. Second, it fits synthetic controls to the main case and all of the placbeo/leave-one-out cases.
+ Refer to the synthetic control study being analyzed in the placebo or leave-one-out analysis as the "main case".  \code{fitMultiSynth} performs a placebo or leave-one-out analysis on the main case in three steps.  First, it creates  all of the necessary matrices for these placebo/leave-one-out cases using only the output from \code{\link{dataprep}} from the main case. Second, it fits synthetic controls to the main case and all of the placebo/leave-one-out cases.
 
    Finally, it calculates statistics useful for making inferences on the robustness and significance of results from the main case. These statistics are: the Root Mean Square Predictive Error (RMSPE) in the pre-treatment phase, the RMSPE in the post-treatment phase, the ratio of post to pretreatment RMSPE, covariate loss, and the average treatment effect in the post-treatment phase.
 
- The main user supplied arguments to \code{fitMultiSynth} are the output of a call to \code{dataprep} for the main case and the time treatment is administered.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covariates".  Finally, the user has the option to run the anlaysis in parallel, to speed computation of potentially many synthetic control fits.
+ The main user supplied arguments to \code{fitMultiSynth} are the output of a call to \code{dataprep} for the main case and the time treatment is administered.  It also requires the user to choose what type of analysis to perform, either "placebo", "units" or "covariates".  Finally, the user has the option to run the analysis in parallel, to speed computation of potentially many synthetic control fits.
 
- The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the main case input, the prep matricies and  \code{synth} output for the main case and placebo/leave-one-out cases, information on the treated case and treatment time, and vectors including several statstics about the placebo/leave-one-out synthetic fits. Further analysis can be carried out using the functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot}, all of which have methods for \code{MultiSynth} objects.
+ The output of \code{fitMultiSynth} is an object of class \code{\link{MultiSynth}}.  This object contains the main case input, the prep matrices and  \code{synth} output for the main case and placebo/leave-one-out cases, information on the treated case and treatment time, and vectors including several statistics about the placebo/leave-one-out synthetic fits. Further analysis can be carried out using the functions \code{summary}, \code{plot}, \code{path.plot}, and \code{gaps.plot}, all of which have methods for \code{MultiSynth} objects.
 
 The typical work flow for a \code{MultiSynth} analysis is as follows.  First, the user needs to create a \code{\link{dataprep}} object for the synthetic control study to be analyzed.  Second, the user runs \code{fitMultiSynth} using this \code{dataprep} output as the main argument.  Third, the user can investigate the quality of placebo controls or leave-one-out controls by calling \code{summary} on a \code{MultiSynth} object.  Fourth, the fits can be inspected visually using either \code{gaps.plot} or \code{path.plot} with a \code{MultiSynth} object as input.
 }

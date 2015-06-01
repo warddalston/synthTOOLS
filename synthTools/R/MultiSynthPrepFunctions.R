@@ -10,7 +10,7 @@
 #'   \itemize{
 #'   \item{X0}{A matrix of predictor values for donor pool units}
 #'   \item{X1}{A vector of predictor values for the treated unit}
-#'   \item{Z0}{A matrix of pre-treatment outcome vaules for donor pool units}
+#'   \item{Z0}{A matrix of pre-treatment outcome values for donor pool units}
 #'   \item{Z1}{A vector of pre-treatment outcome values for the treated unit}
 #'   \item{Y0plot}{A matrix of outcome values for the donor pool units}
 #'   \item{Y1plot}{A vector of outcome values for the treated unit}
@@ -75,7 +75,7 @@ PlaceboMSPrep <- function(input){
 #'   \itemize{
 #'   \item{X0}{A matrix of predictor values for donor pool units}
 #'   \item{X1}{A vector of predictor values for the treated unit}
-#'   \item{Z0}{A matrix of pre-treatment outcome vaules for donor pool units}
+#'   \item{Z0}{A matrix of pre-treatment outcome values for donor pool units}
 #'   \item{Z1}{A vector of pre-treatment outcome values for the treated unit}
 #'   \item{Y0plot}{A matrix of outcome values for the donor pool units}
 #'   \item{Y1plot}{A vector of outcome values for the treated unit}
@@ -136,7 +136,7 @@ LOOunitsMSPrep  <- function(input){
 #'   \itemize{
 #'   \item{X0}{A matrix of predictor values for donor pool units}
 #'   \item{X1}{A vector of predictor values for the treated unit}
-#'   \item{Z0}{A matrix of pre-treatment outcome vaules for donor pool units}
+#'   \item{Z0}{A matrix of pre-treatment outcome values for donor pool units}
 #'   \item{Z1}{A vector of pre-treatment outcome values for the treated unit}
 #'   \item{Y0plot}{A matrix of outcome values for the donor pool units}
 #'   \item{Y1plot}{A vector of outcome values for the treated unit}

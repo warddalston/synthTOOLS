@@ -17,7 +17,7 @@ getTreatmentTime(input)
 A scalar containing the time treatment is administered
 }
 \description{
-Returns the treatement is administered in a MultiSynth analysis.
+Returns the time treatment is administered in a MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

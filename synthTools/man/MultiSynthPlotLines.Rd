@@ -2,7 +2,7 @@
 % Please edit documentation in R/MultiSynthPlotPrepFunctions.R
 \name{MultiSynthPlotLines}
 \alias{MultiSynthPlotLines}
-\title{Add Lines Representing Placebo/Leave-One-Out Anlayses to a Path or Gaps plot}
+\title{Add Lines Representing Placebo/Leave-One-Out Analyses to a Path or Gaps plot}
 \usage{
 MultiSynthPlotLines(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/4,
   cex = 1, t = "l")
@@ -22,7 +22,7 @@ MultiSynthPlotLines(MultiSynthPlotPrep_obj, col = "gray48", lwd = 3/4,
 This function plots the lines for the placebo/leave-one-out synthetic controls when \code{\link{path.plot}} or \code{\link{gaps.plot}} is called on a \code{\link{MultiSynth}} object.  It is not intended to be called directly by the user.
 }
 \details{
-The function is called as part of \code{\link{path.plot,MultiSynth-method}} and \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the output of \code{\link{MultiSynthPathPlotPrep}} or \code{\link{MultiSynthGapPlotPrep}} as its main input. If one wants to use a custom input object, the input should be a list with each element being a matrix with two columns. One of the columns, contianing x values, should be called "x.info", the other, with y values, called "y.info".
+The function is called as part of \code{\link{path.plot,MultiSynth-method}} and \code{\link{gaps.plot,MultiSynth-method}}.  It is designed to take the output of \code{\link{MultiSynthPathPlotPrep}} or \code{\link{MultiSynthGapPlotPrep}} as its main input. If one wants to use a custom input object, the input should be a list with each element being a matrix with two columns. One of the columns, containing x values, should be called "x.info", the other, with y values, called "y.info".
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

@@ -20,14 +20,14 @@
 
 \item{y}{Should be left blank; not used in this method}
 
-\item{quantity}{The quantity to plot.  Can be "Ratios" for RMSPE ratio, "Pre" for pretreatment RMSPE, "Post" for posttreatment RMSPE, "ATE" for ATEs, or "Cov" for covariate balance.  Defaults to "Ratios".}
+\item{quantity}{The quantity to plot.  Can be "Ratios" for RMSPE ratio, "Pre" for pre-treatment RMSPE, "Post" for post-treatment RMSPE, "ATE" for ATEs, or "Cov" for covariate balance.  Defaults to "Ratios".}
 
 \item{main}{Optional main title. Defaults to "<<Quantity to plot>> for <<type of MultiSynth>> Analysis of <<treated unit name>>".}
 
 \item{...}{further arguments passed on to the default method of plot}
 }
 \description{
-This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pretreatment RMSPEs, posttreatment RMSPEs, post to pretreatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the arguement "quantity".
+This function plots the distribution of values for the statistics calculated in a MultiSynth analysis.  It can plot five quantities: pre-treatment RMSPEs, post-treatment RMSPEs, post- to pre-treatment RMSPE ratios, ATEs, and covariate loss.  The user chooses which quantity to plot through the argument "quantity".
 
 
 

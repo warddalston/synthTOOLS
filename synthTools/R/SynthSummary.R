@@ -3,12 +3,12 @@
 #' This function builds upon \code{\link{synth.tab}} to summarize the results of a synthetic control analysis.  It prints the weights assigned to covariates, average covariate values for the treated unit and the synthetic control unit, weights assigned to donor pool units, values of the pre and post treatment Root Mean Square Predictive Error (RMSPE), their ratio, the average treatment effect, and the covariate loss (taken from the output of a call to \code{\link{synth}}. All of the matrices and statistics printed are also returned invisibly.  
 #'  
 #'  @param dataprep The output of a call to dataprep
-#'  @param synth The output of a call to synth.  This object should be created using the same dataprep output as given for the first arguement.  
+#'  @param synth The output of a call to synth.  This object should be created using the same dataprep output as given for the first argument.  
 #'  @param treatment_time A scalar giving the time period in which treatment is administered.
 #'  @param digits A scalar giving the number of digits to print.  Defaults to three.  
 #'  
 #'  @details 
-#'  The covariate and unit weights allow the user to assess which covariates and units are most important for the construction of the synthetic control.  The values taken by the synthetic control and the treated unit on predictors, as well as the covariate loss statistic, allow the user to determine the extent to which the synthetic control replicates the relevent observable features of the treated unit.
+#'  The covariate and unit weights allow the user to assess which covariates and units are most important for the construction of the synthetic control.  The values taken by the synthetic control and the treated unit on predictors, as well as the covariate loss statistic, allow the user to determine the extent to which the synthetic control replicates the relevant observable features of the treated unit.
 #'  
 #'      The RMSPE statistics allow the user to determine how well the synthetic control replicates the outcome trajectory in the pretreatment period and the extent of divergence between the treated and synthetic control unit in the post-treatment period.  The RMSPE ratio statistic combines these two, taking large values only when there is a good fit and a large treatment effect, as described in Abadie, Diamond, Hainmueller (2015). 
 #'  

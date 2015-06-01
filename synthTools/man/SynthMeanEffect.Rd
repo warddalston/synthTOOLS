@@ -2,7 +2,7 @@
 % Please edit documentation in R/SynthMeanEffect.R
 \name{SynthMeanEffect}
 \alias{SynthMeanEffect}
-\title{Calculate the Meane Outcome Gap in a Synthetic Control Analysis}
+\title{Calculate the Mean Outcome Gap in a Synthetic Control Analysis}
 \usage{
 SynthMeanEffect(dataprep, synth, begin_time, end_time)
 }

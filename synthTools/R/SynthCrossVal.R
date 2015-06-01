@@ -20,9 +20,9 @@
 #' @param foo The dataframe with panel data
 #' @param predictors A vector of column numbers of column-name character strings that identifies the predictors' columns.  All predictors must be numeric. 
 #' @param predictors.op A character string identifying the method (operator) to be used on the predictors.  Default is "mean".  
-#' @param special.predictors A list object identifying additional numeric predictors and their assocaited pre-treatment years and operators.  
-#' @param dependent A scalar identifying the column number or a string identifying the column name correspoding to the numeric dependent (outcome) variable. 
-#' @param unit.variable A scalar identifying the column number or a string identifying the column name correspoding to the column containing unit numbers.  Must be numeric. 
+#' @param special.predictors A list object identifying additional numeric predictors and their associated pre-treatment years and operators.  
+#' @param dependent A scalar identifying the column number or a string identifying the column name corresponding to the numeric dependent (outcome) variable. 
+#' @param unit.variable A scalar identifying the column number or a string identifying the column name corresponding to the column containing unit numbers.  Must be numeric. 
 #' @param time.variable A scalar identifying the column number or a string identifying the column name corresponding to the period (time) data.  This must be numeric.  
 #' @param treatment.identifier A scalar identifying the "unit.variable" number or a string giving the "unit.name" of the treated unit.  If a string is given, then unit.names.variable cannot be NA. 
 #' @param controls.identifier A numeric vector identifying the "unit.variable" numbers of a string vector giving the "unit.names" of the donor pool units.  If a string vector is given, then unit.names.variable cannot be NA. 
@@ -31,13 +31,13 @@
 #' @param time.optimize.final A numeric vector identifying the pretreatment periods over which the loss function should be minimized for fitting the final synthetic control.
 #' @param time.plot A numeric vector identifying the periods over which results are to be plotted with \code{\link{gaps.plot}} and \code{\link{path.plot}}. Defaults to the periods given in time.optimize.final
 #' @param unit.names.variable An optional scalar or column-name character string identifying the column with the names of the units.  This must be a character vector.
-#' @param ... futher arguments to be passed to \code{synth}
+#' @param ... further arguments to be passed to \code{synth}
 #' 
 #' @details  According to Abadie, Diamond, and Hainmueller (2015), this procedure minimizes out of sample prediction errors.  However, they also note that it tends to produce results similar to the standard fitting procedure, as implemented in \code{\link{synth}}  
 #' 
 #'  This function implements this cross validation method by iteratively creating dataprep objects and fitting synthetic controls.  It fits two synthetic controls: the training synthetic control and the final synthetic control. 
 #'  
-#'   The use of the function is similar to \code{\link{dataprep}} except that the user must now specifiy which time periods comprising the training and validation periods, and the optimization period for the final synthetic control. 
+#'   The use of the function is similar to \code{\link{dataprep}} except that the user must now specify which time periods comprise the training and validation periods, and the optimization period for the final synthetic control. 
 #'   
 #' For more on the input required for predictors.op and special.predictors, see \code{\link{dataprep}}.  The code does not currently allow for cross-validation of special predictors; the same values are used in both the training synthetic control and final synthetic control for these predictors.
 #' 

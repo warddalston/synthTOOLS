@@ -1,4 +1,4 @@
-#' Calculate the Meane Outcome Gap in a Synthetic Control Analysis
+#' Calculate the Mean Outcome Gap in a Synthetic Control Analysis
 #' 
 #' This function calculates the mean gap between the observed outcome and a synthetic control's outcome over a user specified time period.  When the user specified time period corresponds to the post-treatment period, this quantity is the average treatment effect (ATE). 
 #' 

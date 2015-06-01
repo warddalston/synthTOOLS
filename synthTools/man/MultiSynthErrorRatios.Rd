@@ -27,11 +27,11 @@ A list with the elements
 This function calculates three statistics important for assessing the goodness of fit and significance of synthetic controls for objects containing data on several synthetic control fits, such as a \code{\link{MultiSynth}} object. It is not intended to be called directly by the user, but is instead called by \code{\link{fitMultiSynth}}.
 }
 \details{
-The three statistics implemented by this function are the pretreatment Root Mean Square Predictive Error (RMSPE), the posttreatment RMSPE, and the ratio of post to pretreatment RMSPE.  As described in Abadie, Diamond, Hainmueller (2010, 2015), these statistics allow the reasercher to investigate both the goodness of fit and significance of synthetic control analyses.
+The three statistics implemented by this function are the pretreatment Root Mean Square Predictive Error (RMSPE), the post-treatment RMSPE, and the ratio of post- to pre-treatment RMSPE.  As described in Abadie, Diamond, Hainmueller (2010, 2015), these statistics allow the researcher to investigate both the goodness of fit and significance of synthetic control analyses.
 
-Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Posttreatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.
+Pretreatment RMSPE measures goodness of fit in the pre-treatment period; typically, lower values imply a better fit.  Post-treatment RMSPE measures the divergence between the treated unit and the synthetic control after treatment, and in effect, measures how large the effect of treatment is.  The ratio of these two quantities combines these elements, taking on large values only when the fit is good and the effect is large.
 
-The ratios can then be used in combination with placebo analyses, as implmemented by \code{\link{fitMultiSynth}}, to determine the signifiance of a synthetic control analysis.  The logic is that placebo synthetic controls should not have large RMSPE ratios, because no treatment is administered to these units.  As such, if the treated case has a large RMSPE ratio relative to placebo cases, this serves as evidence that the treatment has impacted the outcome.
+The ratios can then be used in combination with placebo analyses, as implemented by \code{\link{fitMultiSynth}}, to determine the signifiance of a synthetic control analysis.  The logic is that placebo synthetic controls should not have large RMSPE ratios, because no treatment is administered to these units.  As such, if the treated case has a large RMSPE ratio relative to placebo cases, this serves as evidence that the treatment has impacted the outcome.
 }
 \examples{
 \dontrun{

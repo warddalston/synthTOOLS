@@ -14,7 +14,7 @@
 \item{...}{Additional arguments passed to other functions}
 }
 \description{
-This function prints the pretreatment root mean square predictive error RMSPE values, posttreatment RMSPE, and the ratio of these two values in a synthetic control analysis, labelling each statistic.
+This function prints the pre-treatment root mean square predictive error RMSPE values, post-treatment RMSPE, and the ratio of these two values in a synthetic control analysis, labelling each statistic.
 }
 \details{
 This function is called silently anytime the user sends an object of class SynthErrorRatios directly to the console.

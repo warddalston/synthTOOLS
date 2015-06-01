@@ -20,7 +20,7 @@ A character vector containing the name and number of the treated unit
 Returns a vector containing the name and unit number of the treated unit in a MultiSynth object.
 }
 \details{
-If the user does not supply an arguement to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.
+If the user does not supply an argument to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

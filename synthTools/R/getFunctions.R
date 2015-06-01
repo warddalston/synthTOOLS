@@ -1,4 +1,4 @@
-#' Extract the Dataprep Output Esed as the Base of a MultiSynth Analysis
+#' Extract the Dataprep Output Used as the Base of a MultiSynth Analysis
 #' 
 #' Returns the output of a call to dataprep that forms the basis of a MultiSynth analysis.  This allows the user to investigate the X0, X1, Z0, Z1, Y0plot, and Y1plot of the actual treated/full donor pool/full covariate set case. 
 #' 
@@ -33,7 +33,7 @@ setMethod(f = "getInput",
 
 #' Extract the Data Matrices for All Cases in a MultiSynth Analysis
 #' 
-#' Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each case. Each element of this list is a list containing the six relevent matrices for each placebo/leave-one-out case.    
+#' Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each case. Each element of this list is a list containing the six relevant matrices for each placebo/leave-one-out case.    
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
@@ -103,7 +103,7 @@ setMethod(f = "getFits",
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
-#' @details If the user does not supply an arguement to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.  
+#' @details If the user does not supply an argument to \code{unit.names.variable} in the original call to \code{\link{dataprep}}, then this function returns the unit number in both elements of the output vector.  
 #' 
 #' @return A character vector containing the name and number of the treated unit
 #' 
@@ -134,7 +134,7 @@ setMethod(f = "getTreated",
 
 #' Extract the Time Treatment is Administered in a MultiSynth Analysis
 #' 
-#' Returns the treatement is administered in a MultiSynth analysis.
+#' Returns the time treatment is administered in a MultiSynth analysis.
 #' 
 #' @param input An object of class "MultiSynth"
 #' 
@@ -167,12 +167,12 @@ setMethod(f = "getTreatmentTime",
 
 #' Extract Prep Matrices and Fit for One Cases in a MultiSynth Analysis
 #' 
-#' This function allows the user to extract the objects necessary to investigate any single case in a MultiSynth anlaysis.  It returns both the dataprep matrices and the output of the call to \code{\link{synth}}.  Together these can be used by various other functions, such as \code{\link{synth.tab}}, \code{\link{path.plot}}, \code{\link{SynthErrorRatios}}, \code{\link{SynthMeanEffect}}, and \code{\link{gaps.plot}}. 
+#' This function allows the user to extract the objects necessary to investigate any single case in a MultiSynth analysis.  It returns both the dataprep matrices and the output of the call to \code{\link{synth}}.  Together these can be used by various other functions, such as \code{\link{synth.tab}}, \code{\link{path.plot}}, \code{\link{SynthErrorRatios}}, \code{\link{SynthMeanEffect}}, and \code{\link{gaps.plot}}. 
 #' 
 #' @param input An object of class "MultiSynth"
-#' @param case The name of one of the cases.  For a placebo analysis, this is the unit name of interest.  For leave-one-out analyses, this is "minus <<excluded unit/covaraite>>".  To see the full list of names in a MultiSynth analaysis, one can call \code{names(fitMultiSynth.out@@preps)}.
+#' @param case The name of one of the cases.  For a placebo analysis, this is the unit name of interest.  For leave-one-out analyses, this is "minus <<excluded unit/covariate>>".  To see the full list of names in a MultiSynth analysis, one can call \code{names(fitMultiSynth.out@@preps)}.
 #' 
-#' @return A list containing the datapre matrices and synth output for this case
+#' @return A list containing the dataprep matrices and synth output for this case
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}
 #' 
@@ -201,7 +201,7 @@ setMethod(f = "getCase",
 
 #' Extract the Statistics for Estimated Synthetic Control Fits in a MultiSynth Analysis
 #' 
-#' Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.  
+#' Returns a matrix containing the pre-treatment RMSPE, post-treatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.  
 #' 
 #' @param input An object of class "MultiSynth"
 #' 

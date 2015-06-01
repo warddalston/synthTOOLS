@@ -15,7 +15,7 @@
 #' 
 #' @details The user should give an object of class \code{\link{MultiSynth}} as the argument to synth.res, and leave dataprep.res and tr.intake as NA.  
 #' 
-#' This method for path.plot is generally designed to work with leave-one-out analayses.  It will work for placebo anlayses, but the interpretation of the plot is less clear. 
+#' This method for path.plot is generally designed to work with leave-one-out analyses.  It will work for placebo anlyses, but the interpretation of the plot is less clear. 
 #' 
 #' 
 #' @author Dalston G. Ward: \email{ward.dalston@@wustl.edu}

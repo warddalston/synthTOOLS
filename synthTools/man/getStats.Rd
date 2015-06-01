@@ -17,7 +17,7 @@ getStats(input)
 A matrix containing the estimated statistics for each case
 }
 \description{
-Returns a matrix containing the pretreatment RMSPE, posttreatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.
+Returns a matrix containing the pre-treatment RMSPE, post-treatment RMSPE, post- to pre-treatment RMSPE ratio, covariate loss, and ATE for each case in a MultiSynth analysis.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}

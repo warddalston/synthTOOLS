@@ -17,7 +17,7 @@ getPreps(input)
 A list of lists. Each list contains the six dataprep matrices for a single case.
 }
 \description{
-Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each case. Each element of this list is a list containing the six relevent matrices for each placebo/leave-one-out case.
+Extracts from a MultiSynth object the named list containing the X0, X1, Z0, Z1, Y0plot, and Y1plot matrices for each case. Each element of this list is a list containing the six relevant matrices for each placebo/leave-one-out case.
 }
 \author{
 Dalston G. Ward: \email{ward.dalston@wustl.edu}
